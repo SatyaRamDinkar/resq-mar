@@ -27,7 +27,7 @@ def print_route_summary(routing_result: dict):
     print(f"\n  Solver Status : {routing_result.get('solver_status')}")
     print(f"  Total Distance: {routing_result.get('total_distance_km')} km")
     for route in routing_result.get("routes", []):
-        path = " → ".join(route["location_ids"])
+        path = " -> ".join(route["location_ids"])
         print(f"  [{route['vehicle_id']}] {path}")
         print(f"    Distance: {route['total_distance_km']} km | "
               f"ETA: {route['estimated_time_min']} min | "
@@ -39,7 +39,7 @@ def print_route_summary(routing_result: dict):
 def run_full_pipeline():
     print("=" * 65)
     print("ResQ-MAR FULL PIPELINE DEMO")
-    print("Intake → Metadata → RAG → Planner → Router")
+    print("Intake -> Metadata -> RAG -> Planner -> Router")
     print("=" * 65)
 
     # ── Initialization ──────────────────────────────────────────────
