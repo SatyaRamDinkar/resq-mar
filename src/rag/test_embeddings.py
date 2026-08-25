@@ -2,8 +2,13 @@
 Dependencies: pytest, chromadb
 """
 import os
+import sys
 import tempfile
 import pytest
+
+# Ensure src module can be imported from the root directory
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 from src.rag.embeddings import SOPKnowledgeBase
 
 @pytest.fixture
