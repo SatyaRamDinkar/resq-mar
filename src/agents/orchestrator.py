@@ -59,6 +59,7 @@ class ResQOrchestrator:
             name="human_dispatcher",
             system_message="You are the human dispatcher. Review high-urgency incidents and approve or reject dispatch plans. Reply ONLY 'APPROVE' or 'REJECT'.",
             human_input_mode="NEVER",  # Programmatic simulation for MVP
+            code_execution_config={"use_docker": False},
             llm_config=False
         )
 
