@@ -3,6 +3,8 @@ Dependencies: pytest, chromadb
 """
 import os
 import sys
+import gc
+import time
 import tempfile
 import pytest
 
@@ -15,22 +17,42 @@ from src.rag.embeddings import SOPKnowledgeBase
 def temp_kb():
     """
     Fixture that creates a temporary ChromaDB instance and ingests dummy data.
+    Uses a non-context-manager approach to allow explicit client cleanup before
+    directory teardown, preventing Windows file-lock PermissionErrors on SQLite.
     """
-    with tempfile.TemporaryDirectory() as temp_dir:
-        kb = SOPKnowledgeBase(persist_dir=temp_dir)
+    temp_dir = tempfile.mkdtemp()
+    kb = SOPKnowledgeBase(persist_dir=temp_dir)
+    
+    # Create dummy SOP files for testing
+    sops_dir = os.path.join(temp_dir, "test_sops")
+    os.makedirs(sops_dir, exist_ok=True)
+    
+    with open(os.path.join(sops_dir, "flood.md"), "w", encoding="utf-8") as f:
+        f.write("## SOP-FLD-TEST: Flood Evacuation\nDetails about moving away from rising water.")
         
-        # Create dummy SOP files for testing
-        sops_dir = os.path.join(temp_dir, "test_sops")
-        os.makedirs(sops_dir, exist_ok=True)
+    with open(os.path.join(sops_dir, "fire.md"), "w", encoding="utf-8") as f:
+        f.write("## SOP-FIR-TEST: Building Fire\nDetails about putting out the fire and rescuing people.")
         
-        with open(os.path.join(sops_dir, "flood.md"), "w", encoding="utf-8") as f:
-            f.write("## SOP-FLD-TEST: Flood Evacuation\nDetails about moving away from rising water.")
-            
-        with open(os.path.join(sops_dir, "fire.md"), "w", encoding="utf-8") as f:
-            f.write("## SOP-FIR-TEST: Building Fire\nDetails about putting out the fire and rescuing people.")
-            
-        kb.ingest_sops(sop_dir=sops_dir)
-        yield kb
+    kb.ingest_sops(sop_dir=sops_dir)
+    yield kb
+    
+    # --- Explicit teardown: release ChromaDB file locks before deleting dir ---
+    try:
+        # Reset the ChromaDB client to release all SQLite connections
+        kb.client.clear_system_cache()
+    except Exception:
+        pass
+    del kb.collection
+    del kb.client
+    kb = None
+    gc.collect()
+    time.sleep(0.5)  # Brief pause for Windows to release file handles
+    
+    import shutil
+    try:
+        shutil.rmtree(temp_dir, ignore_errors=True)
+    except Exception:
+        pass  # Best-effort cleanup; not a test failure
 
 def test_ingest_sops(temp_kb):
     """Verify SOPs are ingested and the collection has the correct count."""
