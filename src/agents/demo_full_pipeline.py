@@ -33,7 +33,7 @@ def print_route_summary(routing_result: dict):
               f"ETA: {route['estimated_time_min']} min | "
               f"Demand served: {route['total_demand']}")
     if routing_result.get("unassigned"):
-        print(f"  ⚠ Unassigned: {routing_result['unassigned']}")
+        print(f"  [!] Unassigned: {routing_result['unassigned']}")
 
 
 def run_full_pipeline():
@@ -42,7 +42,7 @@ def run_full_pipeline():
     print("Intake -> Metadata -> RAG -> Planner -> Router")
     print("=" * 65)
 
-    # ── Initialization ──────────────────────────────────────────────
+    # --- Initialization ---
     print("\n[INIT] Loading config and initializing all agents...")
     config = load_config()
     intake  = IntakeAgent(llm_config=config)
@@ -56,10 +56,10 @@ def run_full_pipeline():
     kb.ingest_sops(sop_dir=sop_dir)
     print(f"[INIT] KB Stats: {kb.get_collection_stats()}")
 
-    # ── Define Scenarios ────────────────────────────────────────────
+    # --- Define Scenarios ---
     scenarios = [
         {
-            "name": "SCENARIO 1 — Building Fire with Trapped Persons",
+            "name": "SCENARIO 1 - Building Fire with Trapped Persons",
             "raw_text": "FIRE! Building 7, 3rd floor, people trapped, send help now!!!",
             "locations": [
                 {"id": "fire_station",  "lat": 12.9716, "lon": 77.5946, "demand": 0,  "priority": 1},
@@ -72,12 +72,12 @@ def run_full_pipeline():
             ],
         },
         {
-            "name": "SCENARIO 2 — Flood with Rooftop Victims",
+            "name": "SCENARIO 2 - Flood with Rooftop Victims",
             "raw_text": "Water rising fast in sector 4, about 20 people stuck on rooftops, very urgent",
             "locations": [
-                {"id": "rescue_depot",   "lat": 13.0827, "lon": 80.2707, "demand": 0,  "priority": 1},
-                {"id": "sector4_north",  "lat": 13.0830, "lon": 80.2710, "demand": 8,  "priority": 4},
-                {"id": "sector4_south",  "lat": 13.0820, "lon": 80.2700, "demand": 12, "priority": 4},
+                {"id": "rescue_depot",  "lat": 13.0827, "lon": 80.2707, "demand": 0,  "priority": 1},
+                {"id": "sector4_north", "lat": 13.0830, "lon": 80.2710, "demand": 8,  "priority": 4},
+                {"id": "sector4_south", "lat": 13.0820, "lon": 80.2700, "demand": 12, "priority": 4},
             ],
             "vehicles": [
                 {"id": "rescue_boat_1", "capacity": 10, "speed_kmh": 20.0, "start_location_id": "rescue_depot"},
@@ -98,17 +98,17 @@ def run_full_pipeline():
 
         print(f"\nRAW INPUT: {raw_text}")
 
-        # ── Stage 1: Intake ─────────────────────────────────────────
+        # --- Stage 1: Intake ---
         print("\n[1/5] IntakeAgent normalizing report...")
         intake_res = intake.process_report(raw_text)
         normalized = intake_res.get("normalized_text", raw_text)
         print(f"  NORMALIZED: {normalized}")
 
         if intake_res.get("is_spam"):
-            print("  ⚠ Flagged as SPAM — skipping.")
+            print("  [SPAM] Flagged as SPAM - skipping.")
             continue
 
-        # ── Stage 2: Metadata ────────────────────────────────────────
+        # --- Stage 2: Metadata ---
         print("\n[2/5] MetadataAgent extracting structured metadata...")
         meta_res = meta.extract_metadata(normalized)
         hazard   = meta_res.get("hazard_type", "unknown")
@@ -116,25 +116,25 @@ def run_full_pipeline():
         location_desc = meta_res.get("location_description", "unknown")
         print(f"  Hazard: {hazard} | Urgency: {urgency} | Location: {location_desc}")
 
-        # ── Stage 3: RAG ─────────────────────────────────────────────
+        # --- Stage 3: RAG ---
         print("\n[3/5] Querying Knowledge Base (RAG)...")
         sops = kb.query(hazard, normalized, top_k=2)
         for sop in sops:
             print(f"  Retrieved: [{sop['id']}] {sop['title']}")
 
-        # ── Stage 4: Planner ─────────────────────────────────────────
+        # --- Stage 4: Planner ---
         print("\n[4/5] PlannerAgent generating tactical plan...")
         plan = planner.generate_plan(meta_res, sops)
         tasks = plan.get("tasks", [])
         print(f"  Generated {len(tasks)} tasks | "
               f"ETA: {plan.get('estimated_total_time_min')} min | "
               f"SOPs: {plan.get('sops_referenced', [])}")
-        for task in tasks[:3]:  # print first 3 tasks only
+        for task in tasks[:3]:
             print(f"    Step {task.get('step')}: {task.get('action')}")
         if len(tasks) > 3:
             print(f"    ... ({len(tasks) - 3} more tasks)")
 
-        # ── Stage 5: Router ──────────────────────────────────────────
+        # --- Stage 5: Router ---
         print("\n[5/5] RouterAgent solving VRP...")
         routing_result = router.plan_routes(plan, locations, vehicles)
         print_route_summary(routing_result)
@@ -149,7 +149,7 @@ def run_full_pipeline():
             "total_distance_km": routing_result.get("total_distance_km"),
         })
 
-    # ── Pipeline Summary ─────────────────────────────────────────────
+    # --- Pipeline Summary ---
     print(f"\n{'=' * 65}")
     print("PIPELINE SUMMARY")
     print(f"{'=' * 65}")
