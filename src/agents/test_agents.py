@@ -2,6 +2,12 @@
 Dependencies: pytest, pyautogen
 """
 import pytest
+import sys
+import os
+
+# Ensure src module can be imported from the root directory
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 from src.agents.intake_agent import IntakeAgent
 from src.agents.metadata_agent import MetadataAgent
 
