@@ -36,6 +36,7 @@ from src.agents.planner_agent import PlannerAgent
 from src.agents.router_agent import RouterAgent
 from src.rag.embeddings import SOPKnowledgeBase
 from src.utils.map_utils import (
+    HAZARD_COLORS,
     create_depot_marker,
     create_incident_marker,
     create_route_polyline,
