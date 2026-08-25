@@ -1,0 +1,7 @@
+[
+  {"id": "demo_1", "raw_text": "Fire in Building 7, 3rd floor, people trapped", "lat": 12.9720, "lon": 77.5950},
+  {"id": "demo_2", "raw_text": "Water rising in sector 4, people on rooftops", "lat": 13.0830, "lon": 80.2710},
+  {"id": "demo_3", "raw_text": "Earthquake, building collapsed near market", "lat": 12.9800, "lon": 77.6000},
+  {"id": "demo_4", "raw_text": "Medical emergency, person unconscious at bus stop", "lat": 12.9650, "lon": 77.5800},
+  {"id": "demo_5", "raw_text": "Wildfire spreading toward residential area", "lat": 13.1000, "lon": 77.7000}
+]
