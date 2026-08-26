@@ -34,6 +34,8 @@ class PlannerAgent(ResQAgent):
         prompt = (
             f"INCIDENT METADATA:\n{metadata_text}\n\n"
             f"RETRIEVED SOPs:\n{sops_text}\n\n"
+            "If the hazard_type is 'unknown' or this is a non-emergency (e.g., lost pet), generate a single "
+            "task advising the user to contact non-emergency services, and require 0 resources.\n\n"
             "Output ONLY a JSON object with these exact keys: tasks (array), resources_needed (object), "
             "estimated_total_time_min (number), sops_referenced (array). Each task must have: "
             "step (number), action (string), resource (string), estimated_time_min (number)."

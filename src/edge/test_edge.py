@@ -3,6 +3,10 @@ Tests for Edge SLM deployment module.
 """
 import pytest
 from unittest.mock import patch, MagicMock
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 from src.edge.edge_agent import EdgeAgent
 from src.edge.offline_client import OfflineClient
 
