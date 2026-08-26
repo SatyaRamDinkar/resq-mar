@@ -23,6 +23,9 @@ app = FastAPI(
     version="1.0.0"
 )
 
+from src.api.routes_osrm import router as osrm_router
+app.include_router(osrm_router)
+
 # CORS Configuration
 app.add_middleware(
     CORSMiddleware,
