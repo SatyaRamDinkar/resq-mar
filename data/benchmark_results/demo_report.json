@@ -1,0 +1,143 @@
+{
+  "demo_timestamp": "2026-08-26T21:19:34.707930",
+  "system_version": "1.0",
+  "scenarios_run": 3,
+  "results": [
+    {
+      "id": "DEMO_001",
+      "name": "Colombo Flood Response",
+      "steps": [
+        {
+          "step": 1,
+          "name": "Intake",
+          "timestamp": "2026-08-26T21:18:48.561479"
+        },
+        {
+          "step": 2,
+          "name": "Metadata",
+          "timestamp": "2026-08-26T21:18:50.571546"
+        },
+        {
+          "step": 3,
+          "name": "Agentic_RAG",
+          "timestamp": "2026-08-26T21:18:53.075003"
+        },
+        {
+          "step": 4,
+          "name": "Routing",
+          "timestamp": "2026-08-26T21:18:55.582242"
+        },
+        {
+          "step": 5,
+          "name": "Approval",
+          "timestamp": "2026-08-26T21:18:57.584123"
+        },
+        {
+          "step": 6,
+          "name": "Comms",
+          "timestamp": "2026-08-26T21:18:59.587848"
+        },
+        {
+          "step": 7,
+          "name": "Dashboard",
+          "timestamp": "2026-08-26T21:19:01.091209"
+        }
+      ],
+      "total_time_ms": 14534,
+      "coverage": 0.92,
+      "route_quality": 0.93
+    },
+    {
+      "id": "DEMO_002",
+      "name": "Dehiwala Factory Fire",
+      "steps": [
+        {
+          "step": 1,
+          "name": "Intake",
+          "timestamp": "2026-08-26T21:19:04.605079"
+        },
+        {
+          "step": 2,
+          "name": "Metadata",
+          "timestamp": "2026-08-26T21:19:06.610281"
+        },
+        {
+          "step": 3,
+          "name": "Agentic_RAG",
+          "timestamp": "2026-08-26T21:19:09.116344"
+        },
+        {
+          "step": 4,
+          "name": "Routing",
+          "timestamp": "2026-08-26T21:19:11.620112"
+        },
+        {
+          "step": 5,
+          "name": "Approval",
+          "timestamp": "2026-08-26T21:19:13.623730"
+        },
+        {
+          "step": 6,
+          "name": "Comms",
+          "timestamp": "2026-08-26T21:19:15.627831"
+        },
+        {
+          "step": 7,
+          "name": "Dashboard",
+          "timestamp": "2026-08-26T21:19:17.131226"
+        }
+      ],
+      "total_time_ms": 14537,
+      "coverage": 0.88,
+      "route_quality": 0.93
+    },
+    {
+      "id": "DEMO_003",
+      "name": "Gampaha Earthquake Aftershock",
+      "steps": [
+        {
+          "step": 1,
+          "name": "Intake",
+          "timestamp": "2026-08-26T21:19:20.641361"
+        },
+        {
+          "step": 2,
+          "name": "Metadata",
+          "timestamp": "2026-08-26T21:19:22.645593"
+        },
+        {
+          "step": 3,
+          "name": "Agentic_RAG",
+          "timestamp": "2026-08-26T21:19:25.190411"
+        },
+        {
+          "step": 4,
+          "name": "Routing",
+          "timestamp": "2026-08-26T21:19:27.692526"
+        },
+        {
+          "step": 5,
+          "name": "Approval",
+          "timestamp": "2026-08-26T21:19:29.696425"
+        },
+        {
+          "step": 6,
+          "name": "Comms",
+          "timestamp": "2026-08-26T21:19:31.702124"
+        },
+        {
+          "step": 7,
+          "name": "Dashboard",
+          "timestamp": "2026-08-26T21:19:33.206030"
+        }
+      ],
+      "total_time_ms": 14569,
+      "coverage": 0.95,
+      "route_quality": 0.93
+    }
+  ],
+  "aggregate_metrics": {
+    "avg_coverage": 0.9166666666666666,
+    "total_time_ms": 43640
+  }
+}
