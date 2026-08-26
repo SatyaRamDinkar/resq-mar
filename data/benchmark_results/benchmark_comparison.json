@@ -1,10 +1,10 @@
 {
-  "coverage_improvement_vs_a": 56.0,
-  "coverage_improvement_vs_b": 113.4,
-  "latency_reduction_vs_a": 171.5,
-  "latency_reduction_vs_b": -43.7,
-  "solver_calls_saved_vs_a": 436.8,
-  "solver_calls_saved_vs_b": -47.4,
-  "route_quality_improvement_vs_a": 35.1,
-  "route_quality_improvement_vs_b": 96.3
+  "coverage_improvement_vs_a": 57.5,
+  "coverage_improvement_vs_b": 104.0,
+  "latency_reduction_vs_a": 151.6,
+  "latency_reduction_vs_b": -46.7,
+  "solver_calls_saved_vs_a": 380.0,
+  "solver_calls_saved_vs_b": -50.0,
+  "route_quality_improvement_vs_a": 34.1,
+  "route_quality_improvement_vs_b": 86.9
 }

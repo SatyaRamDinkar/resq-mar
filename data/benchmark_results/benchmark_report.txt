@@ -3,34 +3,34 @@ RESQ-MAR BENCHMARK REPORT
 =========================================================================
 Total Incidents: 50
 Configurations Tested: 3 (ResQ-MAR, Baseline-A, Baseline-B)
-Date: 2026-08-26 20:42:30
+Date: 2026-08-26 20:44:28
 
 -------------------------------------------------------------------------
 PER-SYSTEM AVERAGES
 -------------------------------------------------------------------------
 Metric              | ResQ-MAR    | Baseline-A  | Baseline-B  | Unit
 -------------------------------------------------------------------------
-Coverage Score      | 0.858       | 0.550       | 0.402       | 0-1
-Avg Latency         | 1168        | 3171        | 658         | ms
-Solver Calls        | 1.9         | 10.2        | 1.0         | count
-Route Quality       | 0.909       | 0.673       | 0.463       | 0-1
-Success Rate        | 100.0     % | 100.0     % | 50.0      % | %
+Coverage Score      | 0.857       | 0.544       | 0.420       | 0-1
+Avg Latency         | 1170        | 2944        | 624         | ms
+Solver Calls        | 2.0         | 9.6         | 1.0         | count
+Route Quality       | 0.916       | 0.683       | 0.490       | 0-1
+Success Rate        | 100.0     % | 100.0     % | 62.0      % | %
 -------------------------------------------------------------------------
 
 -------------------------------------------------------------------------
 RESQ-MAR IMPROVEMENTS
 -------------------------------------------------------------------------
 vs Baseline-A:
-  Coverage: +56.0%
-  Latency:  -171.5%
-  Solver Calls Saved: 436.8%
-  Route Quality: +35.1%
+  Coverage: +57.5%
+  Latency:  -151.6%
+  Solver Calls Saved: 380.0%
+  Route Quality: +34.1%
 
 vs Baseline-B:
-  Coverage: +113.4%
-  Latency:  +-43.7% (note: baseline is faster but worse quality)
-  Solver Calls Saved: -47.4%
-  Route Quality: +96.3%
+  Coverage: +104.0%
+  Latency:  +-46.7% (note: baseline is faster but worse quality)
+  Solver Calls Saved: -50.0%
+  Route Quality: +86.9%
 -------------------------------------------------------------------------
 
 KEY FINDINGS:
