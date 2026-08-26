@@ -1,0 +1,799 @@
+[
+  {
+    "id": "BENCH_001",
+    "type": "flood",
+    "severity": "low",
+    "description": "Raw 911 report: Emergency involving flood with low severity.",
+    "location": {
+      "lat": 6.9331,
+      "lon": 79.8038
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_002",
+    "type": "flood",
+    "severity": "low",
+    "description": "Raw 911 report: Emergency involving flood with low severity.",
+    "location": {
+      "lat": 6.8858,
+      "lon": 79.8335
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_003",
+    "type": "flood",
+    "severity": "low",
+    "description": "Raw 911 report: Emergency involving flood with low severity.",
+    "location": {
+      "lat": 6.9457,
+      "lon": 79.9015
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_004",
+    "type": "flood",
+    "severity": "low",
+    "description": "Raw 911 report: Emergency involving flood with low severity.",
+    "location": {
+      "lat": 6.966,
+      "lon": 79.813
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_005",
+    "type": "flood",
+    "severity": "low",
+    "description": "Raw 911 report: Emergency involving flood with low severity.",
+    "location": {
+      "lat": 6.9048,
+      "lon": 79.8045
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_006",
+    "type": "flood",
+    "severity": "medium",
+    "description": "Raw 911 report: Emergency involving flood with medium severity.",
+    "location": {
+      "lat": 6.8784,
+      "lon": 79.8758
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_007",
+    "type": "flood",
+    "severity": "medium",
+    "description": "Raw 911 report: Emergency involving flood with medium severity.",
+    "location": {
+      "lat": 6.8534,
+      "lon": 79.8298
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_008",
+    "type": "flood",
+    "severity": "medium",
+    "description": "Raw 911 report: Emergency involving flood with medium severity.",
+    "location": {
+      "lat": 6.9345,
+      "lon": 79.8817
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_009",
+    "type": "flood",
+    "severity": "medium",
+    "description": "Raw 911 report: Emergency involving flood with medium severity.",
+    "location": {
+      "lat": 6.8787,
+      "lon": 79.8884
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_010",
+    "type": "flood",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving flood with high severity.",
+    "location": {
+      "lat": 6.9552,
+      "lon": 79.801
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_011",
+    "type": "flood",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving flood with high severity.",
+    "location": {
+      "lat": 6.9548,
+      "lon": 79.9047
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_012",
+    "type": "flood",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving flood with high severity.",
+    "location": {
+      "lat": 6.8942,
+      "lon": 79.8233
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_013",
+    "type": "flood",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving flood with high severity.",
+    "location": {
+      "lat": 6.9744,
+      "lon": 79.8505
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_014",
+    "type": "flood",
+    "severity": "critical",
+    "description": "Raw 911 report: Emergency involving flood with critical severity.",
+    "location": {
+      "lat": 6.8621,
+      "lon": 79.8145
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_015",
+    "type": "flood",
+    "severity": "critical",
+    "description": "Raw 911 report: Emergency involving flood with critical severity.",
+    "location": {
+      "lat": 6.9602,
+      "lon": 79.8906
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "rescue_boat",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FLO-001"
+  },
+  {
+    "id": "BENCH_016",
+    "type": "fire",
+    "severity": "low",
+    "description": "Raw 911 report: Emergency involving fire with low severity.",
+    "location": {
+      "lat": 6.9549,
+      "lon": 79.9095
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FIR-001"
+  },
+  {
+    "id": "BENCH_017",
+    "type": "fire",
+    "severity": "low",
+    "description": "Raw 911 report: Emergency involving fire with low severity.",
+    "location": {
+      "lat": 6.9197,
+      "lon": 79.946
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FIR-001"
+  },
+  {
+    "id": "BENCH_018",
+    "type": "fire",
+    "severity": "low",
+    "description": "Raw 911 report: Emergency involving fire with low severity.",
+    "location": {
+      "lat": 6.8992,
+      "lon": 79.8828
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FIR-001"
+  },
+  {
+    "id": "BENCH_019",
+    "type": "fire",
+    "severity": "medium",
+    "description": "Raw 911 report: Emergency involving fire with medium severity.",
+    "location": {
+      "lat": 6.9578,
+      "lon": 79.8928
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FIR-001"
+  },
+  {
+    "id": "BENCH_020",
+    "type": "fire",
+    "severity": "medium",
+    "description": "Raw 911 report: Emergency involving fire with medium severity.",
+    "location": {
+      "lat": 6.962,
+      "lon": 79.8866
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FIR-001"
+  },
+  {
+    "id": "BENCH_021",
+    "type": "fire",
+    "severity": "medium",
+    "description": "Raw 911 report: Emergency involving fire with medium severity.",
+    "location": {
+      "lat": 6.9416,
+      "lon": 79.8069
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FIR-001"
+  },
+  {
+    "id": "BENCH_022",
+    "type": "fire",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving fire with high severity.",
+    "location": {
+      "lat": 6.8796,
+      "lon": 79.8434
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FIR-001"
+  },
+  {
+    "id": "BENCH_023",
+    "type": "fire",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving fire with high severity.",
+    "location": {
+      "lat": 6.8604,
+      "lon": 79.8349
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FIR-001"
+  },
+  {
+    "id": "BENCH_024",
+    "type": "fire",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving fire with high severity.",
+    "location": {
+      "lat": 6.8631,
+      "lon": 79.8417
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FIR-001"
+  },
+  {
+    "id": "BENCH_025",
+    "type": "fire",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving fire with high severity.",
+    "location": {
+      "lat": 6.9326,
+      "lon": 79.8547
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FIR-001"
+  },
+  {
+    "id": "BENCH_026",
+    "type": "fire",
+    "severity": "critical",
+    "description": "Raw 911 report: Emergency involving fire with critical severity.",
+    "location": {
+      "lat": 6.8981,
+      "lon": 79.8314
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FIR-001"
+  },
+  {
+    "id": "BENCH_027",
+    "type": "fire",
+    "severity": "critical",
+    "description": "Raw 911 report: Emergency involving fire with critical severity.",
+    "location": {
+      "lat": 6.8847,
+      "lon": 79.9405
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-FIR-001"
+  },
+  {
+    "id": "BENCH_028",
+    "type": "earthquake",
+    "severity": "low",
+    "description": "Raw 911 report: Emergency involving earthquake with low severity.",
+    "location": {
+      "lat": 6.9342,
+      "lon": 79.8914
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "drone",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-EAR-001"
+  },
+  {
+    "id": "BENCH_029",
+    "type": "earthquake",
+    "severity": "low",
+    "description": "Raw 911 report: Emergency involving earthquake with low severity.",
+    "location": {
+      "lat": 6.8722,
+      "lon": 79.9094
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "drone",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-EAR-001"
+  },
+  {
+    "id": "BENCH_030",
+    "type": "earthquake",
+    "severity": "medium",
+    "description": "Raw 911 report: Emergency involving earthquake with medium severity.",
+    "location": {
+      "lat": 6.8712,
+      "lon": 79.8569
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "drone",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-EAR-001"
+  },
+  {
+    "id": "BENCH_031",
+    "type": "earthquake",
+    "severity": "medium",
+    "description": "Raw 911 report: Emergency involving earthquake with medium severity.",
+    "location": {
+      "lat": 6.9786,
+      "lon": 79.896
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "drone",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-EAR-001"
+  },
+  {
+    "id": "BENCH_032",
+    "type": "earthquake",
+    "severity": "medium",
+    "description": "Raw 911 report: Emergency involving earthquake with medium severity.",
+    "location": {
+      "lat": 6.9224,
+      "lon": 79.9027
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "drone",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-EAR-001"
+  },
+  {
+    "id": "BENCH_033",
+    "type": "earthquake",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving earthquake with high severity.",
+    "location": {
+      "lat": 6.9596,
+      "lon": 79.9164
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "drone",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-EAR-001"
+  },
+  {
+    "id": "BENCH_034",
+    "type": "earthquake",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving earthquake with high severity.",
+    "location": {
+      "lat": 6.8798,
+      "lon": 79.8048
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "drone",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-EAR-001"
+  },
+  {
+    "id": "BENCH_035",
+    "type": "earthquake",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving earthquake with high severity.",
+    "location": {
+      "lat": 6.891,
+      "lon": 79.8402
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "drone",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-EAR-001"
+  },
+  {
+    "id": "BENCH_036",
+    "type": "earthquake",
+    "severity": "critical",
+    "description": "Raw 911 report: Emergency involving earthquake with critical severity.",
+    "location": {
+      "lat": 6.8774,
+      "lon": 79.9414
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "drone",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-EAR-001"
+  },
+  {
+    "id": "BENCH_037",
+    "type": "earthquake",
+    "severity": "critical",
+    "description": "Raw 911 report: Emergency involving earthquake with critical severity.",
+    "location": {
+      "lat": 6.9639,
+      "lon": 79.8472
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "drone",
+      "ambulance"
+    ],
+    "expected_sop": "SOP-EAR-001"
+  },
+  {
+    "id": "BENCH_038",
+    "type": "medical",
+    "severity": "low",
+    "description": "Raw 911 report: Emergency involving medical with low severity.",
+    "location": {
+      "lat": 6.9352,
+      "lon": 79.8593
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "ambulance"
+    ],
+    "expected_sop": "SOP-MED-001"
+  },
+  {
+    "id": "BENCH_039",
+    "type": "medical",
+    "severity": "low",
+    "description": "Raw 911 report: Emergency involving medical with low severity.",
+    "location": {
+      "lat": 6.9689,
+      "lon": 79.8688
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "ambulance"
+    ],
+    "expected_sop": "SOP-MED-001"
+  },
+  {
+    "id": "BENCH_040",
+    "type": "medical",
+    "severity": "medium",
+    "description": "Raw 911 report: Emergency involving medical with medium severity.",
+    "location": {
+      "lat": 6.8844,
+      "lon": 79.837
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "ambulance"
+    ],
+    "expected_sop": "SOP-MED-001"
+  },
+  {
+    "id": "BENCH_041",
+    "type": "medical",
+    "severity": "medium",
+    "description": "Raw 911 report: Emergency involving medical with medium severity.",
+    "location": {
+      "lat": 6.923,
+      "lon": 79.8394
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "ambulance"
+    ],
+    "expected_sop": "SOP-MED-001"
+  },
+  {
+    "id": "BENCH_042",
+    "type": "medical",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving medical with high severity.",
+    "location": {
+      "lat": 6.926,
+      "lon": 79.9347
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "ambulance"
+    ],
+    "expected_sop": "SOP-MED-001"
+  },
+  {
+    "id": "BENCH_043",
+    "type": "medical",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving medical with high severity.",
+    "location": {
+      "lat": 6.9019,
+      "lon": 79.8329
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "ambulance"
+    ],
+    "expected_sop": "SOP-MED-001"
+  },
+  {
+    "id": "BENCH_044",
+    "type": "medical",
+    "severity": "high",
+    "description": "Raw 911 report: Emergency involving medical with high severity.",
+    "location": {
+      "lat": 6.9797,
+      "lon": 79.8764
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "ambulance"
+    ],
+    "expected_sop": "SOP-MED-001"
+  },
+  {
+    "id": "BENCH_045",
+    "type": "medical",
+    "severity": "critical",
+    "description": "Raw 911 report: Emergency involving medical with critical severity.",
+    "location": {
+      "lat": 6.8618,
+      "lon": 79.8071
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "ambulance"
+    ],
+    "expected_sop": "SOP-MED-001"
+  },
+  {
+    "id": "BENCH_046",
+    "type": "complex",
+    "severity": "critical",
+    "description": "Raw 911 report: Emergency involving complex with critical severity.",
+    "location": {
+      "lat": 6.8643,
+      "lon": 79.8941
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance",
+      "drone"
+    ],
+    "expected_sop": "SOP-COM-001"
+  },
+  {
+    "id": "BENCH_047",
+    "type": "complex",
+    "severity": "critical",
+    "description": "Raw 911 report: Emergency involving complex with critical severity.",
+    "location": {
+      "lat": 6.953,
+      "lon": 79.8633
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance",
+      "drone"
+    ],
+    "expected_sop": "SOP-COM-001"
+  },
+  {
+    "id": "BENCH_048",
+    "type": "complex",
+    "severity": "critical",
+    "description": "Raw 911 report: Emergency involving complex with critical severity.",
+    "location": {
+      "lat": 6.8583,
+      "lon": 79.8572
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance",
+      "drone"
+    ],
+    "expected_sop": "SOP-COM-001"
+  },
+  {
+    "id": "BENCH_049",
+    "type": "complex",
+    "severity": "critical",
+    "description": "Raw 911 report: Emergency involving complex with critical severity.",
+    "location": {
+      "lat": 6.9795,
+      "lon": 79.8794
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance",
+      "drone"
+    ],
+    "expected_sop": "SOP-COM-001"
+  },
+  {
+    "id": "BENCH_050",
+    "type": "complex",
+    "severity": "critical",
+    "description": "Raw 911 report: Emergency involving complex with critical severity.",
+    "location": {
+      "lat": 6.9762,
+      "lon": 79.9291
+    },
+    "timestamp": "2026-10-15T08:30:00",
+    "required_resources": [
+      "fire_truck",
+      "ambulance",
+      "drone"
+    ],
+    "expected_sop": "SOP-COM-001"
+  }
+]

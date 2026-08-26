@@ -1,0 +1,137 @@
+[
+  {
+    "id": "RES_001",
+    "type": "ambulance",
+    "lat": 6.8515,
+    "lon": 79.9081,
+    "base_location": "Station 5",
+    "speed_kmh": 80.0,
+    "capacity": 2
+  },
+  {
+    "id": "RES_002",
+    "type": "ambulance",
+    "lat": 6.9476,
+    "lon": 79.9153,
+    "base_location": "Station 3",
+    "speed_kmh": 80.0,
+    "capacity": 2
+  },
+  {
+    "id": "RES_003",
+    "type": "ambulance",
+    "lat": 6.8645,
+    "lon": 79.8652,
+    "base_location": "Station 4",
+    "speed_kmh": 80.0,
+    "capacity": 2
+  },
+  {
+    "id": "RES_004",
+    "type": "ambulance",
+    "lat": 6.8504,
+    "lon": 79.9083,
+    "base_location": "Station 3",
+    "speed_kmh": 80.0,
+    "capacity": 2
+  },
+  {
+    "id": "RES_005",
+    "type": "ambulance",
+    "lat": 6.9763,
+    "lon": 79.9143,
+    "base_location": "Station 5",
+    "speed_kmh": 80.0,
+    "capacity": 2
+  },
+  {
+    "id": "RES_006",
+    "type": "fire_truck",
+    "lat": 6.9686,
+    "lon": 79.9306,
+    "base_location": "Station 3",
+    "speed_kmh": 70.0,
+    "capacity": 4
+  },
+  {
+    "id": "RES_007",
+    "type": "fire_truck",
+    "lat": 6.9594,
+    "lon": 79.8761,
+    "base_location": "Station 2",
+    "speed_kmh": 70.0,
+    "capacity": 4
+  },
+  {
+    "id": "RES_008",
+    "type": "fire_truck",
+    "lat": 6.8699,
+    "lon": 79.9144,
+    "base_location": "Station 5",
+    "speed_kmh": 70.0,
+    "capacity": 4
+  },
+  {
+    "id": "RES_009",
+    "type": "fire_truck",
+    "lat": 6.974,
+    "lon": 79.9384,
+    "base_location": "Station 1",
+    "speed_kmh": 70.0,
+    "capacity": 4
+  },
+  {
+    "id": "RES_010",
+    "type": "rescue_boat",
+    "lat": 6.9279,
+    "lon": 79.8733,
+    "base_location": "Station 1",
+    "speed_kmh": 30.0,
+    "capacity": 6
+  },
+  {
+    "id": "RES_011",
+    "type": "rescue_boat",
+    "lat": 6.9708,
+    "lon": 79.9318,
+    "base_location": "Station 3",
+    "speed_kmh": 30.0,
+    "capacity": 6
+  },
+  {
+    "id": "RES_012",
+    "type": "rescue_boat",
+    "lat": 6.8811,
+    "lon": 79.8361,
+    "base_location": "Station 5",
+    "speed_kmh": 30.0,
+    "capacity": 6
+  },
+  {
+    "id": "RES_013",
+    "type": "drone",
+    "lat": 6.9731,
+    "lon": 79.8128,
+    "base_location": "Station 4",
+    "speed_kmh": 120.0,
+    "capacity": 1
+  },
+  {
+    "id": "RES_014",
+    "type": "drone",
+    "lat": 6.9561,
+    "lon": 79.9467,
+    "base_location": "Station 5",
+    "speed_kmh": 120.0,
+    "capacity": 1
+  },
+  {
+    "id": "RES_015",
+    "type": "drone",
+    "lat": 6.9496,
+    "lon": 79.8193,
+    "base_location": "Station 4",
+    "speed_kmh": 120.0,
+    "capacity": 1
+  }
+]
