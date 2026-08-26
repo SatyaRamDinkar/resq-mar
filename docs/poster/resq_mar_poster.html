@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ResQ-MAR Academic Poster</title>
+<style>
+    @page { size: A1 portrait; margin: 0; }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+        background: #f4f4f9;
+        width: 594mm;
+        height: 841mm;
+        box-sizing: border-box;
+    }
+    .poster {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 15mm;
+        box-sizing: border-box;
+    }
+    .header {
+        background: #1a1a2e;
+        color: white;
+        padding: 30px;
+        text-align: center;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        flex: 0 0 auto;
+        position: relative;
+    }
+    .qr-box {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        background: white;
+        color: #1a1a2e;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 20pt;
+        font-weight: bold;
+    }
+    h1 { font-size: 72pt; margin: 0; color: white; line-height: 1.1; }
+    h2.subtitle { font-size: 36pt; color: #e94560; margin: 15px 0; }
+    .authors { font-size: 28pt; margin: 10px 0; }
+    .affiliation { font-size: 24pt; color: #ccc; margin: 0; }
+    
+    .grid-main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 25px;
+        flex: 1;
+        min-height: 0;
+    }
+    .section {
+        background: white;
+        border: 2px solid #e94560;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+    }
+    .section-full {
+        background: white;
+        border: 2px solid #e94560;
+        border-radius: 12px;
+        padding: 25px;
+        margin-top: 25px;
+        box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+        flex: 0 0 auto;
+    }
+    h3 {
+        font-size: 32pt;
+        color: #e94560;
+        text-transform: uppercase;
+        margin-top: 0;
+        border-bottom: 4px solid #1a1a2e;
+        padding-bottom: 12px;
+        margin-bottom: 20px;
+    }
+    p, li { font-size: 24pt; line-height: 1.5; margin-bottom: 15px; }
+    
+    .highlight {
+        background: #fff5f5;
+        border-left: 8px solid #e94560;
+        padding: 20px;
+        margin: 25px 0;
+        font-weight: bold;
+        font-size: 26pt;
+    }
+    
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 25px; }
+    th, td { border: 2px solid #1a1a2e; padding: 15px; font-size: 22pt; text-align: left; }
+    th { background: #1a1a2e; color: white; }
+    
+    pre {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 13pt;
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        overflow: hidden;
+        line-height: 1.2;
+        text-align: center;
+        white-space: pre-wrap;
+    }
+    .pill-container { text-align: center; margin-top: 20px; }
+    .pill {
+        display: inline-block;
+        background: #1a1a2e;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-size: 20pt;
+        margin: 8px;
+        font-weight: bold;
+    }
+    
+    .footer {
+        background: #1a1a2e;
+        color: white;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 12px;
+        margin-top: 25px;
+        flex: 0 0 auto;
+        font-size: 22pt;
+    }
+    
+    @media print {
+        body { margin: 0; background: white; -webkit-print-color-adjust: exact; }
+    }
+</style>
+</head>
+<body>
+<div class="poster">
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>RESQ-MAR: AI-Powered Multi-Agent<br>Emergency Response System</h1>
+        <h2 class="subtitle">An Open-Source, Zero-Cost Alternative to Cloud-Dependent Dispatch</h2>
+        <div class="authors">Satya Ram Dinkar</div>
+        <div class="affiliation">Department of Computer Science, University Name</div>
+        <div class="qr-box">github.com/<br>SatyaRamDinkar/<br>resq-mar</div>
+    </div>
+
+    <!-- Main 3-Column Grid -->
+    <div class="grid-main">
+        <!-- 1. Introduction -->
+        <div class="section">
+            <h3>1. PROBLEM & MOTIVATION</h3>
+            <ul>
+                <li>Natural disasters are increasing globally; response time is critical for survival.</li>
+                <li>Current systems (e.g., ResQConnect) rely on cloud APIs like GPT-4o -- they fail offline.</li>
+                <li>Static vehicle routing cannot adapt to dynamic disaster conditions (e.g., blocked roads).</li>
+                <li>Fully automated AI dispatch lacks essential human oversight in life-or-death decisions.</li>
+                <li>High cost barriers prevent advanced deployment in developing nations.</li>
+            </ul>
+            <div class="highlight">
+                ResQ-MAR removes ALL these barriers: 100% free, 100% local, 100% open-source.
+            </div>
+        </div>
+
+        <!-- 2. Architecture -->
+        <div class="section">
+            <h3>2. SYSTEM ARCHITECTURE</h3>
+            <pre>
++-------------+    +-------------+    +-------------+
+|   Intake    |--->|  Metadata   |--->|   Planner   |
+|    Agent    |    |    Agent    |    |    Agent    |
++-------------+    +-------------+    +------+------+
+                                             |
+                   +-------------------------+-------------------------+
+                   |                         |                         |
+                   v                         v                         v
+          +-------------+            +-----------------+            +-------------+
+          |  Retrieval  |            |  AET Adaptive   |            |    Edge     |
+          |    Agent    |            |     Router      |            |    Agent    |
+          +-------------+            +-------+---------+            +-------------+
+                   |                         |
+                   v                         v
+          +-------------+            +-----------------+
+          |  Assessor   |            | Truck-Drone VRP |
+          |    Agent    |            |     Solver      |
+          +-------------+            +-------+---------+
+                                             |
+                                             v
+                                     +-------------+
+                                     |    Comms    |
+                                     |    Agent    |
+                                     +-------------+
+            </pre>
+            <p style="text-align: center; font-size: 22pt; margin-top: 10px;">
+                <strong>AutoGen AG2 Group Chat Orchestrator manages all agent handoffs</strong>
+            </p>
+            <div class="pill-container">
+                <span class="pill">Python</span>
+                <span class="pill">AutoGen</span>
+                <span class="pill">Ollama</span>
+                <span class="pill">ChromaDB</span>
+                <span class="pill">OR-Tools</span>
+                <span class="pill">Streamlit</span>
+            </div>
+        </div>
+
+        <!-- 3. Key Results -->
+        <div class="section">
+            <h3>3. KEY RESULTS</h3>
+            
+            <div style="font-weight: bold; font-size: 24pt;">Table 1: Agentic RAG vs Naive RAG</div>
+            <table>
+                <tr><th>Metric</th><th>Naive RAG</th><th>Agentic RAG</th><th>Improvement</th></tr>
+                <tr><td>Avg Coverage</td><td>0.47</td><td>0.82</td><td style="color: green; font-weight: bold;">+74%</td></tr>
+                <tr><td>Relevance Score</td><td>0.55</td><td>0.89</td><td style="color: green; font-weight: bold;">+62%</td></tr>
+            </table>
+
+            <div style="font-weight: bold; font-size: 24pt;">Table 2: Routing Efficiency</div>
+            <table>
+                <tr><th>Metric</th><th>Continuous</th><th>AET Adaptive</th><th>Improvement</th></tr>
+                <tr><td>Solver Calls</td><td>15</td><td>5</td><td style="color: green; font-weight: bold;">-66.7%</td></tr>
+                <tr><td>Avg Latency</td><td>3200ms</td><td>1250ms</td><td style="color: green; font-weight: bold;">-61%</td></tr>
+            </table>
+
+            <div style="font-weight: bold; font-size: 24pt;">Table 3: Truck-Drone Collaboration</div>
+            <table>
+                <tr><th>Configuration</th><th>Truck-Only</th><th>Drone-Only</th><th>Collaborative</th></tr>
+                <tr><td>Coverage</td><td>66.7%</td><td>41.7%</td><td style="color: green; font-weight: bold;">100%</td></tr>
+                <tr><td>Avg ETA</td><td>18 min</td><td>12 min</td><td style="color: green; font-weight: bold;">10 min</td></tr>
+            </table>
+            
+            <div class="highlight" style="margin: 10px 0; padding: 15px; font-size: 22pt;">
+                50 incidents benchmarked across 3 system configurations.
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Why ResQ-MAR Wins -->
+    <div class="section-full">
+        <h3>4. WHY RESQ-MAR WINS</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px;">
+            <div class="highlight" style="margin: 0;">
+                COST<br>
+                <span style="font-weight: normal; font-size: 22pt;">$0 vs $$$$ (GPT-4o API costs). Any municipality can deploy.</span>
+            </div>
+            <div class="highlight" style="margin: 0;">
+                RESILIENCE<br>
+                <span style="font-weight: normal; font-size: 22pt;">Edge SLM works offline. Cloud fails; ResQ-MAR continues to operate.</span>
+            </div>
+            <div class="highlight" style="margin: 0;">
+                INTELLIGENCE<br>
+                <span style="font-weight: normal; font-size: 22pt;">Agentic RAG + AET routing + human oversight. AI augments, not replaces.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Full System Benchmark -->
+    <div class="section-full">
+        <h3>5. FULL SYSTEM BENCHMARK (50 Incidents)</h3>
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>ResQ-MAR</th>
+                <th>Baseline-A</th>
+                <th>Baseline-B</th>
+            </tr>
+            <tr>
+                <td>Coverage Score</td>
+                <td style="font-weight: bold;">0.85</td>
+                <td>0.52</td>
+                <td>0.38</td>
+            </tr>
+            <tr>
+                <td>Avg Latency</td>
+                <td style="font-weight: bold;">1450ms</td>
+                <td>2850ms</td>
+                <td>680ms</td>
+            </tr>
+            <tr>
+                <td>Solver Calls</td>
+                <td style="font-weight: bold;">5.2</td>
+                <td>14.8</td>
+                <td>1.0</td>
+            </tr>
+            <tr>
+                <td>Route Quality</td>
+                <td style="font-weight: bold;">0.91</td>
+                <td>0.68</td>
+                <td>0.47</td>
+            </tr>
+            <tr>
+                <td>Success Rate</td>
+                <td style="font-weight: bold;">94%</td>
+                <td>72%</td>
+                <td>54%</td>
+            </tr>
+        </table>
+        <p style="font-size: 20pt; color: #555; margin: 0; text-align: center;">
+            Note: Baseline-A: Naive RAG + Continuous Routing | Baseline-B: Static Rule-Based
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div>github.com/SatyaRamDinkar/resq-mar</div>
+        <div>ResQ-MAR v1.0 | Nov 2026 | Open Source under MIT License</div>
+        <div>[University Logo]</div>
+    </div>
+
+</div>
+</body>
+</html>
