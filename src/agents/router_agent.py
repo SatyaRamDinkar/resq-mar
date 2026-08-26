@@ -125,3 +125,41 @@ class RouterAgent(ResQAgent):
             }
             self.log_action("plan_routes_error", {"error": str(e)}, error_output)
             return error_output
+
+    def plan_collaborative_routes(self, task_plan: dict, locations: list, trucks: list, drones: list) -> dict:
+        """
+        Plans routes using the Collaborative Truck-Drone Solver.
+        """
+        import os
+        import sys
+        
+        from src.routing.models import Location, Vehicle
+        from src.routing.vrp_solver import VRPSolver
+        from src.routing.collaborative_solver import CollaborativeVRPSolver
+        
+        loc_models = [Location(**l) for l in locations]
+        truck_models = [Vehicle(**v) for v in trucks]
+        drone_models = [Vehicle(**v) for v in drones]
+        
+        base_solver = VRPSolver()
+        collab_solver = CollaborativeVRPSolver(base_solver)
+        
+        depot_id = loc_models[0].id if loc_models else "depot"
+        
+        res = collab_solver.solve(loc_models, truck_models, drone_models, depot_id)
+        
+        output = {
+            "status": "success" if not res.unassigned else "partial",
+            "truck_routes": [r.model_dump() if hasattr(r, 'model_dump') else r.dict() for r in res.truck_routes],
+            "drone_subroutes": [d.model_dump() if hasattr(d, 'model_dump') else d.dict() for d in res.drone_subroutes],
+            "unassigned": res.unassigned,
+            "total_distance_km": res.total_distance_km,
+            "coverage_percentage": res.coverage_percentage
+        }
+        
+        self.log_action(
+            "plan_collaborative_routes",
+            {"locations": len(locations), "trucks": len(trucks), "drones": len(drones)},
+            {"coverage": res.coverage_percentage, "unassigned": len(res.unassigned)}
+        )
+        return output
