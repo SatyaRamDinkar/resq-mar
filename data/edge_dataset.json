@@ -1,0 +1,352 @@
+[
+  {
+    "id": "edge_q001",
+    "category": "flood",
+    "question": "What should I do if trapped in a flooded building?",
+    "answer": "Move to the highest level, like the roof. Do not climb into a closed attic.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q002",
+    "category": "flood",
+    "question": "How to cross moving flood water?",
+    "answer": "Do not cross moving water. As little as 6 inches can knock you over.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q003",
+    "category": "flood",
+    "question": "What to do if my car stalls in water?",
+    "answer": "Abandon the car immediately and move to higher ground.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q004",
+    "category": "flood",
+    "question": "Is it safe to drink tap water after a flood?",
+    "answer": "No, assume tap water is contaminated until authorities declare it safe.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q005",
+    "category": "flood",
+    "question": "How to signal for rescue from a roof?",
+    "answer": "Hang a bright sheet or use a flashlight/mirror to signal aircraft.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q006",
+    "category": "flood",
+    "question": "What to do about electrical appliances during a flood?",
+    "answer": "Turn off the main breaker if dry. Never touch wet electrical items.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q007",
+    "category": "flood",
+    "question": "How to prepare a flood emergency kit?",
+    "answer": "Include 3 days of food, water, flashlight, batteries, and meds in a waterproof bag.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q008",
+    "category": "flood",
+    "question": "When is it safe to return home after a flood?",
+    "answer": "Only return when authorities issue an all-clear signal.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q009",
+    "category": "flood",
+    "question": "What are the early signs of a flash flood?",
+    "answer": "Heavy continuous rain, rising creeks, and roaring sounds like a train.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q010",
+    "category": "flood",
+    "question": "How to protect important documents from flooding?",
+    "answer": "Store them in a sealed waterproof container on a high shelf.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q011",
+    "category": "fire",
+    "question": "How to use a fire extinguisher?",
+    "answer": "Use the PASS method: Pull the pin, Aim at the base, Squeeze the handle, Sweep side to side.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q012",
+    "category": "fire",
+    "question": "What is the best escape route from a 2nd floor?",
+    "answer": "Use the primary exit if clear. Otherwise, use a secondary exit like a window with an escape ladder.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q013",
+    "category": "fire",
+    "question": "How to treat smoke inhalation?",
+    "answer": "Move to fresh air immediately and seek emergency medical help.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q014",
+    "category": "fire",
+    "question": "What to do if clothes catch fire?",
+    "answer": "Stop, Drop, and Roll immediately to smother the flames.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q015",
+    "category": "fire",
+    "question": "How to check if a door is safe to open during a fire?",
+    "answer": "Feel the door with the back of your hand. If hot, do not open it.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q016",
+    "category": "fire",
+    "question": "When to stay low to the ground in a fire?",
+    "answer": "Smoke rises, so crawl low to the floor where the air is cleaner.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q017",
+    "category": "fire",
+    "question": "How to safely evacuate pets during a fire?",
+    "answer": "Keep them on leashes or in carriers and take them out with you.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q018",
+    "category": "fire",
+    "question": "What items to grab if evacuating for a wildfire?",
+    "answer": "Grab your emergency kit, important documents, medications, and pets.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q019",
+    "category": "fire",
+    "question": "How to seal a room to prevent smoke entry?",
+    "answer": "Use wet towels or tape around the door frame and vents.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q020",
+    "category": "fire",
+    "question": "What are the classes of fire extinguishers?",
+    "answer": "Class A (ordinary), B (flammable liquids), C (electrical), D (metals), K (kitchen).",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q021",
+    "category": "earthquake",
+    "question": "What is drop, cover, and hold on?",
+    "answer": "Drop to your hands and knees, Cover your head/neck under a sturdy table, and Hold on until shaking stops.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q022",
+    "category": "earthquake",
+    "question": "What to do during an aftershock?",
+    "answer": "Drop, cover, and hold on again. Aftershocks can cause further damage.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q023",
+    "category": "earthquake",
+    "question": "How to check building safety after an earthquake?",
+    "answer": "Look for structural cracks or shifting. If unsure, do not enter.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q024",
+    "category": "earthquake",
+    "question": "What to do if trapped under debris?",
+    "answer": "Cover your mouth, tap on a pipe or wall rhythmically. Do not shout and inhale dust.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q025",
+    "category": "earthquake",
+    "question": "How to shut off the gas valve?",
+    "answer": "Use a wrench to turn the valve a quarter turn until perpendicular to the pipe.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q026",
+    "category": "earthquake",
+    "question": "Is it safer inside or outside during an earthquake?",
+    "answer": "Stay where you are. Do not run outside during shaking.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q027",
+    "category": "earthquake",
+    "question": "What to do if driving during an earthquake?",
+    "answer": "Pull over to a clear location away from bridges and stay in the car.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q028",
+    "category": "earthquake",
+    "question": "How to protect against falling objects?",
+    "answer": "Stay away from windows, heavy furniture, and hanging fixtures.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q029",
+    "category": "earthquake",
+    "question": "What should be in an earthquake kit?",
+    "answer": "Water, non-perishable food, flashlight, radio, first aid kit, sturdy shoes.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q030",
+    "category": "earthquake",
+    "question": "How to communicate if networks are down?",
+    "answer": "Send SMS text messages instead of calling; they use less bandwidth.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q031",
+    "category": "medical",
+    "question": "How to perform hands-only CPR?",
+    "answer": "Push hard and fast in the center of the chest at 100-120 beats per minute.",
+    "urgency": "high"
+  },
+  {
+    "id": "edge_q032",
+    "category": "medical",
+    "question": "How to stop severe bleeding?",
+    "answer": "Apply direct pressure with a clean cloth and elevate the wound.",
+    "urgency": "high"
+  },
+  {
+    "id": "edge_q033",
+    "category": "medical",
+    "question": "What are the signs of shock?",
+    "answer": "Pale, cold, clammy skin, rapid breathing, and weakness.",
+    "urgency": "high"
+  },
+  {
+    "id": "edge_q034",
+    "category": "medical",
+    "question": "How to treat a burn?",
+    "answer": "Cool the burn under cool running water for 10-15 minutes. Cover loosely.",
+    "urgency": "high"
+  },
+  {
+    "id": "edge_q035",
+    "category": "medical",
+    "question": "How to splint a broken bone?",
+    "answer": "Immobilize the injured area using rigid materials and tie above and below the joint.",
+    "urgency": "high"
+  },
+  {
+    "id": "edge_q036",
+    "category": "medical",
+    "question": "What to do for a head injury?",
+    "answer": "Keep the person still, apply cold compress, and seek immediate medical care.",
+    "urgency": "high"
+  },
+  {
+    "id": "edge_q037",
+    "category": "medical",
+    "question": "How to recognize a heart attack?",
+    "answer": "Chest pain, shortness of breath, pain radiating to the arm or jaw.",
+    "urgency": "high"
+  },
+  {
+    "id": "edge_q038",
+    "category": "medical",
+    "question": "How to use a tourniquet?",
+    "answer": "Apply 2-3 inches above the bleeding, tighten until bleeding stops, and note the time.",
+    "urgency": "high"
+  },
+  {
+    "id": "edge_q039",
+    "category": "medical",
+    "question": "What to do for someone who is choking?",
+    "answer": "Perform abdominal thrusts (Heimlich maneuver) until the object is expelled.",
+    "urgency": "high"
+  },
+  {
+    "id": "edge_q040",
+    "category": "medical",
+    "question": "How to treat hypothermia?",
+    "answer": "Move to a warm place, remove wet clothing, and wrap in dry blankets.",
+    "urgency": "high"
+  },
+  {
+    "id": "edge_q041",
+    "category": "general",
+    "question": "What are the universal emergency numbers?",
+    "answer": "Call 911 in North America, 112 in Europe, or your local equivalent.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q042",
+    "category": "general",
+    "question": "How to locate the nearest shelter?",
+    "answer": "Listen to local emergency radio or use the FEMA app.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q043",
+    "category": "general",
+    "question": "What should go in a 72-hour survival kit?",
+    "answer": "Water (1 gallon/day), non-perishable food, radio, flashlight, first aid, batteries.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q044",
+    "category": "general",
+    "question": "How to make a family communication plan?",
+    "answer": "Identify a safe meeting place and an out-of-town contact person.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q045",
+    "category": "general",
+    "question": "What is the difference between a watch and a warning?",
+    "answer": "Watch means conditions are favorable; Warning means it is occurring or imminent.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q046",
+    "category": "general",
+    "question": "How to purify water in an emergency?",
+    "answer": "Boil for 1 minute, use purification tablets, or 8 drops of unscented bleach per gallon.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q047",
+    "category": "general",
+    "question": "How to stay warm without power?",
+    "answer": "Wear layers, insulate windows, and gather in a single small room.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q048",
+    "category": "general",
+    "question": "What to do if stranded in a vehicle in winter?",
+    "answer": "Stay with the vehicle, run the engine 10 minutes per hour for heat, crack a window.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q049",
+    "category": "general",
+    "question": "How to use a hand-crank radio?",
+    "answer": "Turn the crank for 1-2 minutes to generate 15-30 minutes of radio power.",
+    "urgency": "medium"
+  },
+  {
+    "id": "edge_q050",
+    "category": "general",
+    "question": "How to deal with hazardous material spills?",
+    "answer": "Stay upwind, avoid contact, and call emergency services immediately.",
+    "urgency": "medium"
+  }
+]

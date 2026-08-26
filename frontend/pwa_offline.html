@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResQ-MAR Edge Client</title>
+    <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --text-color: #333;
+            --primary-color: #d32f2f; /* Emergency Red */
+            --online-color: #388e3c;
+            --offline-color: #d32f2f;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+        }
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: var(--online-color);
+            transition: background-color 0.3s;
+        }
+        .status-bar.offline {
+            background-color: var(--offline-color);
+        }
+        .offline-warning {
+            display: none;
+            color: var(--offline-color);
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+            min-height: 80px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #b71c1c;
+        }
+        .answer-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-left: 4px solid var(--primary-color);
+            background-color: #fafafa;
+            min-height: 100px;
+            white-space: pre-wrap;
+        }
+        
+        /* Inline Manifest */
+        /*
+        {
+          "name": "ResQ-MAR Edge",
+          "short_name": "ResQ",
+          "start_url": ".",
+          "display": "standalone",
+          "background_color": "#ffffff",
+          "theme_color": "#d32f2f"
+        }
+        */
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>ResQ-MAR Assistant</h1>
+    
+    <div id="statusIndicator" class="status-bar">
+        <span>Network Status:</span>
+        <span id="statusText">ONLINE</span>
+    </div>
+    
+    <div id="offlineWarning" class="offline-warning">
+        ⚠ Operating in offline mode. Answers may be limited to Edge SLM knowledge.
+    </div>
+    
+    <textarea id="questionInput" placeholder="Describe the emergency or ask a question (e.g., 'How to treat a burn?')"></textarea>
+    
+    <button onclick="askQuestion()">Ask Emergency Assistant</button>
+    
+    <div class="answer-box" id="answerDisplay">
+        Awaiting input...
+    </div>
+</div>
+
+<script>
+    const statusBar = document.getElementById('statusIndicator');
+    const statusText = document.getElementById('statusText');
+    const offlineWarning = document.getElementById('offlineWarning');
+    const answerDisplay = document.getElementById('answerDisplay');
+    const questionInput = document.getElementById('questionInput');
+
+    function updateOnlineStatus() {
+        if (navigator.onLine) {
+            statusBar.classList.remove('offline');
+            statusText.textContent = 'ONLINE';
+            offlineWarning.style.display = 'none';
+        } else {
+            statusBar.classList.add('offline');
+            statusText.textContent = 'OFFLINE';
+            offlineWarning.style.display = 'block';
+        }
+    }
+
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus(); // Initial check
+
+    // Mock functionality for the HTML PWA
+    function askQuestion() {
+        const question = questionInput.value.trim();
+        if (!question) return;
+        
+        answerDisplay.textContent = 'Processing request...';
+        
+        // In a real PWA, this would call the offline_client.py backend
+        // or a bundled WASM version of the SLM. Here we simulate the logic.
+        setTimeout(() => {
+            if (navigator.onLine) {
+                answerDisplay.innerHTML = `<strong>[CLOUD - llama3.1]</strong><br/><br/>Simulated Cloud Response to: "${question}". Full data available.`;
+            } else {
+                answerDisplay.innerHTML = `<strong>[EDGE - phi3:mini]</strong><br/><br/>Simulated Edge Response to: "${question}". Concise actionable guidance provided offline.`;
+            }
+        }, 800);
+    }
+
+    // Basic Service Worker Registration
+    if ('serviceWorker' in navigator) {
+        // Inline service worker registration placeholder
+        // navigator.serviceWorker.register('sw.js');
+        console.log('Service Worker supported and ready for offline caching.');
+    }
+</script>
+
+</body>
+</html>
