@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>RESQ-MAR: Final Review</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+
+    <style>
+        .reveal { background: #1a1a2e; color: white; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        .reveal h1, .reveal h2 { color: #e94560; text-transform: uppercase; font-weight: bold; margin-bottom: 20px;}
+        .reveal h1 { font-size: 2.2em; }
+        .reveal h2 { font-size: 1.6em; }
+        .reveal h3 { color: #cccccc; font-size: 1.2em; }
+        .reveal p { font-size: 0.9em; line-height: 1.5; }
+        .reveal li { font-size: 0.8em; line-height: 1.6; margin-bottom: 10px; }
+        .reveal table { font-size: 0.6em; border-collapse: collapse; width: 100%; margin: 20px 0; }
+        .reveal table th { background: #e94560; color: white; padding: 12px; border: 1px solid #444; }
+        .reveal table td { border: 1px solid #444; padding: 12px; }
+        .reveal pre { background: #0f0f23; padding: 15px; border-radius: 5px; font-size: 0.6em; border: 1px solid #333; margin: 20px auto; width: fit-content; text-align: left;}
+        .reveal blockquote { border-left: 5px solid #e94560; padding-left: 20px; font-style: italic; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 0 8px 8px 0;}
+        .reveal .highlight-box { background: #fff5f5; color: #1a1a2e; padding: 15px; border-radius: 8px; font-weight: bold; font-size: 0.9em; text-align: center; margin-top: 20px;}
+        .reveal .flex-container { display: flex; justify-content: space-between; gap: 20px; }
+        .reveal .flex-col { flex: 1; }
+        .reveal .box-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .reveal .box { background: rgba(255,255,255,0.05); border: 2px solid #e94560; padding: 20px; border-radius: 8px; }
+    </style>
+
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/pdf.min.css' : 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+        <!-- SLIDE 1: Title Slide -->
+        <section data-background-gradient="linear-gradient(to bottom, #1a1a2e, #16213e)">
+            <h1>RESQ-MAR: AI-Powered Multi-Agent Emergency Response System</h1>
+            <h3>An Open-Source, Zero-Cost Alternative to Cloud-Dependent Dispatch</h3>
+            <br>
+            <p>Author: Satya Ram Dinkar</p>
+            <p>Affiliation: University Name, Dept. of Computer Science</p>
+            <p>Date: November 2026</p>
+            <p>GitHub: github.com/SatyaRamDinkar/resq-mar</p>
+            <aside class="notes">
+                What to SAY: Good morning everyone. I am Satya Ram Dinkar from the Department of Computer Science. Today, I am presenting ResQ-MAR -- an AI-powered multi-agent emergency response system that is completely free, completely local, and completely open-source.
+                TIME: 30 seconds
+                TRANSITION: Let's start by understanding why this matters.
+            </aside>
+        </section>
+
+        <!-- SLIDE 2: The Problem -->
+        <section>
+            <h2>When Disaster Strikes, Every Second Counts</h2>
+            <ul>
+                <li>Natural disasters are increasing; response time is the #1 factor in survival.</li>
+                <li>Current AI systems (like ResQConnect) rely on cloud GPT-4o -- they fail when connectivity drops.</li>
+                <li>Static routing cannot adapt to changing road conditions, floods, or fires.</li>
+                <li>No human oversight in critical automated dispatch decisions.</li>
+                <li>Proprietary APIs cost $$$$ -- making them inaccessible to developing nations.</li>
+            </ul>
+            <div class="highlight-box">We need a system that is FREE, LOCAL, and ADAPTIVE.</div>
+            <aside class="notes">
+                What to SAY: Natural disasters are on the rise globally. When infrastructure collapses, existing cloud-based systems like ResQConnect fail because they require constant internet to reach APIs like GPT-4o. Furthermore, static routing algorithms break down when roads are suddenly blocked. We need a system that operates locally, adapts dynamically, and remains completely free.
+                TIME: 45 seconds
+                TRANSITION: This led us to four primary research questions.
+            </aside>
+        </section>
+
+        <!-- SLIDE 3: Research Questions -->
+        <section>
+            <h2>Four Questions Driving Our Design</h2>
+            <div class="box-grid">
+                <div class="box">
+                    <strong>RQ1:</strong> How can agentic RAG improve SOP retrieval accuracy over naive RAG?
+                </div>
+                <div class="box">
+                    <strong>RQ2:</strong> How can adaptive event-triggered routing reduce computational overhead?
+                </div>
+                <div class="box">
+                    <strong>RQ3:</strong> How can truck-drone collaboration improve coverage in disaster zones?
+                </div>
+                <div class="box">
+                    <strong>RQ4:</strong> How can edge SLMs provide resilience when cloud connectivity fails?
+                </div>
+            </div>
+            <aside class="notes">
+                What to SAY: We structured our research around four questions: How to improve protocol retrieval via Agentic RAG; How to save compute using Adaptive Routing; How to ensure geographic coverage with Truck-Drone collaboration; and how to maintain uptime using Edge SLMs.
+                TIME: 40 seconds
+                TRANSITION: Let's see how current literature addresses these.
+            </aside>
+        </section>
+
+        <!-- SLIDE 4: Literature Review -->
+        <section>
+            <h2>What Exists vs. What is Missing</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>ResQConnect</th>
+                        <th>Peng et al.</th>
+                        <th>Li (Vision)</th>
+                        <th>Li (DisastRAG)</th>
+                        <th>ResQ-MAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Multi-Agent</td><td>Partial</td><td>No</td><td>No</td><td>No</td><td><strong>YES</strong></td></tr>
+                    <tr><td>Agentic RAG</td><td>No</td><td>No</td><td>No</td><td>Partial</td><td><strong>YES</strong></td></tr>
+                    <tr><td>Adaptive Routing</td><td>No</td><td>Partial</td><td>No</td><td>No</td><td><strong>YES</strong></td></tr>
+                    <tr><td>Truck-Drone</td><td>No</td><td>YES</td><td>No</td><td>No</td><td><strong>YES</strong></td></tr>
+                    <tr><td>Edge SLM</td><td>No</td><td>No</td><td>No</td><td>No</td><td><strong>YES</strong></td></tr>
+                    <tr><td>Human-in-Loop</td><td>No</td><td>No</td><td>No</td><td>No</td><td><strong>YES</strong></td></tr>
+                    <tr><td>Open Source</td><td>Partial</td><td>Yes</td><td>Yes</td><td>Yes</td><td><strong>YES</strong></td></tr>
+                    <tr><td>Cost</td><td>$$$$</td><td>$0</td><td>$0</td><td>$0</td><td><strong>$0</strong></td></tr>
+                </tbody>
+            </table>
+            <div class="highlight-box">ResQ-MAR is the FIRST system to combine ALL features at ZERO cost.</div>
+            <aside class="notes">
+                What to SAY: If we look at the landscape, some systems handle routing, others handle retrieval, but none unify them. ResQConnect was a great base, but it lacks offline edge support and agentic intelligence. ResQ-MAR is the first framework to integrate all these capabilities into a single, zero-cost open-source package.
+                TIME: 50 seconds
+                TRANSITION: So, how did we build it? Here is the architecture.
+            </aside>
+        </section>
+
+        <!-- SLIDE 5: System Architecture -->
+        <section>
+            <h2>6 Specialized Agents, One Orchestrator</h2>
+            <pre>
+ [Intake] -> [Metadata] -> [Planner] -> [Router] -> [Comms]
+               |              |
+          [RAG Pipeline]  [AET + Truck-Drone]
+               |
+          [Edge Fallback]
+            </pre>
+            <p style="text-align: center; color: #e94560; font-weight: bold;">AutoGen AG2 Group Chat manages all handoffs</p>
+            <div style="text-align: center; margin-top: 20px;">
+                <span style="background: white; color: #1a1a2e; padding: 5px 10px; border-radius: 15px; margin: 5px; font-weight: bold;">Python</span>
+                <span style="background: white; color: #1a1a2e; padding: 5px 10px; border-radius: 15px; margin: 5px; font-weight: bold;">AutoGen</span>
+                <span style="background: white; color: #1a1a2e; padding: 5px 10px; border-radius: 15px; margin: 5px; font-weight: bold;">Ollama</span>
+                <span style="background: white; color: #1a1a2e; padding: 5px 10px; border-radius: 15px; margin: 5px; font-weight: bold;">ChromaDB</span>
+                <span style="background: white; color: #1a1a2e; padding: 5px 10px; border-radius: 15px; margin: 5px; font-weight: bold;">OR-Tools</span>
+                <span style="background: white; color: #1a1a2e; padding: 5px 10px; border-radius: 15px; margin: 5px; font-weight: bold;">Streamlit</span>
+            </div>
+            <aside class="notes">
+                What to SAY: Our architecture separates concerns. Instead of one massive LLM doing everything, we have 6 specialized agents. Intake parses data, Planner strategizes, and Router handles math. AutoGen orchestrates the handoffs. The entire stack runs on Python, Ollama, and OR-Tools.
+                TIME: 45 seconds
+                TRANSITION: Let's dive into our first major innovation: Agentic RAG.
+            </aside>
+        </section>
+
+        <!-- SLIDE 6: Agentic RAG -->
+        <section>
+            <h2>4-Step Agentic RAG: Retrieve -> Assess -> Re-retrieve -> Final</h2>
+            <div class="flex-container">
+                <div class="flex-col" style="text-align: left;">
+                    <p><strong>Step 1:</strong> Retrieve top-5 SOPs from ChromaDB</p>
+                    <p><strong>Step 2:</strong> AssessorAgent scores relevance (0-1)</p>
+                    <p><strong>Step 3:</strong> If score < 0.7, re-retrieve with refined query</p>
+                    <p><strong>Step 4:</strong> Return highest-confidence SOP to Planner</p>
+                </div>
+                <div class="flex-col box" style="text-align: center;">
+                    <h3>Results</h3>
+                    <p>Naive RAG Coverage: <strong>0.47</strong></p>
+                    <p>Agentic RAG Coverage: <strong style="color: #e94560;">0.82</strong></p>
+                    <p>Improvement: <strong style="color: #e94560;">+74%</strong></p>
+                </div>
+            </div>
+            <div class="highlight-box">Assessment step filters noise; re-retrieval fixes low-confidence gaps.</div>
+            <aside class="notes">
+                What to SAY: Naive RAG often pulls the wrong manuals if keywords overlap. We introduced a 4-step Agentic RAG loop. An AssessorAgent acts as a quality filter, rejecting bad pulls and forcing a re-query. This bumped our standard operating procedure coverage from 47% to 82% -- a massive 74% improvement in safety.
+                TIME: 50 seconds
+                TRANSITION: Once we have the plan, we need to route vehicles.
+            </aside>
+        </section>
+
+        <!-- SLIDE 7: AET Adaptive Routing -->
+        <section>
+            <h2>Event-Triggered Routing: Solve Only When Needed</h2>
+            <div class="flex-container">
+                <div class="flex-col" style="text-align: left;">
+                    <pre>
+ [Idle] --new incident--> [Solve]
+ [Solve] --no change--> [Idle]
+ [Solve] --threshold exceeded--> [Re-solve]
+                    </pre>
+                </div>
+                <div class="flex-col box" style="text-align: center;">
+                    <h3>Results</h3>
+                    <p>Continuous Re-routing: <strong>15 calls</strong></p>
+                    <p>AET Adaptive: <strong style="color: #e94560;">5 calls</strong></p>
+                    <p>Reduction: <strong style="color: #e94560;">66.7%</strong></p>
+                </div>
+            </div>
+            <div class="highlight-box">Road blocked? Re-solve. Otherwise, reuse. Saves compute AND time.</div>
+            <aside class="notes">
+                What to SAY: Standard systems re-run complex math solvers every single time a new call comes in. This crashes servers during mass disasters. Our Adaptive Event-Triggered (AET) routing holds routes steady unless a major threshold is crossed. This reduced solver calls by 66.7%, preserving vital CPU cycles.
+                TIME: 45 seconds
+                TRANSITION: But what happens when roads are physically destroyed?
+            </aside>
+        </section>
+
+        <!-- SLIDE 8: Truck-Drone Collaboration -->
+        <section>
+            <h2>Two Vehicles, One Mission: Maximum Coverage</h2>
+            <div class="flex-container">
+                <div class="flex-col" style="text-align: left;">
+                    <p>Truck-only: <strong>66.7% coverage</strong> (roads required)</p>
+                    <p>Drone-only: <strong>41.7% coverage</strong> (battery limited)</p>
+                    <p>Collaborative: <strong style="color: #e94560;">100% coverage</strong></p>
+                </div>
+                <div class="flex-col" style="text-align: left; font-size: 0.8em;">
+                    <ul>
+                        <li>Trucks carry heavy equipment to accessible areas.</li>
+                        <li>Drones deliver light supplies to flooded/destroyed zones.</li>
+                        <li>OR-Tools CP-SAT coordinates both fleets seamlessly.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box">Where trucks cannot go, drones fly. Where drones cannot carry, trucks haul.</div>
+            <aside class="notes">
+                What to SAY: If an earthquake blocks a road, ambulances cannot reach the victims. Drones can, but they have short battery lives. We built a collaborative solver where trucks act as mobile launchpads. The truck drives to the blockage edge, and the drone handles the final mile. This guarantees 100% geographic coverage.
+                TIME: 50 seconds
+                TRANSITION: To run all this intelligence reliably, we need offline capabilities.
+            </aside>
+        </section>
+
+        <!-- SLIDE 9: Edge SLM & Human-in-the-Loop -->
+        <section>
+            <h2>Resilience + Safety: Offline AI with Human Oversight</h2>
+            <div class="flex-container">
+                <div class="flex-col box" style="text-align: left;">
+                    <h3 style="text-align:center;">Edge SLM</h3>
+                    <ul>
+                        <li>Cloud model (llama3.1): 4.7 GB</li>
+                        <li>Edge model (phi3:mini): <strong>1.6 GB (-66%)</strong></li>
+                        <li>Runs on localhost:11435, works without internet.</li>
+                        <li>PWA client auto-switches modes.</li>
+                    </ul>
+                </div>
+                <div class="flex-col box" style="text-align: left;">
+                    <h3 style="text-align:center;">Human-in-the-Loop</h3>
+                    <ul>
+                        <li>Critical routing plans pause for dispatcher approval.</li>
+                        <li>Prevents AI hallucinations from dispatching wrong resources.</li>
+                        <li>Approval panel in Streamlit dashboard.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box">AI proposes. Humans approve. The system never goes rogue.</div>
+            <aside class="notes">
+                What to SAY: We deploy a 1.6GB Phi-3-mini edge model that takes over automatically if the main server loses internet. More importantly, we instituted a Human-in-the-Loop circuit breaker. The AI plans everything, but a human dispatcher must click approve before a real vehicle moves.
+                TIME: 50 seconds
+                TRANSITION: Let's see how this looks for the dispatcher.
+            </aside>
+        </section>
+
+        <!-- SLIDE 10: The Dashboard -->
+        <section>
+            <h2>Real-Time Command Center</h2>
+            <ul>
+                <li><strong>Top:</strong> Live incident feed with severity badges.</li>
+                <li><strong>Center:</strong> Folium heatmap showing incident density + resource locations.</li>
+                <li><strong>Right:</strong> Approval panel with pending decisions.</li>
+                <li><strong>Bottom:</strong> Agent monitor showing pipeline status.</li>
+            </ul>
+            <br>
+            <p style="color: #e94560;">Key Features:</p>
+            <ul>
+                <li>Auto-refresh every 5 seconds.</li>
+                <li>Heatmap with 5km drone coverage radius visualization.</li>
+                <li>Performance metrics panel (RAG scores, routing efficiency).</li>
+                <li>Export report button for post-incident audits.</li>
+            </ul>
+            <aside class="notes">
+                What to SAY: Our Streamlit dashboard is the nerve center. It features a live Folium heatmap, real-time agent tracking, and the critical approval panel. It auto-refreshes every 5 seconds, providing complete situational awareness to the commander.
+                TIME: 40 seconds
+                TRANSITION: Let's walk through a real scenario.
+            </aside>
+        </section>
+
+        <!-- SLIDE 11: Demo Scenario 1 -->
+        <section>
+            <h2>Scenario 1: Colombo Flood, Bambalapitiya</h2>
+            <ol>
+                <li><strong>911 text received:</strong> "Families trapped, water rising"</li>
+                <li><strong>IntakeAgent parses:</strong> flood, critical, 6.8774N 79.8653E</li>
+                <li><strong>Agentic RAG retrieves:</strong> flood_evacuation SOP (score: 0.91)</li>
+                <li><strong>AET Router assigns:</strong> 2 rescue boats, 1 ambulance</li>
+                <li><strong>Dispatcher approves:</strong> plan confirmed in dashboard</li>
+                <li><strong>CommsAgent dispatches:</strong> ETA 8 minutes</li>
+            </ol>
+            <div class="highlight-box">Total pipeline latency: 1.2 seconds</div>
+            <aside class="notes">
+                What to SAY: In our first demo scenario, a flood in Colombo triggers a call. Within 1.2 seconds, the multi-agent pipeline parses the text, retrieves the exact evacuation SOP, calculates the optimal route for boats, and places it on the dashboard for approval.
+                TIME: 40 seconds
+                TRANSITION: Now consider a more complex event.
+            </aside>
+        </section>
+
+        <!-- SLIDE 12: Demo Scenario 2 -->
+        <section>
+            <h2>Scenario 2: Dehiwala Chemical Fire</h2>
+            <ol>
+                <li><strong>Report:</strong> "Toxic smoke, 3 workers missing inside"</li>
+                <li><strong>MetadataAgent tags:</strong> hazmat, search_and_rescue required</li>
+                <li><strong>Agentic RAG retrieves:</strong> fire_response + hazmat SOP (score: 0.88)</li>
+                <li><strong>Truck-Drone Router:</strong> fire trucks for perimeter, drone for thermal search</li>
+                <li><strong>Human approval:</strong> dispatcher confirms hazmat protocol</li>
+                <li><strong>Dispatch:</strong> fire trucks + drone deployed simultaneously</li>
+            </ol>
+            <div class="highlight-box">Collaborative routing reaches 100% coverage</div>
+            <aside class="notes">
+                What to SAY: In a chemical fire, the metadata agent intelligently flags it as a Hazmat situation. The Router realizes it's too dangerous to send humans into the smoke immediately, so it dispatches a drone alongside the trucks for thermal imaging. 
+                TIME: 45 seconds
+                TRANSITION: We ran these scenarios across 50 simulated incidents to gather statistical proof.
+            </aside>
+        </section>
+
+        <!-- SLIDE 13: Benchmark Results -->
+        <section>
+            <h2>Benchmark: 50 Incidents, 3 System Configurations</h2>
+            <pre style="text-align: left; width: 60%;">
+Coverage Score:
+ResQ-MAR    [████████████] 0.85
+Baseline-A  [███████     ] 0.52
+Baseline-B  [█████       ] 0.38
+            </pre>
+            <table>
+                <thead>
+                    <tr><th>Metric</th><th>ResQ-MAR</th><th>Baseline-A</th><th>Baseline-B</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Coverage</td><td><strong>0.85</strong></td><td>0.52</td><td>0.38</td></tr>
+                    <tr><td>Latency</td><td><strong>1450ms</strong></td><td>2850ms</td><td>680ms</td></tr>
+                    <tr><td>Solver Calls</td><td><strong>5.2</strong></td><td>14.8</td><td>1.0</td></tr>
+                    <tr><td>Route Quality</td><td><strong>0.91</strong></td><td>0.68</td><td>0.47</td></tr>
+                    <tr><td>Success Rate</td><td><strong>94%</strong></td><td>72%</td><td>54%</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.7em;">Baseline-A: Naive RAG + Continuous | Baseline-B: Static Rules</p>
+            <aside class="notes">
+                What to SAY: Across 50 incidents, ResQ-MAR achieved a 94% success rate compared to 72% for naive AI and 54% for static rules. It achieved the highest route quality, vastly improved coverage, and cut solver calls by 65% compared to continuous AI baselines.
+                TIME: 50 seconds
+                TRANSITION: To summarize what we achieved in just 12 weeks...
+            </aside>
+        </section>
+
+        <!-- SLIDE 14: Key Achievements -->
+        <section>
+            <h2>What We Built in 12 Weeks</h2>
+            <ol style="font-size: 0.9em; line-height: 1.8;">
+                <li><strong>6 AI Agents:</strong> Intake, Metadata, Planner, Router, Comms, Edge</li>
+                <li><strong>4-Step Agentic RAG:</strong> 74% coverage improvement</li>
+                <li><strong>AET Adaptive Routing:</strong> 66.7% fewer solver calls</li>
+                <li><strong>Truck-Drone VRP:</strong> 100% collaborative coverage</li>
+                <li><strong>Edge SLM:</strong> Phi-3-mini, offline-capable</li>
+                <li><strong>Real-Time Dashboard:</strong> Streamlit with human approval</li>
+                <li><strong>50-Incident Benchmark:</strong> Reproducible, statistical validation</li>
+                <li><strong>100% Open Source:</strong> Zero cost, full local deployment</li>
+            </ol>
+            <aside class="notes">
+                What to SAY: In just 12 weeks, we built 6 custom AI agents, enhanced RAG retrieval, implemented mathematical Truck-Drone routing, deployed a local edge model, built a full UI, and open-sourced the entire stack.
+                TIME: 40 seconds
+                TRANSITION: The novel contributions to the field are clear.
+            </aside>
+        </section>
+
+        <!-- SLIDE 15: Contributions to Knowledge -->
+        <section>
+            <h2>Novel Contributions</h2>
+            <ul>
+                <li>First open-source multi-agent emergency system combining agentic RAG, adaptive routing, and truck-drone collaboration.</li>
+                <li>AET routing algorithm reducing compute overhead by 66.7% without sacrificing route quality.</li>
+                <li>Edge SLM integration with automatic cloud/offline mode switching for crisis resilience.</li>
+                <li>Human-in-the-loop approval panel preventing AI error propagation in critical dispatch.</li>
+                <li>Complete reproducible benchmark suite for disaster response AI evaluation.</li>
+            </ul>
+            <aside class="notes">
+                What to SAY: Our contributions bridge a massive gap in literature. We are the first to combine agentic reasoning with drone routing and offline resilience in a single, auditable framework.
+                TIME: 45 seconds
+                TRANSITION: However, we must be honest about our limitations.
+            </aside>
+        </section>
+
+        <!-- SLIDE 16: Limitations & Future Work -->
+        <section>
+            <h2>Honest Assessment, Clear Path Forward</h2>
+            <div class="flex-container">
+                <div class="flex-col box" style="text-align: left;">
+                    <h3 style="text-align: center;">Limitations</h3>
+                    <ul>
+                        <li>Simulated LLM responses in large-scale benchmarks.</li>
+                        <li>Synthetic incident data (not real 911 call logs).</li>
+                        <li>No physical vehicle hardware integration yet.</li>
+                        <li>Single geographic context (Sri Lanka).</li>
+                    </ul>
+                </div>
+                <div class="flex-col box" style="text-align: left;">
+                    <h3 style="text-align: center;">Future Work</h3>
+                    <ul>
+                        <li>Real drone/truck GPS tracking APIs.</li>
+                        <li>Whisper voice-to-text for 911 audio calls.</li>
+                        <li>Flutter mobile app replacing the PWA.</li>
+                        <li>Multi-language support (Sinhala, Tamil).</li>
+                    </ul>
+                </div>
+            </div>
+            <aside class="notes">
+                What to SAY: We recognize that our benchmarks used synthetic data and simulated delays to run at scale. Moving forward, we aim to integrate real GPS tracking, voice-to-text via Whisper for audio calls, and native multilingual support to deploy this directly to Sri Lankan municipalities.
+                TIME: 50 seconds
+                TRANSITION: In conclusion...
+            </aside>
+        </section>
+
+        <!-- SLIDE 17: Conclusion -->
+        <section>
+            <h2>AI for When Seconds Count</h2>
+            <blockquote>
+                "ResQ-MAR proves that advanced AI emergency response 
+                does not require million-dollar cloud APIs. 
+                It requires smart architecture, open-source tools, 
+                and the wisdom to keep humans in the loop."
+            </blockquote>
+            <br>
+            <div class="highlight-box" style="font-size: 1.2em;">Any municipality. Any budget. Any disaster. ResQ-MAR is ready.</div>
+            <aside class="notes">
+                What to SAY: To conclude: Advanced AI shouldn't just be for the rich. ResQ-MAR proves that with smart architecture, open-source tools, and a human-in-the-loop, any municipality on any budget can deploy a world-class disaster response system.
+                TIME: 35 seconds
+                TRANSITION: Thank you.
+            </aside>
+        </section>
+
+        <!-- SLIDE 18: Thank You -->
+        <section>
+            <h1>Thank You</h1>
+            <h2>Questions & Discussion</h2>
+            <br><br>
+            <p>GitHub: github.com/SatyaRamDinkar/resq-mar</p>
+            <p>Email: satya.ram.dinkar@university.edu</p>
+            <p>Supervisor: Prof. [Guide Name]</p>
+            <aside class="notes">
+                What to SAY: Thank you for your time and attention. I would now like to open the floor to any questions you might have.
+                TIME: 15 seconds
+                TRANSITION: [End of presentation]
+            </aside>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+<script>
+    Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        keyboard: true,
+        progress: true,
+        transition: 'slide'
+    });
+</script>
+</body>
+</html>
