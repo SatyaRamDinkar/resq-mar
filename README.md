@@ -114,10 +114,27 @@ python hello_world_agent.py
 streamlit run frontend/streamlit_app.py
 ```
 
-## Phase 2 MVP Status
+## What's Already Built
 - **Completed Components**: IntakeAgent, MetadataAgent, PlannerAgent, RouterAgent, CommsAgent, Orchestrator, RAG Pipeline, VRP Solver, Streamlit Dashboard
 - **Review 2 Ready**: Yes
+- **Phase 3 Step 1**: 4-step Agentic RAG (RetrievalAgent + AssessorAgent) — ✅ COMPLETE
+- **Benchmark**: Coverage scores 0.60-0.90 vs Naive RAG
 - **Run Final Demo**: `python src/agents/demo_orchestrator.py`
 - **Run Integration Tests**: `pytest tests/test_integration.py -v`
 - **Launch Dashboard**: `streamlit run frontend/streamlit_app.py`
 
+
+
+### Phase 3: RAG Pipeline Comparison
+
+| Feature | Base Paper (ResQConnect) | Our Project | Notes |
+|---------|-------------------------|-------------|-------|
+| Vector DB | ChromaDB | ChromaDB | Same as base paper |
+| Embedding Model | Not specified | all-MiniLM-L6-v2 | Open-source, 22MB |
+| Metadata Filtering | ✅ Yes | ✅ Yes (by hazard_type) | Automatic extraction |
+| Assessor Node | ✅ Yes | ✅ Yes | src/agents/assessor_agent.py |
+| Reformulator Node | ✅ Yes | ✅ Yes | Re-retrieval via retrieval_agent.py |
+| Web Search Fallback | ✅ Yes (Tavily API) | 🟡 Omitted by design | Zero-cost constraint: no paid APIs |
+| LLM for Agents | GPT-4o (cloud, $$$) | Llama 3.1 (local, $0) | Runs on localhost:11434 |
+
+NOTE: The Assessor Node and Reformulator Node were implemented as part of Phase 3 Step 1 (Agentic RAG). The Web Search Fallback was intentionally omitted to maintain the 100% zero-cost constraint — Tavily API requires paid credits and would violate our open-source, local-only design philosophy.
