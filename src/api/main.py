@@ -10,6 +10,7 @@ from typing import List, Optional
 from datetime import datetime
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import ValidationError
 
 from src.api.models import (
@@ -17,14 +18,36 @@ from src.api.models import (
     ApprovalRequest, ApprovalResponse, DashboardStatus, AgentLogEntry, HealthCheck
 )
 
+# Import the OSRM and Edge routers if they exist
+try:
+    from src.api.routes_osrm import router as osrm_router
+    has_osrm_router = True
+except ImportError:
+    has_osrm_router = False
+
+try:
+    from src.api.edge_routes import router as edge_router
+    has_edge_router = True
+except ImportError:
+    has_edge_router = False
+
 app = FastAPI(
     title="ResQ-MAR API",
     description="AI-Powered Multi-Agent Emergency Response System",
     version="1.0.0"
 )
 
-from src.api.routes_osrm import router as osrm_router
-app.include_router(osrm_router)
+if has_osrm_router:
+    app.include_router(osrm_router)
+
+if has_edge_router:
+    app.include_router(edge_router)
+
+# Mount static files
+if os.path.exists("frontend"):
+    app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+if os.path.exists("data"):
+    app.mount("/data", StaticFiles(directory="data"), name="data")
 
 # CORS Configuration
 app.add_middleware(

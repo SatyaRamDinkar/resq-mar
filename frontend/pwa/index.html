@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResQ-MAR Emergency Assistant</title>
+  <link rel="manifest" href="/frontend/pwa/manifest.json">
+  <link rel="stylesheet" href="/frontend/pwa/styles.css">
+  <meta name="theme-color" content="#1a1a2e">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ResQ-MAR Emergency Assistant</h1>
+      <div class="subtitle">Offline-Capable AI Guidance</div>
+      <div id="connection-badge" class="badge">Checking...</div>
+      <div class="subtitle" style="margin-top: 8px;" id="last-sync-time">Last sync: Never</div>
+      <div id="install-container" style="display: none; margin-top: 10px;">
+        <button id="install-btn" class="secondary-btn">Install App</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="quick-ask">
+        <h2>Quick Ask</h2>
+        <input type="text" id="question-input" placeholder="Describe your emergency situation..." aria-label="Emergency description">
+        <button id="ask-btn">ASK EMERGENCY ASSISTANT</button>
+        <div id="loading-spinner" class="spinner">Processing...</div>
+        
+        <div id="answer-area">
+          <div id="answer-text"></div>
+          <div id="answer-source" style="margin-top: 10px; font-size: 12px; color: #aaa;"></div>
+        </div>
+      </section>
+
+      <section class="section" id="categories">
+        <h2>Browse by Category</h2>
+        <div class="category-grid">
+          <button class="secondary-btn" onclick="showCategory('flood')">Flood</button>
+          <button class="secondary-btn" onclick="showCategory('fire')">Fire</button>
+          <button class="secondary-btn" onclick="showCategory('earthquake')">Earthquake</button>
+          <button class="secondary-btn" onclick="showCategory('medical')">Medical</button>
+          <button class="secondary-btn" onclick="showCategory('general')">General</button>
+        </div>
+        <div id="browse-results"></div>
+      </section>
+
+      <section class="section" id="emergency-numbers">
+        <h2>Emergency Numbers (Sri Lanka)</h2>
+        <a href="tel:119" class="emergency-number">
+          <span>Police</span>
+          <span>119</span>
+        </a>
+        <a href="tel:1990" class="emergency-number">
+          <span>Ambulance</span>
+          <span>1990</span>
+        </a>
+        <a href="tel:110" class="emergency-number">
+          <span>Fire</span>
+          <span>110</span>
+        </a>
+        <a href="tel:117" class="emergency-number">
+          <span>Disaster Mgmt</span>
+          <span>117</span>
+        </a>
+      </section>
+
+      <section class="section" id="offline-status">
+        <h2>System Status</h2>
+        <div id="dataset-status">Dataset cached: 0 questions</div>
+        <div id="edge-model-status">Edge model: Disconnected</div>
+        <button id="sync-btn" class="secondary-btn" style="margin-top: 16px;">Sync Now</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>Version: ResQ-MAR PWA v1.0</p>
+      <p><a href="https://github.com/SatyaRamDinkar/resq-mar" target="_blank" rel="noopener">github.com/SatyaRamDinkar/resq-mar</a></p>
+      <p style="margin-top: 16px; font-weight: bold; color: var(--error-color);">This app provides general guidance only. In life-threatening emergencies, call 119 immediately.</p>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="/frontend/pwa/app.js"></script>
+</body>
+</html>
