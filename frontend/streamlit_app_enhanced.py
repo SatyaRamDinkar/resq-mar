@@ -64,6 +64,33 @@ if page == 'Live Command Center':
             agent.log_agent_activity('IntakeAgent', 'completed', 'Simulated incident')
             st.success('[OK] Simulated incident processed.')
             
+    st.markdown("---")
+    st.subheader("Emergency Voice Intake (Whisper AI)")
+    from frontend.components.voice_input import render_voice_uploader, render_microphone_input, render_transcription_result
+    
+    vc1, vc2 = st.columns(2)
+    with vc1:
+        audio_file_path = render_voice_uploader()
+    with vc2:
+        mic_audio_path = render_microphone_input()
+        
+    active_audio_path = audio_file_path or mic_audio_path
+    
+    if active_audio_path:
+        # Initialize VoiceIntake globally if not present
+        if 'voice_intake' not in st.session_state:
+            with st.spinner("Loading Whisper AI model (Base)... This may take a minute on first run."):
+                from src.agents.voice_intake import VoiceIntake
+                st.session_state.voice_intake = VoiceIntake(model_size="base")
+        
+        v_intake = st.session_state.voice_intake
+        if hasattr(v_intake, 'model') and v_intake.model:
+            with st.spinner("Transcribing audio..."):
+                result = v_intake.process_voice_emergency(active_audio_path)
+            render_transcription_result(result)
+        else:
+            st.error("Whisper model is not available. Please ensure `openai-whisper` and `ffmpeg` are installed.")
+            
 elif page == 'Incident Heatmap':
     st.title('Incident Heatmap')
     incidents = get_mock_incidents()
