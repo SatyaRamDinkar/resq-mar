@@ -127,14 +127,14 @@ streamlit run frontend/streamlit_app.py
 
 ### Phase 3: RAG Pipeline Comparison
 
-| Feature | Base Paper (ResQConnect) | Our Project | Notes |
-|---------|-------------------------|-------------|-------|
+| Feature | Base Paper (ResQConnect) | Our Project (ResQ-MAR) | Notes |
+|---------|--------------------------|--------------------------|-------|
 | Vector DB | ChromaDB | ChromaDB | Same as base paper |
 | Embedding Model | Not specified | all-MiniLM-L6-v2 | Open-source, 22MB |
 | Metadata Filtering | ✅ Yes | ✅ Yes (by hazard_type) | Automatic extraction |
 | Assessor Node | ✅ Yes | ✅ Yes | src/agents/assessor_agent.py |
 | Reformulator Node | ✅ Yes | ✅ Yes | Re-retrieval via retrieval_agent.py |
-| Web Search Fallback | ✅ Yes (Tavily API) | 🟡 Omitted by design | Zero-cost constraint: no paid APIs |
+| Web Search Fallback | ✅ Yes (Tavily API) | ✅ Yes (DuckDuckGo + Gemini/Ollama) | 100% Free architecture |
 | LLM for Agents | GPT-4o (cloud, $$$) | Llama 3.1 (local, $0) | Runs on localhost:11434 |
 
-NOTE: The Assessor Node and Reformulator Node were implemented as part of Phase 3 Step 1 (Agentic RAG). The Web Search Fallback was intentionally omitted to maintain the 100% zero-cost constraint — Tavily API requires paid credits and would violate our open-source, local-only design philosophy.
+> NOTE: The Base Paper used the paid Tavily API and paid GPT-4o for its fallback web search. To maintain our strict 100% zero-cost constraint, ResQ-MAR implements a highly resilient, completely free fallback using the `duckduckgo-search` library combined with a dual-summarizer approach (Gemini API with fallback to local Ollama Llama 3.1).

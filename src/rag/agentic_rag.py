@@ -83,6 +83,23 @@ class AgenticRAGPipeline:
             # Re-assess
             assessment = self.assessor_agent.assess_context(metadata, retrieved_sops)
             print(f"[RAG Orchestrator] Re-assessment complete. Coverage: {assessment.get('coverage_score')}")
+            
+            # --- WEB SEARCH FALLBACK ---
+            if assessment.get("recommendation", "proceed") in ["retrieve_more", "manual_review"]:
+                print("[RAG Orchestrator] Context still insufficient. Triggering live Web Search Fallback...")
+                from src.rag.web_search import web_search_fallback
+                query = f"Emergency response protocol {metadata.get('hazard_type', 'disaster')} {normalized_text}"
+                web_summary = web_search_fallback(query)
+                if not web_summary.startswith("Web search failed") and not web_summary.startswith("No web results"):
+                    retrieved_sops.append({
+                        "id": "web_search_fallback",
+                        "hazard_type": metadata.get("hazard_type", "unknown"),
+                        "text": f"LIVE WEB SEARCH CONTEXT:\n{web_summary}",
+                        "metadata": {"source": "DuckDuckGo + AI Summary"}
+                    })
+                    # Re-assess one final time with web context
+                    assessment = self.assessor_agent.assess_context(metadata, retrieved_sops)
+                    print(f"[RAG Orchestrator] Final web-assisted assessment complete. Coverage: {assessment.get('coverage_score')}")
 
         # Filter SOPs to only those approved by the Assessor
         approved_ids = assessment.get("approved_sop_ids", [])
