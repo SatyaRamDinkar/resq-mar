@@ -243,9 +243,9 @@ with st.sidebar:
 
     col_lat, col_lon = st.columns(2)
     with col_lat:
-        inc_lat = st.number_input("Latitude", value=12.9720, format="%.4f")
+        inc_lat = st.number_input("Latitude", value=17.6868, format="%.4f")
     with col_lon:
-        inc_lon = st.number_input("Longitude", value=77.5950, format="%.4f")
+        inc_lon = st.number_input("Longitude", value=83.2185, format="%.4f")
 
     ollama_online = check_ollama_status()
 

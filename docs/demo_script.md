@@ -9,7 +9,7 @@ Project logo, title card: "ResQ-MAR: Multi-Agent Emergency Response", name of pr
 
 ## 2. Scenario 1 Walkthrough: Flood Response (90 sec)
 **On Screen:**
-Terminal running `python scripts/run_full_demo.py`. The "SCENARIO 1: MUMBAI FLOOD RESPONSE" banner appears. Steps 1-7 unfold slowly.
+Terminal running `python scripts/run_full_demo.py`. The "SCENARIO 1: VISAKHAPATNAM CYCLONE RESPONSE" banner appears. Steps 1-7 unfold slowly.
 
 **Narrator:**
 "Let's look at a critical flood in Visakhapatnam. Our Intake Agent parses the raw 911 description, instantly extracting the severity and location. 
