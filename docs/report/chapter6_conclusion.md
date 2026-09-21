@@ -20,7 +20,7 @@ Future iterations of ResQ-MAR should focus on bridging the gap between simulatio
 - **Hardware Integration**: Connecting the routing outputs directly to physical drone telemetry systems and vehicle GPS trackers.
 - **Voice Interface**: Integrating models like OpenAI Whisper to allow dispatchers to interact with the system via radio voice channels.
 - **Mobile Edge Application**: Replacing the browser-based PWA with a native Flutter application deployed directly to first responders' devices.
-- **Multilingual Support**: Fine-tuning the LLMs to natively process 911 calls in regional languages such as Sinhala and Tamil, enhancing applicability in Sri Lanka.
+- **Multilingual Support**: Fine-tuning the LLMs to natively process 911 calls in regional languages such as Hindi and Marathi, enhancing applicability in India.
 - **Live Traffic API Integration**: Replacing point-to-point math with live OpenStreetMap or Google Maps routing data.
 
 ## 6.5 Final Remarks

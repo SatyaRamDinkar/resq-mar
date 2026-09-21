@@ -97,7 +97,7 @@ This is the word-for-word narration script for the final capstone review.
 
 **SLIDE 11: Demo Scenario 1**
 - **TIME:** 40 seconds
-- **SCRIPT:** "In our first demo scenario, a flood in Colombo triggers a call. Within 1.2 seconds, the multi-agent pipeline parses the text, retrieves the exact evacuation SOP, calculates the optimal route for boats, and places it on the dashboard for approval."
+- **SCRIPT:** "In our first demo scenario, a flood in Visakhapatnam triggers a call. Within 1.2 seconds, the multi-agent pipeline parses the text, retrieves the exact evacuation SOP, calculates the optimal route for boats, and places it on the dashboard for approval."
 - **KEY POINTS:**
   - Flood scenario
   - Lightning-fast retrieval
@@ -142,7 +142,7 @@ This is the word-for-word narration script for the final capstone review.
 
 **SLIDE 16: Limitations & Future Work**
 - **TIME:** 50 seconds
-- **SCRIPT:** "We recognize that our benchmarks used synthetic data and simulated delays to run at scale. Moving forward, we aim to integrate real GPS tracking, voice-to-text via Whisper for audio calls, and native multilingual support to deploy this directly to Sri Lankan municipalities."
+- **SCRIPT:** "We recognize that our benchmarks used synthetic data and simulated delays to run at scale. Moving forward, we aim to integrate real GPS tracking, voice-to-text via Whisper for audio calls, and native multilingual support to deploy this directly to Indian municipalities."
 - **KEY POINTS:**
   - Synthetic data limitation
   - GPS integration future

@@ -1,10 +1,10 @@
-# Phase 4 Step 1: Benchmark Methodology
+﻿# Phase 4 Step 1: Benchmark Methodology
 
 ## 1. Benchmark Objectives
 The objective of this full benchmark suite is to empirically validate the advantages of the ResQ-MAR multi-agent emergency response system compared to traditional baselines. We measure system capability across five distinct disaster scenarios to prove that Agentic Retrieval-Augmented Generation (RAG), Adaptive Event-Triggered (AET) routing, and Collaborative Truck-Drone dispatch provide statistically significant improvements in emergency response metrics.
 
 ## 2. Dataset Description
-To ensure ecological validity, the benchmark utilizes a dataset of 50 simulated incidents modeled after real 911 dispatch calls in the Colombo, Sri Lanka region (Lat: 6.85 to 6.95, Lon: 79.80 to 79.90). 
+To ensure ecological validity, the benchmark utilizes a dataset of 50 simulated incidents modeled after real 911 dispatch calls in the Visakhapatnam, India region (Lat: 17.5 to 17.9, Lon: 83.0 to 83.5). 
 - **Flood Incidents**: 15 (requiring boats and high-clearance vehicles)
 - **Fire Incidents**: 12 (requiring multi-station fire truck deployment)
 - **Earthquake Incidents**: 10 (requiring structural collapse units)

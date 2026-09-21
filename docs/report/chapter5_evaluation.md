@@ -9,7 +9,7 @@ To validate the efficacy of ResQ-MAR against existing paradigms, a comprehensive
 Due to local compute constraints, LLM reasoning times and solver outputs were deterministically simulated based on bounded empirical averages extracted during Phase 3 component testing. The random seeds utilized incident IDs to ensure absolute reproducibility.
 
 ## 5.2 Dataset Description
-The benchmark dataset (`benchmark_incidents.json`) comprises 50 high-fidelity incidents modeled within the Colombo, Sri Lanka region (Lat: 6.85-6.95, Lon: 79.80-79.90). The distribution includes 15 flood, 12 fire, 10 earthquake, 8 medical, and 5 multi-hazard complex incidents. A separate resource dataset maps 15 emergency vehicles (ambulances, fire trucks, boats, and drones) across strategic base locations.
+The benchmark dataset (`benchmark_incidents.json`) comprises 50 high-fidelity incidents modeled within the Visakhapatnam, India region (Lat: 17.5-17.9, Lon: 83.0-83.5). The distribution includes 15 flood, 12 fire, 10 earthquake, 8 medical, and 5 multi-hazard complex incidents. A separate resource dataset maps 15 emergency vehicles (ambulances, fire trucks, boats, and drones) across strategic base locations.
 
 ## 5.3 Results: Agentic RAG
 The implementation of the 4-step Agentic RAG demonstrated substantial improvements in standard operating procedure adherence compared to single-pass Naive RAG.

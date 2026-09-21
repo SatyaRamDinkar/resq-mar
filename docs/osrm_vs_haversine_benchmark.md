@@ -1,7 +1,7 @@
-# OSRM vs Haversine Benchmark
+﻿# OSRM vs Haversine Benchmark
 
 ## 1. Methodology
-To validate the necessity of Open Source Routing Machine (OSRM) integration for ResQ-MAR, we conducted a benchmark across 20 random origin-destination pairs within the Colombo District, Sri Lanka (approx. 6.9N, 79.8E).
+To validate the necessity of Open Source Routing Machine (OSRM) integration for ResQ-MAR, we conducted a benchmark across 20 random origin-destination pairs within the Visakhapatnam District, India (approx. 17.7N, 83.2E).
 
 For each pair, we queried:
 1. **Haversine Distance**: Straight-line distance.
@@ -18,7 +18,7 @@ For each pair, we queried:
 | P5: Mattakkuliya -> Fort | 4.10 | 5.30 | 1.20 | 23% | Port access and river boundaries. |
 
 ## 3. Analysis
-- **Average Error**: Haversine distance underestimates real driving distance by approximately **15-25%** in the Colombo urban area.
+- **Average Error**: Haversine distance underestimates real driving distance by approximately **15-25%** in the Visakhapatnam urban area.
 - **Worst Case**: The error spikes above 40% when crossing the Kelani River or railways, where vehicles must detour significantly to find bridges or crossings.
 - **Impact on VRP**: If the Vehicle Routing Problem (VRP) solver relies on Haversine, it may assign an ambulance that is physically 10 minutes away just because it looks closer "as the crow flies" than another unit 6 minutes away via an expressway.
 

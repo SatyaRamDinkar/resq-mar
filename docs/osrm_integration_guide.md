@@ -1,4 +1,4 @@
-# OSRM Integration Guide
+﻿# OSRM Integration Guide
 
 ## 1. What is OSRM?
 **Open Source Routing Machine (OSRM)** is a C++ routing engine designed for use with OpenStreetMap data. It provides highly efficient routing queries including shortest paths, distance matrices, and turn-by-turn navigation data.
@@ -13,9 +13,9 @@ Prior to Phase 4 Step 6, ResQ-MAR relied on the Haversine formula (straight-line
 2. Run the automated setup script:
    - Windows: `scripts\setup_osrm.bat`
    - Linux/Mac: `scripts/setup_osrm.sh`
-3. Wait approximately 5-10 minutes for the Sri Lanka extract to download and compile.
+3. Wait approximately 5-10 minutes for the India (Western Zone) extract to download and compile.
 4. Verify the server is running by hitting:
-   `curl http://localhost:5000/route/v1/driving/79.8612,6.9271;79.8650,6.9300?overview=false`
+   `curl http://localhost:5000/route/v1/driving/83.2185,17.6868;83.2200,17.6900?overview=false`
 
 ## 4. Architecture Update
 - **Before:** `vrp_solver.py` -> `calculate_haversine()`
@@ -42,4 +42,4 @@ If OSRM is taken down, ResQ-MAR automatically reverts to Haversine mode.
 ## 8. Troubleshooting
 - **Docker not running:** Start Docker Desktop.
 - **Port 5000 in use:** Edit the setup scripts and `OSRMClient` init to use a different port (e.g., 5001).
-- **Out of memory:** OSRM MLD algorithm requires roughly 2GB of RAM for the Sri Lanka extract.
+- **Out of memory:** OSRM MLD algorithm requires roughly 2GB of RAM for the India (Western Zone) extract.

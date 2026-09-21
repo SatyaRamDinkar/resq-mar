@@ -1,4 +1,4 @@
-# ResQ-MAR 5-Minute Demo Video Script
+﻿# ResQ-MAR 5-Minute Demo Video Script
 
 ## 1. Video Opening (15 sec)
 **On Screen:**
@@ -9,10 +9,10 @@ Project logo, title card: "ResQ-MAR: Multi-Agent Emergency Response", name of pr
 
 ## 2. Scenario 1 Walkthrough: Flood Response (90 sec)
 **On Screen:**
-Terminal running `python scripts/run_full_demo.py`. The "SCENARIO 1: COLOMBO FLOOD RESPONSE" banner appears. Steps 1-7 unfold slowly.
+Terminal running `python scripts/run_full_demo.py`. The "SCENARIO 1: MUMBAI FLOOD RESPONSE" banner appears. Steps 1-7 unfold slowly.
 
 **Narrator:**
-"Let's look at a critical flood in Colombo. Our Intake Agent parses the raw 911 description, instantly extracting the severity and location. 
+"Let's look at a critical flood in Visakhapatnam. Our Intake Agent parses the raw 911 description, instantly extracting the severity and location. 
 In Step 2, the Metadata Agent enriches the data, noting high population density.
 Step 3 is where ResQ-MAR shines: Agentic RAG. Unlike naive RAG, our Assessor Agent iteratively checks the retrieved SOPs. It noticed medical protocols were missing, requested a re-retrieval, and boosted our coverage score to 92%.
 For Routing in Step 4, we use Adaptive Event-Triggered logic. Instead of re-solving the massive Vehicle Routing Problem from scratch every time, AET smartly batches changes, saving massive amounts of compute. 
@@ -23,7 +23,7 @@ Finally, our Human-in-the-Loop dashboard captures the plan. A dispatcher approve
 Terminal continues to "SCENARIO 2: DEHIWALA FACTORY FIRE". Steps unfold. The mouse highlights the AET Routing calls compared to Continuous.
 
 **Narrator:**
-"Next, a chemical factory fire. Watch the routing step. In traditional Continuous routing, this new event would trigger an expensive recalculation of all active trucks. Our AET router simply adapts the existing routes—requiring only 1 solver call compared to 8 in the baseline.
+"Next, a chemical factory fire. Watch the routing step. In traditional Continuous routing, this new event would trigger an expensive recalculation of all active trucks. Our AET router simply adapts the existing routesâ€”requiring only 1 solver call compared to 8 in the baseline.
 Furthermore, if our cloud LLM goes down due to internet outages, our system seamlessly falls back to a quantized offline edge model, Phi-3-mini, ensuring that the agents never stop functioning when seconds count."
 
 ## 4. Scenario 3 Walkthrough: Earthquake Aftershock (60 sec)

@@ -1,4 +1,4 @@
-// PWA Application Logic
+﻿// PWA Application Logic
 let cachedDataset = [];
 let deferredPrompt;
 
@@ -116,7 +116,7 @@ async function askQuestion() {
         answer = match.answer;
         source = "Source: Cached Guide (fallback)";
       } else {
-        answer = "No cached guidance matches. Call 119 for immediate help.";
+        answer = "No cached guidance matches. Call 112 for immediate help.";
         source = "Source: Offline Fallback";
       }
     }
@@ -126,7 +126,7 @@ async function askQuestion() {
       answer = match.answer;
       source = "Source: Cached Guide (offline)";
     } else {
-      answer = "No cached guidance matches. Call 119 for immediate help.";
+      answer = "No cached guidance matches. Call 112 for immediate help.";
       source = "Source: Offline Fallback";
     }
   }

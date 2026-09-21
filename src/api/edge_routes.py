@@ -1,4 +1,4 @@
-import json
+﻿import json
 import httpx
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
@@ -92,7 +92,7 @@ async def query_edge(request: QueryRequest):
         
     return {
         "question": request.question,
-        "answer": "No cached guidance matches. Call 119 for immediate help.",
+        "answer": "No cached guidance matches. Call 112 for immediate help.",
         "source": "fallback",
         "latency_ms": latency
     }

@@ -39,7 +39,7 @@ References ....................................................... 7
 # Chapter 1: Introduction
 
 ## 1.1 Background and Motivation
-The frequency and intensity of natural disasters have seen a global increase, placing unprecedented strain on emergency response infrastructures. According to the United Nations Office for Disaster Risk Reduction (UNDRR), climate-related disasters have surged, necessitating highly coordinated, rapid response mechanisms. Sri Lanka remains particularly vulnerable to a spectrum of natural hazards, including localized flooding, landslides, and seismic aftershocks. Current emergency response systems often rely on centralized, manual dispatch protocols that suffer from severe bottlenecks during peak crisis periods. These legacy systems are heavily cloud-dependent, rendering them fragile when local communication infrastructure is compromised by the disaster itself. Consequently, there is an urgent need for an intelligent, decentralized, and resilient emergency response framework capable of real-time coordination without absolute reliance on external cloud services.
+The frequency and intensity of natural disasters have seen a global increase, placing unprecedented strain on emergency response infrastructures. According to the United Nations Office for Disaster Risk Reduction (UNDRR), climate-related disasters have surged, necessitating highly coordinated, rapid response mechanisms. India remains particularly vulnerable to a spectrum of natural hazards, including localized flooding, landslides, and seismic aftershocks. Current emergency response systems often rely on centralized, manual dispatch protocols that suffer from severe bottlenecks during peak crisis periods. These legacy systems are heavily cloud-dependent, rendering them fragile when local communication infrastructure is compromised by the disaster itself. Consequently, there is an urgent need for an intelligent, decentralized, and resilient emergency response framework capable of real-time coordination without absolute reliance on external cloud services.
 
 ## 1.2 Problem Statement
 Existing Computer-Aided Dispatch (CAD) systems exhibit several critical failure points during large-scale disasters. First, they fail catastrophically when internet connectivity drops, as they depend on cloud-hosted routing and decision engines. Second, traditional static vehicle routing algorithms cannot adapt to dynamic disaster conditions, such as sudden road blockages, leading to vast computational waste when continuously re-solving routes. Third, fully automated AI systems lack necessary human oversight in life-or-death decisions, presenting severe ethical and operational risks. Finally, modern emergency logistics lack multi-modal resource coordination, specifically the symbiotic deployment of ground vehicles (trucks) and aerial units (drones) to bypass physical infrastructure failures.
@@ -61,7 +61,7 @@ The primary objective of this capstone project is to design, implement, and eval
 - Creating a real-time Streamlit dashboard with a Human-in-the-Loop approval panel for safe operational oversight.
 
 ## 1.5 Scope and Limitations
-The scope of this project is confined to the software architecture, multi-agent coordination logic, and simulation-based evaluation of the ResQ-MAR system within a synthesized Sri Lankan geographic context (Colombo and surrounding districts). 
+The scope of this project is confined to the software architecture, multi-agent coordination logic, and simulation-based evaluation of the ResQ-MAR system within a synthesized Indian geographic context (Visakhapatnam and surrounding districts). 
 Limitations include the absence of real hardware deployment (actual vehicles and drones) and the use of simulated LLM responses for the high-volume benchmarks due to local compute constraints. Furthermore, the incident datasets are synthetic, although they are modeled closely on real 911 dispatch transcripts.
 
 ## 1.6 Report Organization
@@ -221,7 +221,7 @@ To validate the efficacy of ResQ-MAR against existing paradigms, a comprehensive
 Due to local compute constraints, LLM reasoning times and solver outputs were deterministically simulated based on bounded empirical averages extracted during Phase 3 component testing. The random seeds utilized incident IDs to ensure absolute reproducibility.
 
 ## 5.2 Dataset Description
-The benchmark dataset (`benchmark_incidents.json`) comprises 50 high-fidelity incidents modeled within the Colombo, Sri Lanka region (Lat: 6.85-6.95, Lon: 79.80-79.90). The distribution includes 15 flood, 12 fire, 10 earthquake, 8 medical, and 5 multi-hazard complex incidents. A separate resource dataset maps 15 emergency vehicles (ambulances, fire trucks, boats, and drones) across strategic base locations.
+The benchmark dataset (`benchmark_incidents.json`) comprises 50 high-fidelity incidents modeled within the Visakhapatnam, India region (Lat: 17.5-17.9, Lon: 83.0-83.5). The distribution includes 15 flood, 12 fire, 10 earthquake, 8 medical, and 5 multi-hazard complex incidents. A separate resource dataset maps 15 emergency vehicles (ambulances, fire trucks, boats, and drones) across strategic base locations.
 
 ## 5.3 Results: Agentic RAG
 The implementation of the 4-step Agentic RAG demonstrated substantial improvements in standard operating procedure adherence compared to single-pass Naive RAG.
@@ -294,7 +294,7 @@ Future iterations of ResQ-MAR should focus on bridging the gap between simulatio
 - **Hardware Integration**: Connecting the routing outputs directly to physical drone telemetry systems and vehicle GPS trackers.
 - **Voice Interface**: Integrating models like OpenAI Whisper to allow dispatchers to interact with the system via radio voice channels.
 - **Mobile Edge Application**: Replacing the browser-based PWA with a native Flutter application deployed directly to first responders' devices.
-- **Multilingual Support**: Fine-tuning the LLMs to natively process 911 calls in regional languages such as Sinhala and Tamil, enhancing applicability in Sri Lanka.
+- **Multilingual Support**: Fine-tuning the LLMs to natively process 911 calls in regional languages such as Hindi and Marathi, enhancing applicability in India.
 - **Live Traffic API Integration**: Replacing point-to-point math with live OpenStreetMap or Google Maps routing data.
 
 ## 6.5 Final Remarks
@@ -333,7 +333,7 @@ United Nations Office for Disaster Risk Reduction (UNDRR). (2025). *Global asses
 
 Wang, L., & Brown, D. (2023). *Multi-agent reinforcement learning for dynamic vehicle routing*. Artificial Intelligence, 315, 103831.
 
-World Bank Group. (2024). *Climate risk country profile: Sri Lanka*. World Bank Publications.
+World Bank Group. (2024). *Climate risk country profile: India*. World Bank Publications.
 
 
 ---

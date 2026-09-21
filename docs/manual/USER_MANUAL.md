@@ -1,4 +1,4 @@
-# ResQ-MAR User Manual
+﻿# ResQ-MAR User Manual
 
 Version: 1.0.0
 Date: November 2026
@@ -29,7 +29,7 @@ Key differentiators include:
 - Open-Source and Local: No reliance on paid cloud APIs (e.g., OpenAI or Google Cloud).
 - Multi-Agent Architecture: Six specialized AI agents handle distinct phases of the emergency response pipeline.
 - Human-in-the-Loop: Critical decisions, especially regarding hazardous materials or complex resource allocation, require explicit human dispatcher approval before execution.
-- Physical Routing: Uses real street-level data for Colombo, Sri Lanka, factoring in one-way streets and driving durations.
+- Physical Routing: Uses real street-level data for Visakhapatnam, India, factoring in one-way streets and driving durations.
 
 ### 1.2 Who Should Read This Manual?
 This manual is comprehensive and designed for three distinct audiences. You do not need to read the entire document unless you are responsible for all aspects of the system.
@@ -129,10 +129,10 @@ For Linux/macOS:
 ```bash
 bash scripts/setup_osrm.sh
 ```
-[NOTE] This process will download the Sri Lanka map (approx. 137MB) and compile it. It may take up to 10 minutes. 
+[NOTE] This process will download the Andhra Pradesh map (approx. 557MB) and compile it. It may take up to 10 minutes. 
 Verify it is running:
 ```bash
-curl http://localhost:5000/route/v1/driving/79.8612,6.9271;79.8650,6.9300?overview=false
+curl http://localhost:5000/route/v1/driving/83.2185,17.6868;83.2200,17.6900?overview=false
 ```
 
 Step 6: Verify installation
@@ -339,7 +339,7 @@ Administrators can configure which models the agents use.
 ### 6.3 Managing OSRM Data
 Road networks change over time. To keep routing accurate:
 - Updating road network: Re-run the `scripts/setup_osrm.sh` script to download the latest OpenStreetMap extract.
-- Switching regions: Edit the `wget` URL inside the setup script to point to a different Geofabrik region (e.g., changing Sri Lanka to a specific US State).
+- Switching regions: Edit the `wget` URL inside the setup script to point to a different Geofabrik region (e.g., changing Andhra Pradesh to another state).
 - Performance tuning: For massive maps, you can change the algorithm parameter in the docker run command from `--algorithm mld` to `--algorithm ch` (Contraction Hierarchies) for faster queries at the cost of longer build times.
 
 ### 6.4 Backup and Restore

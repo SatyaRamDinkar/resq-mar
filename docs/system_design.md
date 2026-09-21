@@ -1,8 +1,8 @@
-<!-- Page 1 -->
-# System Design Document (SAD) — ResQ-MAR
+﻿<!-- Page 1 -->
+# System Design Document (SAD) â€” ResQ-MAR
 
 ## 1. DOCUMENT CONTROL
-- **Title:** System Design Document (SAD) — ResQ-MAR: AI-Powered Multi-Agent Emergency Response System
+- **Title:** System Design Document (SAD) â€” ResQ-MAR: AI-Powered Multi-Agent Emergency Response System
 - **Version:** 1.0
 - **Date:** 2026-08-26
 - **Author:** Antigravity AI
@@ -74,50 +74,50 @@ The primary purpose of ResQ-MAR is to coordinate autonomous AI agents to parse, 
 
 ### 4.1 High-Level Architecture
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│                         PRESENTATION LAYER                  │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │ Streamlit   │  │ Mobile PWA  │  │ Edge Device (Termux)│  │
-│  │ Dashboard   │  │ (Citizen)   │  │ (Field Responder)   │  │
-│  └──────┬──────┘  └──────┬──────┘  └──────────┬──────────┘  │
-│         └─────────────────┴────────────────────┘            │
-│                           │                                 │
-│                    ┌──────┴──────┐                          │
-│                    │  FastAPI    │                          │
-│                    │  Gateway    │                          │
-│                    └──────┬──────┘                          │
-│                         │                                   │
-│              ┌──────────┴──────────┐                        │
-│              │   ORCHESTRATION LAYER │                        │
-│              │  (AutoGen GroupChat)│                        │
-│              └──────────┬──────────┘                        │
-│                         │                                   │
-│    ┌────────┬───────────┼───────────┬────────┐              │
-│    ▼        ▼           ▼           ▼        ▼              │
-│ ┌─────┐  ┌─────┐   ┌─────────┐   ┌─────┐  ┌─────┐           │
-│ │Intake│  │Meta │   │Planner  │   │Route│  │Comms│           │
-│ │Agent │  │Data │   │Agent    │   │Agent│  │Agent│           │
-│ └─────┘  └─────┘   └────┬────┘   └─────┘  └─────┘           │
-│                         │                                   │
-│                    ┌────┴────┐                              │
-│                    │  RAG    │                              │
-│                    │ Pipeline│                              │
-│                    └────┬────┘                              │
-│                         │                                   │
-│              ┌──────────┴──────────┐                        │
-│              │   KNOWLEDGE LAYER   │                        │
-│              │  ChromaDB + SOPs +  │                        │
-│              │  Historical Data    │                        │
-│              └─────────────────────┘                        │
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │              EDGE / OFFLINE LAYER                   │    │
-│  │  ┌─────────────┐  ┌─────────────────────────────┐   │    │
-│  │  │ Edge Agent  │  │ Phi-3-mini (GGUF Q4_K_M)    │   │    │
-│  │  │ (Local API) │  │ <2GB · <1.5GB RAM · <1s lat │   │    │
-│  │  └─────────────┘  └─────────────────────────────┘   │    │
-│  └─────────────────────────────────────────────────────┘    │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                         PRESENTATION LAYER                  â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ Streamlit   â”‚  â”‚ Mobile PWA  â”‚  â”‚ Edge Device (Termux)â”‚  â”‚
+â”‚  â”‚ Dashboard   â”‚  â”‚ (Citizen)   â”‚  â”‚ (Field Responder)   â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”˜  â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”˜  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚         â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜            â”‚
+â”‚                           â”‚                                 â”‚
+â”‚                    â”Œâ”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”                          â”‚
+â”‚                    â”‚  FastAPI    â”‚                          â”‚
+â”‚                    â”‚  Gateway    â”‚                          â”‚
+â”‚                    â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”˜                          â”‚
+â”‚                         â”‚                                   â”‚
+â”‚              â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                        â”‚
+â”‚              â”‚   ORCHESTRATION LAYER â”‚                        â”‚
+â”‚              â”‚  (AutoGen GroupChat)â”‚                        â”‚
+â”‚              â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜                        â”‚
+â”‚                         â”‚                                   â”‚
+â”‚    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”              â”‚
+â”‚    â–¼        â–¼           â–¼           â–¼        â–¼              â”‚
+â”‚ â”Œâ”€â”€â”€â”€â”€â”  â”Œâ”€â”€â”€â”€â”€â”   â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”Œâ”€â”€â”€â”€â”€â”  â”Œâ”€â”€â”€â”€â”€â”           â”‚
+â”‚ â”‚Intakeâ”‚  â”‚Meta â”‚   â”‚Planner  â”‚   â”‚Routeâ”‚  â”‚Commsâ”‚           â”‚
+â”‚ â”‚Agent â”‚  â”‚Data â”‚   â”‚Agent    â”‚   â”‚Agentâ”‚  â”‚Agentâ”‚           â”‚
+â”‚ â””â”€â”€â”€â”€â”€â”˜  â””â”€â”€â”€â”€â”€â”˜   â””â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”˜   â””â”€â”€â”€â”€â”€â”˜  â””â”€â”€â”€â”€â”€â”˜           â”‚
+â”‚                         â”‚                                   â”‚
+â”‚                    â”Œâ”€â”€â”€â”€â”´â”€â”€â”€â”€â”                              â”‚
+â”‚                    â”‚  RAG    â”‚                              â”‚
+â”‚                    â”‚ Pipelineâ”‚                              â”‚
+â”‚                    â””â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”˜                              â”‚
+â”‚                         â”‚                                   â”‚
+â”‚              â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                        â”‚
+â”‚              â”‚   KNOWLEDGE LAYER   â”‚                        â”‚
+â”‚              â”‚  ChromaDB + SOPs +  â”‚                        â”‚
+â”‚              â”‚  Historical Data    â”‚                        â”‚
+â”‚              â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜                        â”‚
+â”‚                                                             â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”‚
+â”‚  â”‚              EDGE / OFFLINE LAYER                   â”‚    â”‚
+â”‚  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”‚    â”‚
+â”‚  â”‚  â”‚ Edge Agent  â”‚  â”‚ Phi-3-mini (GGUF Q4_K_M)    â”‚   â”‚    â”‚
+â”‚  â”‚  â”‚ (Local API) â”‚  â”‚ <2GB Â· <1.5GB RAM Â· <1s lat â”‚   â”‚    â”‚
+â”‚  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â”‚    â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ### 4.2 Component Descriptions
@@ -244,14 +244,14 @@ The primary purpose of ResQ-MAR is to coordinate autonomous AI agents to parse, 
 - **Input/Output:** Tokens; outputs tokens.
 
 ### 4.3 Agent Interaction Flow
-1. Citizen submits report via PWA → `POST /incident`
+1. Citizen submits report via PWA â†’ `POST /incident`
 2. FastAPI validates the payload and forwards it to the Orchestrator.
 3. Orchestrator spawns an AutoGen GroupChat with relevant agents.
 4. **IntakeAgent** receives raw report and cleanses it.
 5. **MetadataAgent** extracts structured data (hazard, lat/lon, urgency).
-6. If urgency == HIGH → Orchestrator triggers `UserProxyAgent` to request human approval on the dashboard.
+6. If urgency == HIGH â†’ Orchestrator triggers `UserProxyAgent` to request human approval on the dashboard.
 7. **PlannerAgent** receives metadata and queries the RAG Pipeline.
-8. RAG Pipeline: retrieves top-k SOPs → assesses safety → passes context back.
+8. RAG Pipeline: retrieves top-k SOPs â†’ assesses safety â†’ passes context back.
 9. **PlannerAgent** synthesizes the SOPs and returns a JSON task plan.
 10. **RouterAgent** ingests the plan, formulates a VRP model, and solves it with OR-Tools.
 11. **CommsAgent** translates the Route GeoJSON into field alerts.
@@ -265,35 +265,35 @@ The primary purpose of ResQ-MAR is to coordinate autonomous AI agents to parse, 
 ### 5.1 Data Flow Diagram
 ```text
  Citizen Report 
-      │
-      ▼
+      â”‚
+      â–¼
    [ JSON ]
-      │
-      ▼
+      â”‚
+      â–¼
    FastAPI 
-      │
-      ▼
+      â”‚
+      â–¼
  Orchestrator
-      │
-      ▼
- Agent Messages ──► RAG Query ──► ChromaDB
-      │
-      ▼
+      â”‚
+      â–¼
+ Agent Messages â”€â”€â–º RAG Query â”€â”€â–º ChromaDB
+      â”‚
+      â–¼
   [ Plan JSON ]
-      │
-      ▼
+      â”‚
+      â–¼
  Router Input
-      │
-      ▼
+      â”‚
+      â–¼
  [ Route GeoJSON ]
-      │
-      ▼
+      â”‚
+      â–¼
     Comms
-      │
-      ▼
+      â”‚
+      â–¼
  [ Alert JSON ]
-      │
-      ▼
+      â”‚
+      â–¼
   Dashboard
 ```
 
@@ -363,8 +363,8 @@ CREATE TABLE sops (
 - `id` (TEXT): UUID primary key. Ex: `inc_1234`
 - `raw_text` (TEXT): Original user text. Ex: "Flood waters rising in sector 4."
 - `hazard_type` (TEXT): Categorical hazard type. Ex: `flood`
-- `location_lat` (REAL): Latitude. Ex: `6.9271`
-- `location_lon` (REAL): Longitude. Ex: `79.8612`
+- `location_lat` (REAL): Latitude. Ex: `17.6868`
+- `location_lon` (REAL): Longitude. Ex: `83.2185`
 - `urgency` (TEXT): Priority level. Ex: `critical`
 - `status` (TEXT): Lifecycle status. Ex: `received`
 - `created_at` (TIMESTAMP): Time of submission.
@@ -404,7 +404,7 @@ CREATE TABLE sops (
 - `hazard_type` (TEXT): Ex: `flood`.
 - `content` (TEXT): Raw markdown text.
 - `embedding_id` (TEXT): FK linking to ChromaDB vectors.
-- `source` (TEXT): Ex: "NDRSC Sri Lanka".
+- `source` (TEXT): Ex: "NDMA India".
 
 ---
 
@@ -641,7 +641,7 @@ The orchestration layer relies on a team of 6 primary agents built on Microsoft 
 
 ### 7.7 Orchestrator (GroupChat)
 - **Configuration:** AutoGen `GroupChat` with `GroupChatManager`.
-- **Selection Strategy:** Strict round-robin enforced (Intake → Meta → Planner → Router → Comms) to prevent non-deterministic loops.
+- **Selection Strategy:** Strict round-robin enforced (Intake â†’ Meta â†’ Planner â†’ Router â†’ Comms) to prevent non-deterministic loops.
 - **Human-in-the-Loop:** A `UserProxyAgent` intercepts the flow after the PlannerAgent if `urgency == "critical"`. It waits via WebSockets for the Streamlit dashboard to send an approval signal.
 - **Termination:** Stops when CommsAgent emits the final alert.
 
@@ -652,20 +652,20 @@ The orchestration layer relies on a team of 6 primary agents built on Microsoft 
 ### 8.1 Architecture
 ```text
 User Query 
-   │
-   ▼
+   â”‚
+   â–¼
 Embedding Model (all-MiniLM-L6-v2)
-   │
-   ▼
+   â”‚
+   â–¼
 ChromaDB Retrieval (top-k=5)
-   │
-   ▼
+   â”‚
+   â–¼
 Context Assembly + Assessor Prompt
-   │
-   ▼
+   â”‚
+   â–¼
 Local LLM (Llama 3.1)
-   │
-   ▼
+   â”‚
+   â–¼
 Structured Output (Pydantic Plan)
 ```
 
@@ -747,15 +747,15 @@ Taking inspiration from Peng et al. (2025), ResQ-MAR models truck-drone collabor
 ### 10.1 Edge Architecture
 ```text
   Field Device (Android/iOS Tablet)
-         │
-         ▼
+         â”‚
+         â–¼
       [ Termux ]
-         │
-         ▼
-[ llama.cpp server ] ◄── Phi-3-mini (GGUF)
-         │
-         ▼
-  [ Local API ] ──► Mobile PWA UI
+         â”‚
+         â–¼
+[ llama.cpp server ] â—„â”€â”€ Phi-3-mini (GGUF)
+         â”‚
+         â–¼
+  [ Local API ] â”€â”€â–º Mobile PWA UI
 ```
 
 ### 10.2 Model Selection
@@ -794,15 +794,15 @@ Because ResQ-MAR is designed for low-resource EOCs, the production deployment av
 ### 11.3 Deployment Diagram
 ```text
   [ Command Center Laptop ]
-             │
-   ┌─────────┼─────────┐
-   │                   │
+             â”‚
+   â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+   â”‚                   â”‚
 [Ollama]   [FastAPI]  [Streamlit]
 (11434)      (8000)     (8501)
-   │           │           │
-   └───────────┼───────────┘
-               │ (Localhost loopback)
-               ▼
+   â”‚           â”‚           â”‚
+   â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+               â”‚ (Localhost loopback)
+               â–¼
         [ SQLite Database ]
         [ ChromaDB Store  ]
 ```

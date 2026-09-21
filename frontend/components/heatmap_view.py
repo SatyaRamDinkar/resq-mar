@@ -15,7 +15,7 @@ import streamlit.components.v1 as components
 def render_incident_heatmap(incidents: List[Dict[str, Any]], resources: List[Dict[str, Any]]) -> folium.Map:
     """Render folium heatmap layer."""
     if not incidents:
-        center = [6.9271, 79.8612]
+        center = [17.6868, 83.2185]
     else:
         lats = [i['lat'] for i in incidents]
         lons = [i['lon'] for i in incidents]
@@ -77,16 +77,16 @@ def render_coverage_stats(incidents: List[Dict[str, Any]], resources: List[Dict[
 
 def get_mock_incidents() -> List[Dict[str, Any]]:
     return [
-        {'lat': 6.9271, 'lon': 79.8612, 'type': 'flood', 'severity': 'high', 'status': 'active'},
-        {'lat': 6.9300, 'lon': 79.8500, 'type': 'fire', 'severity': 'critical', 'status': 'active'},
-        {'lat': 6.9100, 'lon': 79.8700, 'type': 'medical', 'severity': 'medium', 'status': 'active'},
-        {'lat': 6.9400, 'lon': 79.8800, 'type': 'earthquake', 'severity': 'high', 'status': 'active'},
-        {'lat': 6.9250, 'lon': 79.8650, 'type': 'flood', 'severity': 'low', 'status': 'active'},
+        {'lat': 17.6868, 'lon': 83.2185, 'type': 'flood', 'severity': 'high', 'status': 'active'},
+        {'lat': 17.6900, 'lon': 79.8500, 'type': 'fire', 'severity': 'critical', 'status': 'active'},
+        {'lat': 17.6600, 'lon': 83.2600, 'type': 'medical', 'severity': 'medium', 'status': 'active'},
+        {'lat': 17.6900, 'lon': 83.2900, 'type': 'earthquake', 'severity': 'high', 'status': 'active'},
+        {'lat': 17.6750, 'lon': 83.2200, 'type': 'flood', 'severity': 'low', 'status': 'active'},
     ]
 
 def get_mock_resources() -> List[Dict[str, Any]]:
     return [
-        {'lat': 6.9200, 'lon': 79.8600, 'type': 'Ambulance', 'available': True},
-        {'lat': 6.9350, 'lon': 79.8550, 'type': 'Fire Truck', 'available': False},
-        {'lat': 6.9150, 'lon': 79.8750, 'type': 'Drone', 'available': True},
+        {'lat': 17.6700, 'lon': 83.2700, 'type': 'Ambulance', 'available': True},
+        {'lat': 17.6950, 'lon': 83.2650, 'type': 'Fire Truck', 'available': False},
+        {'lat': 17.6600, 'lon': 83.2600, 'type': 'Drone', 'available': True},
     ]

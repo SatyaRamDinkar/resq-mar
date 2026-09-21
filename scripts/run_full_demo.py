@@ -13,9 +13,9 @@ from typing import Dict, Any, List
 SCENARIOS = [
     {
         "id": "DEMO_001",
-        "name": "Colombo Flood Response",
-        "incident": "Multiple families trapped in flooded homes near Bambalapitiya. Water level rising. Need rescue boats and medical support.",
-        "location": {"lat": 6.8774, "lon": 79.8653},
+        "name": "Visakhapatnam Cyclone Response",
+        "incident": "Multiple families trapped in flooded homes near RK Beach. Water level rising. Need rescue boats and medical support.",
+        "location": {"lat": 17.7144, "lon": 83.3234},
         "severity": "critical",
         "expected_sop": "flood_evacuation",
         "available_resources": {"rescue_boats": 2, "ambulances": 1, "drones": 1},
@@ -27,9 +27,9 @@ SCENARIOS = [
     },
     {
         "id": "DEMO_002",
-        "name": "Dehiwala Factory Fire",
+        "name": "Vijayawada Factory Fire",
         "incident": "Chemical factory fire with toxic smoke. Workers evacuated but 3 reported missing inside. Fire trucks and ambulance needed.",
-        "location": {"lat": 6.8418, "lon": 79.8742},
+        "location": {"lat": 16.4955, "lon": 80.6720},
         "severity": "critical",
         "expected_sop": "fire_response",
         "available_resources": {"fire_trucks": 2, "ambulances": 2, "drones": 1},
@@ -41,9 +41,9 @@ SCENARIOS = [
     },
     {
         "id": "DEMO_003",
-        "name": "Gampaha Earthquake Aftershock",
+        "name": "Guntur Earthquake Aftershock",
         "incident": "Building collapse after aftershock. Unknown number of casualties. Heavy rescue equipment and medical teams needed.",
-        "location": {"lat": 7.0916, "lon": 79.9997},
+        "location": {"lat": 16.3067, "lon": 80.4365},
         "severity": "high",
         "expected_sop": "earthquake_response",
         "available_resources": {"ambulances": 1, "fire_trucks": 1, "drones": 2},

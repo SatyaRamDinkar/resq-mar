@@ -28,4 +28,4 @@ United Nations Office for Disaster Risk Reduction (UNDRR). (2025). *Global asses
 
 Wang, L., & Brown, D. (2023). *Multi-agent reinforcement learning for dynamic vehicle routing*. Artificial Intelligence, 315, 103831.
 
-World Bank Group. (2024). *Climate risk country profile: Sri Lanka*. World Bank Publications.
+World Bank Group. (2024). *Climate risk country profile: India*. World Bank Publications.

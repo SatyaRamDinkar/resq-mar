@@ -11,15 +11,15 @@ from frontend.components.approval_panel import render_approval_panel
 from src.utils.dashboard_utils import calculate_haversine_distance, check_incident_coverage
 
 def test_calculate_haversine_distance():
-    d = calculate_haversine_distance(6.9271, 79.8612, 6.9271, 79.8702)
+    d = calculate_haversine_distance(17.6868, 83.2185, 17.6868, 83.2250)
     assert 0.9 < d < 1.1
 
 def test_check_incident_coverage():
-    inc = {'lat': 6.9271, 'lon': 79.8612}
-    res = [{'lat': 6.9271, 'lon': 79.8650, 'available': True}]
+    inc = {'lat': 17.6868, 'lon': 83.2185}
+    res = [{'lat': 17.6868, 'lon': 83.2200, 'available': True}]
     assert check_incident_coverage(inc, res, 5.0) is True
     
-    res2 = [{'lat': 6.9271, 'lon': 79.8650, 'available': False}]
+    res2 = [{'lat': 17.6868, 'lon': 83.2200, 'available': False}]
     assert check_incident_coverage(inc, res2, 5.0) is False
 
 def test_approval_panel_no_pending(monkeypatch):
