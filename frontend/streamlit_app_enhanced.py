@@ -37,7 +37,7 @@ if 'dash_agent' not in st.session_state:
 agent = st.session_state.dash_agent
 
 st.sidebar.title('ResQ-MAR Navigation')
-page = st.sidebar.radio('Go to', ['Live Command Center', 'Incident Heatmap', 'Approval Panel', 'Agent Monitor', 'Performance Metrics'])
+page = st.sidebar.radio('Go to', ['Live Command Center', 'Incident Heatmap', 'Approval Panel', 'Agent Monitor', 'Performance Metrics', 'XAI Dashboard'])
 auto_refresh = st.sidebar.checkbox('Auto-Refresh (5s)', value=False)
 
 if page == 'Live Command Center':
@@ -122,6 +122,56 @@ elif page == 'Performance Metrics':
         
     if st.button('Export Report'):
         st.text_area('System Report', agent.export_report(), height=300)
+
+elif page == 'XAI Dashboard':
+    st.title('XAI (Explainable AI) Dashboard')
+    st.markdown("Transparent reasoning, confidence scoring, and audit trails.")
+    
+    from src.agents.explainability_agent import ExplainabilityAgent
+    from frontend.components.explainability_panel import (
+        render_explainability_panel, render_confidence_chart, 
+        render_rag_explanation, render_routing_explanation, 
+        render_counterfactual_panel, render_audit_trail_download
+    )
+    
+    if 'xai_agent' not in st.session_state:
+        st.session_state.xai_agent = ExplainabilityAgent()
+    xai = st.session_state.xai_agent
+    
+    # Mock data for demonstration if logs are empty
+    incident_id = "INC-2023-999"
+    decisions = xai.get_decision_chain(incident_id)
+    
+    if not decisions:
+        # Generate some mock decisions for the demo
+        xai.log_decision("IntakeAgent", "Classified as Critical Fire", "Keywords 'fire' and 'trapped' detected.", 0.95, {"text": "fire"}, incident_id)
+        xai.log_decision("RetrievalAgent", "Retrieved Fire SOP v2", "Matches hazard 'fire' with 0.89 relevance.", 0.89, {"query": "fire"}, incident_id)
+        xai.log_decision("RouterAgent", "Assigned Fire Truck B", "Distance is 2.1km (closest).", 0.92, {"available": ["B", "C"]}, incident_id)
+        xai.log_decision("AssessorAgent", "Approved Plan", "All safety constraints met.", 0.88, {"plan": "T"}, incident_id)
+        decisions = xai.get_decision_chain(incident_id)
+    
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        render_explainability_panel(incident_id, decisions)
+        
+        st.markdown("---")
+        render_counterfactual_panel({"severity": "critical", "type": "fire"}, xai)
+        
+    with col2:
+        render_confidence_chart(decisions)
+        
+        st.markdown("---")
+        rag_exp = xai.explain_rag_decision([{"id": "Fire SOP v2"}, {"id": "General SOP"}], [0.89, 0.45], "Fire SOP v2", False)
+        render_rag_explanation(rag_exp)
+        
+        st.markdown("---")
+        route_exp = xai.explain_routing_decision({"tasks": [{"resource": "Fire Truck B", "distance_km": 2.1}]})
+        render_routing_explanation(route_exp)
+        
+        st.markdown("---")
+        audit_text = xai.export_audit_trail(incident_id)
+        render_audit_trail_download(incident_id, audit_text)
 
 if auto_refresh:
     time.sleep(5)
