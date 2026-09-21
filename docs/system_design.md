@@ -420,7 +420,7 @@ The FastAPI Gateway exposes the following 10 REST endpoints. All request/respons
 {
   "reporter_id": "citizen_001",
   "raw_text": "Fire in Building 7, 3rd floor, people trapped",
-  "location": {"lat": 12.9716, "lon": 77.5946},
+  "location": {"lat": 17.6868, "lon": 83.2185},
   "media_urls": [],
   "timestamp": "2026-09-15T10:30:00Z"
 }
@@ -446,8 +446,8 @@ The FastAPI Gateway exposes the following 10 REST endpoints. All request/respons
   "status": "planning",
   "hazard_type": "fire",
   "urgency": "critical",
-  "location_lat": 12.9716,
-  "location_lon": 77.5946
+  "location_lat": 17.6868,
+  "location_lon": 83.2185
 }
 ```
 
@@ -460,7 +460,7 @@ The FastAPI Gateway exposes the following 10 REST endpoints. All request/respons
 [
   {
     "id": "inc_550e8400",
-    "location": [12.9716, 77.5946],
+    "location": [17.6868, 83.2185],
     "urgency": "critical"
   }
 ]
@@ -514,7 +514,7 @@ The FastAPI Gateway exposes the following 10 REST endpoints. All request/respons
       "type": "Feature",
       "geometry": {
         "type": "LineString",
-        "coordinates": [[77.5900, 12.9700], [77.5946, 12.9716]]
+        "coordinates": [[83.2150, 17.6850], [83.2185, 17.6868]]
       },
       "properties": {"vehicle": "drone_alpha"}
     }

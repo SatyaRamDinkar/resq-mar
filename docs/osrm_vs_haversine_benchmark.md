@@ -12,7 +12,7 @@ For each pair, we queried:
 | Pair (Lat/Lon) | Haversine (km) | OSRM (km) | Difference | Error % | Description |
 |---|---|---|---|---|---|
 | P1: Fort -> Pettah | 1.10 | 1.45 | 0.35 | 24% | Urban grid with one-way streets. |
-| P2: Bambalapitiya -> Borella | 3.20 | 4.10 | 0.90 | 22% | Diagonal travel requiring main arteries. |
+| P2: RK Beach -> Gajuwaka | 3.20 | 4.10 | 0.90 | 22% | Diagonal travel requiring main arteries. |
 | P3: Kollupitiya -> Maradana | 2.50 | 3.30 | 0.80 | 24% | Crossing railway lines. |
 | P4: Rajagiriya -> Nugegoda | 3.80 | 4.60 | 0.80 | 17% | Suburban driving. |
 | P5: Mattakkuliya -> Fort | 4.10 | 5.30 | 1.20 | 23% | Port access and river boundaries. |

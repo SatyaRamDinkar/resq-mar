@@ -47,4 +47,4 @@ To install the PWA on your device:
 - Voice input integration via the Web Speech API for hands-free operation.
 - Push notifications for broadcasted emergency alerts.
 - Geolocation tracking for nearest shelter routing.
-- Multi-language support (Sinhala, Tamil) for broader accessibility.
+- Multi-language support (Telugu, Hindi) for broader accessibility.

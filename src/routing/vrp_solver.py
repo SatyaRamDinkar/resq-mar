@@ -285,9 +285,9 @@ if __name__ == "__main__":
 
     # 1 depot + 5 demand points, 2 vehicles
     demo_locations = [
-        Location(id="depot",    lat=12.9716, lon=77.5946, demand=0,  priority=1),
+        Location(id="depot",    lat=17.6868, lon=83.2185, demand=0,  priority=1),
         Location(id="site_A",   lat=12.9730, lon=77.5960, demand=4,  priority=4),
-        Location(id="site_B",   lat=12.9700, lon=77.5920, demand=3,  priority=3),
+        Location(id="site_B",   lat=17.6850, lon=77.5920, demand=3,  priority=3),
         Location(id="site_C",   lat=12.9750, lon=77.5940, demand=5,  priority=4),
         Location(id="site_D",   lat=12.9680, lon=77.5970, demand=2,  priority=2),
         Location(id="site_E",   lat=12.9760, lon=77.5910, demand=3,  priority=3),

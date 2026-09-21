@@ -9,7 +9,7 @@ class IncidentRequest(BaseModel):
     """Schema for incoming 911 incident requests."""
     id: Optional[str] = Field(None, description="Optional incident ID. Auto-generated if not provided.", example="INC-001")
     description: str = Field(..., description="Raw 911-style text describing the emergency.", example="Flood waters rising rapidly on Main St. Families trapped.")
-    location: Dict[str, float] = Field(..., description="Dictionary containing lat and lon coordinates.", example={"lat": 6.8774, "lon": 79.8653})
+    location: Dict[str, float] = Field(..., description="Dictionary containing lat and lon coordinates.", example={"lat": 17.6868, "lon": 83.2185})
     type: Optional[str] = Field(None, description="Type of incident (flood, fire, earthquake, medical).", example="flood")
     severity: Optional[str] = Field(None, description="Severity level (low, medium, high, critical).", example="critical")
     timestamp: Optional[str] = Field(default_factory=lambda: datetime.utcnow().isoformat(), description="ISO format timestamp.")

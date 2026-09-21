@@ -20,7 +20,7 @@ Finally, our Human-in-the-Loop dashboard captures the plan. A dispatcher approve
 
 ## 3. Scenario 2 Walkthrough: Fire Response (90 sec)
 **On Screen:**
-Terminal continues to "SCENARIO 2: DEHIWALA FACTORY FIRE". Steps unfold. The mouse highlights the AET Routing calls compared to Continuous.
+Terminal continues to "SCENARIO 2: VIJAYAWADA FACTORY FIRE". Steps unfold. The mouse highlights the AET Routing calls compared to Continuous.
 
 **Narrator:**
 "Next, a chemical factory fire. Watch the routing step. In traditional Continuous routing, this new event would trigger an expensive recalculation of all active trucks. Our AET router simply adapts the existing routesâ€”requiring only 1 solver call compared to 8 in the baseline.
@@ -28,7 +28,7 @@ Furthermore, if our cloud LLM goes down due to internet outages, our system seam
 
 ## 4. Scenario 3 Walkthrough: Earthquake Aftershock (60 sec)
 **On Screen:**
-Terminal continues to "SCENARIO 3: GAMPAHA EARTHQUAKE". Mouse highlights the "Truck-Drone coverage: 100%".
+Terminal continues to "SCENARIO 3: GUNTUR EARTHQUAKE". Mouse highlights the "Truck-Drone coverage: 100%".
 
 **Narrator:**
 "In this earthquake scenario, roads are blocked by debris. Standard truck-only routing fails to reach the victims, capping coverage at 50%.

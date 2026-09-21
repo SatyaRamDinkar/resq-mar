@@ -62,9 +62,9 @@ def run_full_pipeline():
             "name": "SCENARIO 1 - Building Fire with Trapped Persons",
             "raw_text": "FIRE! Building 7, 3rd floor, people trapped, send help now!!!",
             "locations": [
-                {"id": "fire_station",  "lat": 12.9716, "lon": 77.5946, "demand": 0,  "priority": 1},
+                {"id": "fire_station",  "lat": 17.6868, "lon": 83.2185, "demand": 0,  "priority": 1},
                 {"id": "bldg7",         "lat": 12.9720, "lon": 77.5950, "demand": 8,  "priority": 4},
-                {"id": "city_hospital", "lat": 12.9700, "lon": 77.5930, "demand": 0,  "priority": 1},
+                {"id": "city_hospital", "lat": 17.6850, "lon": 77.5930, "demand": 0,  "priority": 1},
             ],
             "vehicles": [
                 {"id": "fire_truck_1", "capacity": 12, "speed_kmh": 40.0, "start_location_id": "fire_station"},

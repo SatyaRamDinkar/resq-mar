@@ -15,7 +15,7 @@ def run_demo():
     # Setup Depot and Locations
     depot_id = "D"
     locations = [
-        Location(id="D", lat=12.9716, lon=77.5946, demand=0, priority=1),
+        Location(id="D", lat=17.6868, lon=83.2185, demand=0, priority=1),
         
         # Reachable locations (normal roads)
         Location(id="R1", lat=12.9726, lon=77.5956, demand=2, priority=2),
@@ -28,10 +28,10 @@ def run_demo():
         Location(id="R8", lat=12.9676, lon=77.5916, demand=2, priority=3),
         
         # Blocked locations (flooded/rubble, only drones can reach)
-        Location(id="B1", lat=12.9766, lon=77.5900, demand=2, priority=4, is_roadblocked=True),
+        Location(id="B1", lat=12.9766, lon=83.2150, demand=2, priority=4, is_roadblocked=True),
         Location(id="B2", lat=12.9666, lon=77.5990, demand=1, priority=3, is_roadblocked=True),
         Location(id="B3", lat=12.9780, lon=77.5950, demand=3, priority=4, is_roadblocked=True),
-        Location(id="B4", lat=12.9650, lon=77.5900, demand=1, priority=2, is_roadblocked=True),
+        Location(id="B4", lat=12.9650, lon=83.2150, demand=1, priority=2, is_roadblocked=True),
     ]
     
     # Setup Fleet
