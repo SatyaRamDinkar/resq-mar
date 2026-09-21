@@ -90,6 +90,26 @@ if page == 'Live Command Center':
             render_transcription_result(result)
         else:
             st.error("Whisper model is not available. Please ensure `openai-whisper` and `ffmpeg` are installed.")
+
+    st.markdown("---")
+    st.subheader("Visual Damage Assessment")
+    from frontend.components.vision_input import render_vision_uploader, render_vision_result
+    
+    image_path = render_vision_uploader()
+    
+    if image_path:
+        if 'vision_agent' not in st.session_state:
+            with st.spinner("Initializing VisionAgent..."):
+                from src.agents.vision_agent import VisionAgent
+                st.session_state.vision_agent = VisionAgent()
+                
+        v_agent = st.session_state.vision_agent
+        if v_agent.enabled:
+            with st.spinner("AI analyzing structural damage and severity..."):
+                v_result = v_agent.analyze_damage(image_path)
+            render_vision_result(v_result)
+        else:
+            st.error("Vision AI disabled. Please configure GEMINI_API_KEY and install Pillow.")
             
 elif page == 'Incident Heatmap':
     st.title('Incident Heatmap')
