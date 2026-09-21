@@ -109,8 +109,23 @@ class AgenticRAGPipeline:
         if not filtered_sops:
             print("[RAG Orchestrator] WARNING: No SOPs approved. Proceeding with general planning fallback.")
 
+        # STEP 3.5: LIVE SITUATIONAL AWARENESS
+        live_context = None
+        hazard = metadata.get("hazard_type", "unknown")
+        location = metadata.get("location_description", "unknown")
+        
+        if hazard != "unknown" and location != "unknown":
+            try:
+                print("[RAG Orchestrator] Step 3.5: Fetching Live Situational Awareness...")
+                from src.agents.live_awareness_agent import LiveAwarenessAgent
+                live_agent = LiveAwarenessAgent()
+                live_context = live_agent.fetch_live_context(hazard, location)
+                print(f"[RAG Orchestrator] Live Awareness injected successfully.")
+            except Exception as e:
+                print(f"[RAG Orchestrator] Live Awareness module failed: {e}")
+
         # STEP 4: PLANNING
-        plan = self.planner_agent.generate_plan(metadata, filtered_sops)
+        plan = self.planner_agent.generate_plan(metadata, filtered_sops, live_context=live_context)
         print(f"[RAG Orchestrator] Step 4 complete. Plan generated with {len(plan.get('tasks', []))} tasks")
         
         return {

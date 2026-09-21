@@ -24,15 +24,17 @@ class PlannerAgent(ResQAgent):
         )
         super().__init__(name="PlannerAgent", system_message=system_message, llm_config=llm_config, use_json_mode=True)
 
-    def generate_plan(self, metadata: Dict[str, Any], retrieved_sops: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def generate_plan(self, metadata: Dict[str, Any], retrieved_sops: List[Dict[str, Any]], live_context: str = None) -> Dict[str, Any]:
         """
-        Generates a step-by-step tactical plan grounded in SOPs.
+        Generates a step-by-step tactical plan grounded in SOPs and live context.
         """
         sops_text = json.dumps(retrieved_sops, indent=2) if retrieved_sops else "None"
         metadata_text = json.dumps(metadata, indent=2)
+        live_text_block = f"LIVE SITUATIONAL AWARENESS:\n{live_context}\n\n" if live_context else ""
         
         prompt = (
             f"INCIDENT METADATA:\n{metadata_text}\n\n"
+            f"{live_text_block}"
             f"RETRIEVED SOPs:\n{sops_text}\n\n"
             "If the hazard_type is 'unknown' or this is a non-emergency (e.g., lost pet), generate a single "
             "task advising the user to contact non-emergency services, and require 0 resources.\n\n"
