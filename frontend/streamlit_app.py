@@ -74,8 +74,8 @@ HAZARD_BADGE = {
     "unknown": ":gray[UNKNOWN]",
 }
 
-# Default depot coordinates (Bangalore)
-DEFAULT_DEPOT = {"id": "central_depot", "lat": 12.9716, "lon": 77.5946}
+# Default depot coordinates (Visakhapatnam)
+DEFAULT_DEPOT = {"id": "central_depot", "lat": 17.6868, "lon": 83.2185}
 
 
 def check_ollama_status() -> bool:

@@ -17,7 +17,7 @@ def generate_incidents(num: int = 15, seed: int = 42) -> list:
     """Generates a deterministic sequence of simulated incidents."""
     random.seed(seed)
     incidents = []
-    base_lat, base_lon = 12.9716, 77.5946  # Bangalore Depot
+    base_lat, base_lon = 17.6868, 83.2185  # Visakhapatnam Depot
     
     for i in range(num):
         lat = base_lat + random.uniform(-0.05, 0.05)
@@ -39,7 +39,7 @@ def run_benchmark():
     print("Initializing components...")
     
     solver = VRPSolver()
-    depot = {"id": "central_depot", "lat": 12.9716, "lon": 77.5946, "demand": 0, "priority": 1}
+    depot = {"id": "central_depot", "lat": 17.6868, "lon": 83.2185, "demand": 0, "priority": 1}
     vehicles = [
         {"id": "amb_1", "capacity": 15, "start_location_id": "central_depot"},
         {"id": "amb_2", "capacity": 15, "start_location_id": "central_depot"},

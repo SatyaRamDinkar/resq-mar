@@ -105,7 +105,7 @@ def get_map_center(incidents: Optional[List[dict]] = None) -> Tuple[float, float
     Calculate the geographic center for the map view.
 
     If incidents are provided, returns the average lat/lon.
-    Otherwise returns Bangalore, India as the default.
+    Otherwise returns Visakhapatnam, India as the default.
 
     Args:
         incidents: List of incident dicts, each having 'lat' and 'lon' keys.
@@ -114,7 +114,7 @@ def get_map_center(incidents: Optional[List[dict]] = None) -> Tuple[float, float
         Tuple[float, float]: (latitude, longitude) for the map center.
     """
     if incidents:
-        avg_lat = sum(inc.get("lat", 12.9716) for inc in incidents) / len(incidents)
-        avg_lon = sum(inc.get("lon", 77.5946) for inc in incidents) / len(incidents)
+        avg_lat = sum(inc.get("lat", 17.6868) for inc in incidents) / len(incidents)
+        avg_lon = sum(inc.get("lon", 83.2185) for inc in incidents) / len(incidents)
         return (avg_lat, avg_lon)
-    return (12.9716, 77.5946)  # Bangalore default
+    return (17.6868, 83.2185)  # Visakhapatnam default

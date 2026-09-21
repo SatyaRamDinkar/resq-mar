@@ -78,7 +78,7 @@ def render_coverage_stats(incidents: List[Dict[str, Any]], resources: List[Dict[
 def get_mock_incidents() -> List[Dict[str, Any]]:
     return [
         {'lat': 17.6868, 'lon': 83.2185, 'type': 'flood', 'severity': 'high', 'status': 'active'},
-        {'lat': 17.6900, 'lon': 79.8500, 'type': 'fire', 'severity': 'critical', 'status': 'active'},
+        {'lat': 17.6900, 'lon': 83.2500, 'type': 'fire', 'severity': 'critical', 'status': 'active'},
         {'lat': 17.6600, 'lon': 83.2600, 'type': 'medical', 'severity': 'medium', 'status': 'active'},
         {'lat': 17.6900, 'lon': 83.2900, 'type': 'earthquake', 'severity': 'high', 'status': 'active'},
         {'lat': 17.6750, 'lon': 83.2200, 'type': 'flood', 'severity': 'low', 'status': 'active'},
