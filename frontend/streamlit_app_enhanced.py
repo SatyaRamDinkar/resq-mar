@@ -22,6 +22,9 @@ def _cleanup_temp_files():
         except: pass
 atexit.register(_cleanup_temp_files)
 
+if "temp_files" not in st.session_state:
+    st.session_state.temp_files = []
+
 
 from dotenv import load_dotenv
 load_dotenv()
