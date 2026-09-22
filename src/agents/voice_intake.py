@@ -148,7 +148,7 @@ class VoiceIntake:
         
         if intake_agent is None:
             if IntakeAgent:
-                intake_agent = IntakeAgent(llm_config={"model": "llama3.1", "base_url": "http://localhost:11434"})
+                intake_agent = IntakeAgent(llm_config={"config_list": [{"model": "llama3.1", "base_url": "http://localhost:11434/v1", "api_key": "ollama"}]})
             else:
                 return {"error": "IntakeAgent not found."}
                 

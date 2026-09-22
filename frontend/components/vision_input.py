@@ -20,7 +20,9 @@ def render_vision_uploader() -> str:
             tmp_file.write(image_file.getvalue())
             temp_path = tmp_file.name
         
-        st.image(image_file, caption="Uploaded Evidence", use_column_width=True)
+        st.image(image_file, caption="Uploaded Evidence", use_container_width=True)
+        if "temp_files" not in st.session_state: st.session_state.temp_files = []
+        st.session_state.temp_files.append(temp_path)
         return temp_path
     
     return None

@@ -11,6 +11,20 @@ import sys
 from datetime import datetime
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from dotenv import load_dotenv
+load_dotenv()
+import atexit
+def _cleanup_temp_files():
+    import os
+    import streamlit as st
+    for f in st.session_state.get("temp_files", []):
+        try: os.unlink(f)
+        except: pass
+atexit.register(_cleanup_temp_files)
+
+
+from dotenv import load_dotenv
+load_dotenv()
 
 from src.agents.dashboard_agent import DashboardAgent
 from frontend.components.approval_panel import render_approval_panel, render_decision_history
@@ -388,11 +402,37 @@ with st.sidebar:
     
     st.markdown("""
     <div style="padding: 8px 0;">
-        <div class="stat-row"><span class="stat-label"><span class="live-dot"></span>Ollama LLM</span><span class="status-badge badge-online">ONLINE</span></div>
-        <div class="stat-row"><span class="stat-label"><span class="live-dot"></span>ChromaDB</span><span class="status-badge badge-online">READY</span></div>
-        <div class="stat-row"><span class="stat-label"><span class="live-dot"></span>OSRM Router</span><span class="status-badge badge-warning">STANDBY</span></div>
-    </div>
-    """, unsafe_allow_html=True)
+</div>
+""", unsafe_allow_html=True)
+
+# --- Live System Health Checks ---
+import requests as _req
+
+def _check_service(url, timeout=1):
+    try:
+        _req.get(url, timeout=timeout)
+        return True
+    except Exception:
+        return False
+
+_ollama_ok = _check_service("http://localhost:11434/api/tags")
+_osrm_ok   = _check_service("http://localhost:5000/")
+_chroma_ok = True
+
+def _badge(ok):
+    return '<span class="status-badge badge-online">ONLINE</span>' if ok else '<span class="status-badge badge-critical">OFFLINE</span>'
+
+def _dot(ok):
+    color = "#22c55e" if ok else "#ef4444"
+    return f'<span class="live-dot" style="background:{color};"></span>'
+
+st.markdown(f"""
+<div style="padding: 8px 0;">
+  <div class="stat-row"><span class="stat-label">{_dot(_ollama_ok)}Ollama LLM</span>{_badge(_ollama_ok)}</div>
+  <div class="stat-row"><span class="stat-label">{_dot(_chroma_ok)}ChromaDB</span>{_badge(_chroma_ok)}</div>
+  <div class="stat-row"><span class="stat-label">{_dot(_osrm_ok)}OSRM Router</span>{_badge(_osrm_ok)}</div>
+</div>
+""", unsafe_allow_html=True)
 
     st.markdown("---")
     auto_refresh = st.checkbox('Auto-Refresh (5s)', value=False)
@@ -538,7 +578,7 @@ elif page == 'Incident Heatmap':
 
     if HAS_ST_FOLIUM:
         from streamlit_folium import st_folium
-        st_folium(m, width=None, height=550, use_container_width=True)
+        st_folium(m, width=None, height=550, use_container_width=True, returned_objects=[])
     else:
         import streamlit.components.v1 as components
         components.html(m._repr_html_(), height=550)

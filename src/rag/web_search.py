@@ -2,7 +2,13 @@ import os
 import requests
 from duckduckgo_search import DDGS
 from typing import List, Dict, Optional
-import google.generativeai as genai
+
+try:
+    import google.generativeai as genai
+    HAS_GEMINI = True
+except ImportError:
+    genai = None
+    HAS_GEMINI = False
 
 def fetch_web_results(query: str, max_results: int = 3) -> str:
     """Fetch live web results using duckduckgo-search."""

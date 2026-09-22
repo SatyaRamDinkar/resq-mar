@@ -1,6 +1,12 @@
 import os
 from typing import Dict, Any
-from duckduckgo_search import DDGS
+
+try:
+    from duckduckgo_search import DDGS
+    HAS_DDGS = True
+except ImportError:
+    DDGS = None
+    HAS_DDGS = False
 
 try:
     from groq import Groq
@@ -34,6 +40,7 @@ class LiveAwarenessAgent:
             print("[WARN] Live context will be passed as raw DuckDuckGo text.")
 
     def fetch_live_context(self, hazard: str, location: str) -> str:
+        if not HAS_DDGS: return "Live awareness unavailable: duckduckgo-search not installed."
         """
         Fetch and summarize live news updates for a given hazard and location.
         

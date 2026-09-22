@@ -21,6 +21,8 @@ def render_voice_uploader() -> str:
             temp_path = tmp_file.name
         
         st.audio(audio_file)
+        if "temp_files" not in st.session_state: st.session_state.temp_files = []
+        st.session_state.temp_files.append(temp_path)
         return temp_path
     
     return None
@@ -43,7 +45,9 @@ def render_microphone_input() -> str:
             with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tmp_file:
                 tmp_file.write(audio_data.getvalue())
                 temp_path = tmp_file.name
-            return temp_path
+            if "temp_files" not in st.session_state: st.session_state.temp_files = []
+        st.session_state.temp_files.append(temp_path)
+        return temp_path
     else:
         # Fallback for older Streamlit versions
         st.warning("st.audio_input is not available in your Streamlit version.")

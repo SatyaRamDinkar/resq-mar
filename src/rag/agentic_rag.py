@@ -94,7 +94,7 @@ class AgenticRAGPipeline:
                     retrieved_sops.append({
                         "id": "web_search_fallback",
                         "hazard_type": metadata.get("hazard_type", "unknown"),
-                        "text": f"LIVE WEB SEARCH CONTEXT:\n{web_summary}",
+                        "content": f"LIVE WEB SEARCH CONTEXT:\n{web_summary}",
                         "metadata": {"source": "DuckDuckGo + AI Summary"}
                     })
                     # Re-assess one final time with web context

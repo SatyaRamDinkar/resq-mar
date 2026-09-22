@@ -53,7 +53,7 @@ class LanguageService:
             text (str): The text to analyze.
             
         Returns:
-            str: 2-letter ISO language code (e.g., 'en', 'hi', 'te', 'si', 'ta').
+            str: 2-letter ISO language code (e.g., 'en', 'hi', 'te', 'ta').
         """
         if not self.enabled or not text.strip():
             return "en"
