@@ -644,7 +644,7 @@ elif page == 'Agent Pipeline':
     
     st.markdown("")
     
-    st.markdown('<div class="section-header">Agent Execution Logs</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">📡 Live Agent Chatter (Backend Operations)</div>', unsafe_allow_html=True)
     render_agent_monitor(agent.agent_logs)
 
 

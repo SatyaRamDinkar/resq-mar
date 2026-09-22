@@ -35,8 +35,10 @@ def get_mock_agent_logs() -> List[Dict[str, Any]]:
     from datetime import datetime, timedelta
     now = datetime.now()
     return [
-        {'agent': 'IntakeAgent', 'status': 'completed', 'task': 'Parsed raw 911 text', 'timestamp': (now - timedelta(minutes=5)).isoformat(), 'duration_ms': 120},
-        {'agent': 'MetadataAgent', 'status': 'completed', 'task': 'Extracted hazard: flood', 'timestamp': (now - timedelta(minutes=4)).isoformat(), 'duration_ms': 300},
-        {'agent': 'PlannerAgent', 'status': 'completed', 'task': 'Generated tactical plan', 'timestamp': (now - timedelta(minutes=3)).isoformat(), 'duration_ms': 4500},
-        {'agent': 'RouterAgent', 'status': 'running', 'task': 'Solving VRP for 5 locations', 'timestamp': now.isoformat(), 'duration_ms': 0},
+        {'agent': 'IntakeAgent', 'status': 'completed', 'task': 'Parsed raw emergency input (Location: 17.6868, 83.2185)', 'timestamp': (now - timedelta(minutes=6)).isoformat(), 'duration_ms': 120},
+        {'agent': 'MetadataAgent', 'status': 'completed', 'task': 'Extracted hazard: flood, severity: high', 'timestamp': (now - timedelta(minutes=5)).isoformat(), 'duration_ms': 300},
+        {'agent': 'LiveAwareness', 'status': 'completed', 'task': 'DDGS Query: "Visakhapatnam RK Beach flood". Groq summarized 3 live news alerts.', 'timestamp': (now - timedelta(minutes=4)).isoformat(), 'duration_ms': 1250},
+        {'agent': 'PlannerAgent', 'status': 'completed', 'task': 'Generated tactical plan with live weather context', 'timestamp': (now - timedelta(minutes=3)).isoformat(), 'duration_ms': 4500},
+        {'agent': 'RouterAgent', 'status': 'completed', 'task': 'Solved VRP for 5 locations using OSRM MLD', 'timestamp': (now - timedelta(minutes=1)).isoformat(), 'duration_ms': 2100},
+        {'agent': 'CommsAgent', 'status': 'running', 'task': 'Translating dispatch to Telugu (తెలుగు) & Hindi (हिंदी)...', 'timestamp': now.isoformat(), 'duration_ms': 0},
     ]
