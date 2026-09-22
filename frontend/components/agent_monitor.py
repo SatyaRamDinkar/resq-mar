@@ -14,7 +14,7 @@ def render_agent_monitor(agent_logs: List[Dict[str, Any]]) -> None:
     st.markdown(f'**Active agents: {active_agents} &nbsp;|&nbsp; Completed: {completed} &nbsp;|&nbsp; Errors: {errors}**')
     
     # Terminal-style output
-    terminal_html = '<div style="background-color: #0f172a; color: #10b981; font-family: \\'JetBrains Mono\\', monospace; padding: 15px; border-radius: 8px; border: 1px solid #334155; height: 300px; overflow-y: auto; font-size: 0.85rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);">'
+    terminal_html = '<div style="background-color: #0f172a; color: #10b981; font-family: \'JetBrains Mono\', monospace; padding: 15px; border-radius: 8px; border: 1px solid #334155; height: 300px; overflow-y: auto; font-size: 0.85rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);">'
     for log in reversed(agent_logs):
         time_str = log.get('timestamp', '')[:19].replace('T', ' ')
         agent_name = log.get('agent', 'SYSTEM').upper()
