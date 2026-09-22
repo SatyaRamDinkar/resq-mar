@@ -405,34 +405,34 @@ with st.sidebar:
 </div>
 """, unsafe_allow_html=True)
 
-# --- Live System Health Checks ---
-import requests as _req
+    # --- Live System Health Checks ---
+    import requests as _req
 
-def _check_service(url, timeout=1):
-    try:
-        _req.get(url, timeout=timeout)
-        return True
-    except Exception:
-        return False
+    def _check_service(url, timeout=1):
+        try:
+            _req.get(url, timeout=timeout)
+            return True
+        except Exception:
+            return False
 
-_ollama_ok = _check_service("http://localhost:11434/api/tags")
-_osrm_ok   = _check_service("http://localhost:5000/")
-_chroma_ok = True
+    _ollama_ok = _check_service("http://localhost:11434/api/tags")
+    _osrm_ok   = _check_service("http://localhost:5000/")
+    _chroma_ok = True
 
-def _badge(ok):
-    return '<span class="status-badge badge-online">ONLINE</span>' if ok else '<span class="status-badge badge-critical">OFFLINE</span>'
+    def _badge(ok):
+        return '<span class="status-badge badge-online">ONLINE</span>' if ok else '<span class="status-badge badge-critical">OFFLINE</span>'
 
-def _dot(ok):
-    color = "#22c55e" if ok else "#ef4444"
-    return f'<span class="live-dot" style="background:{color};"></span>'
+    def _dot(ok):
+        color = "#22c55e" if ok else "#ef4444"
+        return f'<span class="live-dot" style="background:{color};"></span>'
 
-st.markdown(f"""
-<div style="padding: 8px 0;">
-  <div class="stat-row"><span class="stat-label">{_dot(_ollama_ok)}Ollama LLM</span>{_badge(_ollama_ok)}</div>
-  <div class="stat-row"><span class="stat-label">{_dot(_chroma_ok)}ChromaDB</span>{_badge(_chroma_ok)}</div>
-  <div class="stat-row"><span class="stat-label">{_dot(_osrm_ok)}OSRM Router</span>{_badge(_osrm_ok)}</div>
-</div>
-""", unsafe_allow_html=True)
+    st.markdown(f"""
+    <div style="padding: 8px 0;">
+      <div class="stat-row"><span class="stat-label">{_dot(_ollama_ok)}Ollama LLM</span>{_badge(_ollama_ok)}</div>
+      <div class="stat-row"><span class="stat-label">{_dot(_chroma_ok)}ChromaDB</span>{_badge(_chroma_ok)}</div>
+      <div class="stat-row"><span class="stat-label">{_dot(_osrm_ok)}OSRM Router</span>{_badge(_osrm_ok)}</div>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown("---")
     auto_refresh = st.checkbox('Auto-Refresh (5s)', value=False)
