@@ -418,8 +418,16 @@ with st.sidebar:
         except Exception:
             return False
 
+    def _check_osrm_docker():
+        import subprocess
+        try:
+            res = subprocess.run(['docker', 'ps', '-q', '-f', 'name=osrm-router'], capture_output=True, text=True)
+            return res.stdout.strip() != ""
+        except:
+            return _check_service("http://127.0.0.1:5000/")
+
     _ollama_ok = _check_service("http://127.0.0.1:11434/api/tags")
-    _osrm_ok   = _check_service("http://127.0.0.1:5000/")
+    _osrm_ok   = _check_osrm_docker()
     _chroma_ok = True
 
     def _badge(ok):
