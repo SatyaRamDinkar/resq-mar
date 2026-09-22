@@ -1,140 +1,84 @@
-# 🚨 ResQ-MAR
-## AI-Powered Multi-Agent Emergency Response System
+# ResQ-MAR 🚨
+**Multi-Agent Emergency Response & Orchestration System**
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python 3.10+">
-  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT License">
-  <img src="https://img.shields.io/badge/LLM-Ollama-orange.svg" alt="Ollama">
-  <img src="https://img.shields.io/badge/Framework-AutoGen-red.svg" alt="AutoGen">
-  <img src="https://img.shields.io/badge/Routing-OR--Tools-yellow.svg" alt="OR-Tools">
-  <img src="https://img.shields.io/badge/VectorDB-ChromaDB-purple.svg" alt="ChromaDB">
-</p>
+![ResQ-MAR Dashboard](https://img.shields.io/badge/UI-Streamlit_Enhanced-3b82f6?style=for-the-badge)
+![AI Framework](https://img.shields.io/badge/AI-Microsoft_AutoGen-10b981?style=for-the-badge)
+![Local LLM](https://img.shields.io/badge/LLM-Ollama_Llama3-f59e0b?style=for-the-badge)
 
-<p align="center">
-  <b>Coordinated Intelligence for Coordinated Response</b><br>
-  Multi-agent orchestration · Agentic RAG · Adaptive truck-drone routing · Edge resilience
-</p>
+ResQ-MAR is a state-of-the-art, autonomous emergency management platform designed specifically for **Visakhapatnam, Andhra Pradesh**. By orchestrating a swarm of specialized AI agents, ResQ-MAR processes multi-modal civilian emergency inputs and dynamically routes resources in real-time, minimizing response delays during critical disasters.
 
-## Overview
-ResQ-MAR is a comprehensive, AI-powered disaster management platform designed to transform unstructured, panicked citizen distress signals into safe, accountable, and highly coordinated field operations. It solves the profound "last-mile" challenge of emergency response, where traditional static protocols and manual dispatching buckle under the pressure of rapidly compounding crises. Built for emergency management agencies, human dispatchers, and field responders, the platform acts as an intelligent "Disaster Copilot." What sets ResQ-MAR apart is its commitment to absolute operational resilience and data privacy: it runs 100% locally using open-source Large Language Models, supports multi-hazard incidents, and enforces strict Human-in-the-Loop oversight for life-or-death decisions.
+---
 
-## 🎥 Demo
-> *Demo video and screenshots will be added after Phase 4 implementation.*
+## 🌟 Key Features
 
-## Key Features
-- 🤖 **6 Specialized AI Agents** — Intake, Metadata, Planner, Router, Comms, Edge
-- 🔍 **Agentic RAG Pipeline** — 4-step context-aware task planning using disaster SOPs
-- 🗺️ **Adaptive Truck-Drone Routing** — Event-triggered re-optimization with OR-Tools
-- 🛡️ **Human-in-the-Loop** — Mandatory approval gates for high-urgency dispatches
-- 📱 **Edge Resilience** — Offline-capable SLM for field responders via PWA
-- 🌐 **Real-Time Dashboard** — Streamlit-based live incident tracking and visualization
-- 💰 **100% Free & Open Source** — Zero API costs, zero subscriptions
+*   **🤖 Multi-Agent Swarm (AutoGen):** A specialized team of AI agents (Intake, Assessor, Planner, Router, and Comms) that collaborate to assess, plan, and execute emergency responses without human bottlenecks.
+*   **🎙️ Multi-Modal Intake:** 
+    *   **Voice (Whisper AI):** Automatically transcribes and parses raw 911 audio recordings.
+    *   **Vision (Gemini/Llava):** Assesses structural damage and incident severity from citizen-uploaded disaster photos.
+*   **🌍 Live Situational Awareness:** Integrates DuckDuckGo Search and Groq to inject real-time weather and news context into the AI's tactical planning window.
+*   **🗺️ Geospatial Routing (OSRM):** Solves the Vehicle Routing Problem (VRP) to optimize ambulance and fire truck deployment across the Andhra Pradesh road network.
+*   **🗣️ Multi-Language Dispatch:** Automatically translates emergency alerts and dispatcher instructions into **Telugu (తెలుగు)** and **Hindi (हिंदी)** for local responders.
+*   **🔍 Explainable AI (XAI):** Features a dedicated Explainability Dashboard with MermaidJS flowcharts that trace the exact logical steps the AI took to reach a routing decision.
 
-## Architecture
+---
 
-```text
-┌─────────────────────────────────────────────────────────────┐
-│                         PRESENTATION LAYER                  │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │ Streamlit   │  │ Mobile PWA  │  │ Edge Device (Termux)│  │
-│  │ Dashboard   │  │ (Citizen)   │  │ (Field Responder)   │  │
-│  └──────┬──────┘  └──────┬──────┘  └──────────┬──────────┘  │
-│         └─────────────────┴────────────────────┘            │
-│                           │                                 │
-│                    ┌──────┴──────┐                          │
-│                    │  FastAPI    │                          │
-│                    │  Gateway    │                          │
-│                    └──────┬──────┘                          │
-│                         │                                   │
-│              ┌──────────┴──────────┐                        │
-│              │ ORCHESTRATION LAYER │                        │
-│              │ (AutoGen GroupChat) │                        │
-│              └──────────┬──────────┘                        │
-│                         │                                   │
-│    ┌────────┬───────────┼───────────┬────────┐              │
-│    ▼        ▼           ▼           ▼        ▼              │
-│ ┌─────┐  ┌─────┐   ┌─────────┐   ┌─────┐  ┌─────┐           │
-│ │Intake│  │Meta │   │Planner  │   │Route│  │Comms│           │
-│ │Agent │  │Data │   │Agent    │   │Agent│  │Agent│           │
-│ └─────┘  └─────┘   └────┬────┘   └─────┘  └─────┘           │
-│                         │                                   │
-│                    ┌────┴────┐                              │
-│                    │   RAG   │                              │
-│                    │ Pipeline│                              │
-│                    └────┬────┘                              │
-│                         │                                   │
-│              ┌──────────┴──────────┐                        │
-│              │   KNOWLEDGE LAYER   │                        │
-│              │  ChromaDB + SOPs    │                        │
-│              └─────────────────────┘                        │
-└─────────────────────────────────────────────────────────────┘
-```
-*High-level system architecture showing the 3-layer design.*
+## 🛠️ Technology Stack
 
-## Tech Stack
+*   **Frontend:** Streamlit (Custom Glassmorphism CSS, Plotly, MermaidJS)
+*   **AI Orchestration:** Microsoft AutoGen
+*   **Local Inference:** Ollama (Llama 3.1)
+*   **Routing Engine:** OSRM (Open Source Routing Machine) via Docker
+*   **Testing:** Pytest (Full component and integration coverage)
 
-| Layer | Technology | Purpose |
-|-------|-----------|---------|
-| Multi-Agent Framework | AutoGen (AG2) | Agent orchestration & conversation |
-| Local LLM | Ollama + Llama 3.1 | Zero-cost, offline-capable inference |
-| Vector Database | ChromaDB | SOP storage & semantic retrieval |
-| Routing Engine | Google OR-Tools | Multi-depot VRP with time windows |
-| Dashboard | Streamlit + Folium | Real-time incident visualization |
-| Backend API | FastAPI + Uvicorn | RESTful service layer |
-| Edge Model | Phi-3-mini (GGUF) | <2GB offline guidance |
-| Mobile | Progressive Web App | Offline-first responder client |
+---
 
-## Quick Start
+## 🚀 Quick Start Guide
 
-### Prerequisites
-- Python 3.10+
-- Git
-- Ollama (install from https://ollama.com/download)
+### 1. Prerequisites
+*   Python 3.10+
+*   [Ollama](https://ollama.ai/) installed locally.
+*   [Docker Desktop](https://www.docker.com/) (required for OSRM).
+*   FFmpeg (required for Whisper audio processing).
 
-### Installation
+### 2. Installation
+Clone the repository and install dependencies:
 ```bash
-# 1. Clone the repository
-git clone https://github.com/[your-username]/resq-mar.git
+git clone https://github.com/SatyaRamDinkar/resq-mar.git
 cd resq-mar
-
-# 2. Run the setup script
-chmod +x setup.sh
-./setup.sh
-
-# 3. Start Ollama (in a separate terminal)
-ollama serve
-
-# 4. Verify everything works
-python verify.py
-
-# 5. Run the hello-world demo
-python hello_world_agent.py
-
-# 6. Launch the dashboard
-streamlit run frontend/streamlit_app.py
+pip install -r requirements.txt
 ```
 
-## What's Already Built
-- **Completed Components**: IntakeAgent, MetadataAgent, PlannerAgent, RouterAgent, CommsAgent, Orchestrator, RAG Pipeline, VRP Solver, Streamlit Dashboard
-- **Review 2 Ready**: Yes
-- **Phase 3 Step 1**: 4-step Agentic RAG (RetrievalAgent + AssessorAgent) — ✅ COMPLETE
-- **Benchmark**: Coverage scores 0.60-0.90 vs Naive RAG
-- **Run Final Demo**: `python src/agents/demo_orchestrator.py`
-- **Run Integration Tests**: `pytest tests/test_integration.py -v`
-- **Launch Dashboard**: `streamlit run frontend/streamlit_app.py`
+### 3. Environment Setup
+Copy the example environment file and add your API keys (for Gemini Vision and Groq Live Awareness):
+```bash
+cp .env.example .env
+```
 
+### 4. Start Local Services
+Start Ollama and pull the required model:
+```bash
+ollama serve
+ollama pull llama3.1
+```
 
+Start the OSRM Routing Engine (Ensure Docker is running):
+```bash
+docker run -d -p 5000:5000 --name osrm-router -v "${PWD}/data/osrm:/data" osrm/osrm-backend osrm-routed --algorithm mld /data/india-southern-zone-latest.osrm
+```
 
-### Phase 3: RAG Pipeline Comparison
+### 5. Launch the Command Center
+```bash
+python -m streamlit run frontend/streamlit_app_enhanced.py
+```
+Navigate to `http://localhost:8501` to view the live dashboard!
 
-| Feature | Base Paper (ResQConnect) | Our Project (ResQ-MAR) | Notes |
-|---------|--------------------------|--------------------------|-------|
-| Vector DB | ChromaDB | ChromaDB | Same as base paper |
-| Embedding Model | Not specified | all-MiniLM-L6-v2 | Open-source, 22MB |
-| Metadata Filtering | ✅ Yes | ✅ Yes (by hazard_type) | Automatic extraction |
-| Assessor Node | ✅ Yes | ✅ Yes | src/agents/assessor_agent.py |
-| Reformulator Node | ✅ Yes | ✅ Yes | Re-retrieval via retrieval_agent.py |
-| Web Search Fallback | ✅ Yes (Tavily API) | ✅ Yes (DuckDuckGo + Gemini/Ollama) | 100% Free architecture |
-| LLM for Agents | GPT-4o (cloud, $$$) | Llama 3.1 (local, $0) | Runs on localhost:11434 |
+---
 
-> NOTE: The Base Paper used the paid Tavily API and paid GPT-4o for its fallback web search. To maintain our strict 100% zero-cost constraint, ResQ-MAR implements a highly resilient, completely free fallback using the `duckduckgo-search` library combined with a dual-summarizer approach (Gemini API with fallback to local Ollama Llama 3.1).
+## 🧪 Testing
+ResQ-MAR includes a robust test suite ensuring maximum reliability of the autonomous agents. To run the tests:
+```bash
+pytest tests/ -v
+```
+
+---
+*Developed as a Capstone Project demonstrating the integration of Multi-Agent Systems in real-world disaster management.*
