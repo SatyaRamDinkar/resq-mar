@@ -411,15 +411,15 @@ with st.sidebar:
     # --- Live System Health Checks ---
     import requests as _req
 
-    def _check_service(url, timeout=1):
+    def _check_service(url, timeout=2):
         try:
             _req.get(url, timeout=timeout)
             return True
         except Exception:
             return False
 
-    _ollama_ok = _check_service("http://localhost:11434/api/tags")
-    _osrm_ok   = _check_service("http://localhost:5000/")
+    _ollama_ok = _check_service("http://127.0.0.1:11434/api/tags")
+    _osrm_ok   = _check_service("http://127.0.0.1:5000/")
     _chroma_ok = True
 
     def _badge(ok):
