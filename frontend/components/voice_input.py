@@ -46,8 +46,8 @@ def render_microphone_input() -> str:
                 tmp_file.write(audio_data.getvalue())
                 temp_path = tmp_file.name
             if "temp_files" not in st.session_state: st.session_state.temp_files = []
-        st.session_state.temp_files.append(temp_path)
-        return temp_path
+            st.session_state.temp_files.append(temp_path)
+            return temp_path
     else:
         # Fallback for older Streamlit versions
         st.warning("st.audio_input is not available in your Streamlit version.")
