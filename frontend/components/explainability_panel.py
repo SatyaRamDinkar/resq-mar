@@ -33,6 +33,24 @@ def render_explainability_panel(incident_id: str, decision_chain: List[Dict[str,
             st.write(f"**Reasoning:** {d.get('reasoning', 'No reasoning provided.')}")
             st.caption(f"Timestamp: {d.get('timestamp')}")
 
+def render_decision_history(decisions: List[Dict[str, Any]]) -> None:
+    """Render a chronological list of agent decisions."""
+    st.markdown("### Agent Decision Trace")
+    if not decisions:
+        st.info("No decisions recorded yet.")
+        return
+        
+    # Generate Mermaid Flowchart
+    mermaid_code = "graph TD\n"
+    for i, dec in enumerate(decisions):
+        agent = dec.get("agent_name", "Agent").replace(" ", "")
+        action = dec.get("action", "Action")
+        # sanitize action for mermaid
+        action = action.replace('"', '').replace("'", "")
+        mermaid_code += f"    Node{i}[{agent}] -->|{action}| Node{i+1}[Outcome]\n"
+    
+    st.markdown(f"```mermaid\n{mermaid_code}\n```")
+
 def render_confidence_chart(decisions: List[Dict[str, Any]]) -> None:
     """
     Render a bar chart of confidence scores across agents.

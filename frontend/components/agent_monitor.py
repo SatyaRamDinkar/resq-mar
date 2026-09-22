@@ -1,12 +1,8 @@
-"""
-Agent Monitor Component for live activity tracking.
-"""
 import streamlit as st
 import pandas as pd
 from typing import List, Dict, Any
 
 def render_agent_monitor(agent_logs: List[Dict[str, Any]]) -> None:
-    """Render the live agent activity table."""
     if not agent_logs:
         st.info('No agent activity recorded yet.')
         return
@@ -15,28 +11,27 @@ def render_agent_monitor(agent_logs: List[Dict[str, Any]]) -> None:
     completed = len([log for log in agent_logs if log.get('status') == 'completed'])
     errors = len([log for log in agent_logs if log.get('status') == 'error'])
     
-    st.write(f'**Active agents: {active_agents} | Completed today: {completed} | Errors: {errors}**')
+    st.markdown(f'**Active agents: {active_agents} &nbsp;|&nbsp; Completed: {completed} &nbsp;|&nbsp; Errors: {errors}**')
     
-    df = pd.DataFrame(reversed(agent_logs))
-    st.dataframe(df, use_container_width=True)
+    # Terminal-style output
+    terminal_html = '<div style="background-color: #0f172a; color: #10b981; font-family: \\'JetBrains Mono\\', monospace; padding: 15px; border-radius: 8px; border: 1px solid #334155; height: 300px; overflow-y: auto; font-size: 0.85rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);">'
+    for log in reversed(agent_logs):
+        time_str = log.get('timestamp', '')[:19].replace('T', ' ')
+        agent_name = log.get('agent', 'SYSTEM').upper()
+        status = log.get('status', 'INFO').upper()
+        task = log.get('task', '')
+        
+        color = "#10b981" if status == "COMPLETED" else "#f59e0b" if status == "RUNNING" else "#ef4444"
+        
+        terminal_html += f'<div style="margin-bottom: 6px;"><span style="color:#64748b;">[{time_str}]</span> <span style="color:{color}; font-weight:bold;">[{agent_name}]</span> {task} <span style="color:#64748b; font-size:0.75rem;">({log.get("duration_ms", 0)}ms)</span></div>'
+    
+    terminal_html += '</div>'
+    st.markdown(terminal_html, unsafe_allow_html=True)
 
 def render_agent_flow_diagram(current_agent: str) -> None:
-    """Render a text-based pipeline diagram."""
-    pipeline = ['Intake', 'Metadata', 'Planner', '[Retrieval + Assessor]', 'Router', 'Comms']
-    
-    flow_str = ''
-    for step in pipeline:
-        is_active = step.lower() in current_agent.lower() or (step == '[Retrieval + Assessor]' and 'rag' in current_agent.lower())
-        if is_active:
-            flow_str += f' >>> {step} <<< -> '
-        else:
-            flow_str += f' {step} -> '
-            
-    flow_str = flow_str.rstrip(' -> ')
-    st.code(flow_str, language='text')
+    pass
 
 def get_mock_agent_logs() -> List[Dict[str, Any]]:
-    """Return mock agent logs."""
     from datetime import datetime, timedelta
     now = datetime.now()
     return [
