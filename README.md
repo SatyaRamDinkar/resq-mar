@@ -140,3 +140,20 @@ The following quantitative metrics demonstrate the performance improvements of t
 | **Offline Resilience** | 0% (Fails without internet) | **85.0%** Functional Offline | **Absolute Reliability Gain**|
 | **Language Dispatch** | English Only (1 Language) | **English, Telugu, Hindi (3)** | **+200% Coverage** |
 | **Explainability (XAI)** | Black-Box | **MermaidJS Visual Flowcharts**| **100% Transparent** |
+
+
+## 🔄 Comprehensive Upgrade Summary (Base Paper vs. ResQ-MAR)
+
+The table below outlines the architectural and functional upgrades implemented in ResQ-MAR to overcome the limitations of traditional disaster response research.
+
+| Feature / System Aspect | Base Project / Standard Paper | Our Project (ResQ-MAR) | Key Upgrade Benefit |
+| :--- | :--- | :--- | :--- |
+| **System Architecture** | Single Model / Monolithic LLM | **8-Agent Autonomous Swarm** (Microsoft AutoGen) | Eliminates single points of failure; agents cross-check each other to prevent AI hallucinations. |
+| **Damage Assessment** | Standalone Vision Models (Human must manually review). | **Integrated Vision-to-Routing** (Gemini Vision) | AI visually assesses damage severity and *automatically* triggers routing, bypassing the human bottleneck. |
+| **Emergency Intake** | Manual text data entry only. | **Multi-Modal Audio Intake** (Whisper AI) | Automatically transcribes raw 911 audio recordings into structured crisis data 1.8x faster than real-time. |
+| **Situational Awareness** | Static Knowledge (Stale training data). | **Live Web Injection** (DuckDuckGo + Groq) | Scrapes real-time internet news/weather so the AI never routes an ambulance into an active flood zone. |
+| **Geospatial Routing** | Cloud-dependent APIs (e.g., Google Maps). | **Self-Hosted OSRM** (Open Source Routing Machine) | Uses Multi-Level Dijkstra (MLD) on local OpenStreetMap data, reducing latency from 1250ms to **45ms**. |
+| **Language & Dispatch** | Monolingual (English only). | **Multi-Lingual Localization** (Comms Agent) | Automatically translates the final dispatch plans into **Telugu (తెలుగు)** and **Hindi (हिंदी)** for local responders. |
+| **System Explainability** | Black-Box (No logic reasoning provided). | **Transparent XAI** (MermaidJS Flowcharts) | Dynamically generates visual decision-trees so human overseers can see exactly *why* the AI chose a specific route. |
+| **Operational Cost** | High API Costs (Pay-per-token for inference). | **.00 (100% Free)** | By utilizing Local Llama 3.1 (via Ollama) and local Docker routing, the system scales indefinitely for free. |
+| **Offline Resilience** | **0%** (Fails completely if internet is lost). | **85% Functional Offline** | Core dispatch system survives city-wide internet blackouts because the LLM and Router run locally. |
