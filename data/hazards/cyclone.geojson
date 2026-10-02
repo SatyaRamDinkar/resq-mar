@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"name": "Cyclone Prone Coastline"}, "geometry": {"type": "Polygon", "coordinates": [[[78.0, 8.0], [82.0, 8.0], [90.0, 22.0], [88.0, 25.0], [78.0, 25.0], [78.0, 8.0]]]}}]}

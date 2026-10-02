@@ -12,11 +12,29 @@ import json
 import os
 from src.config.geo import MAP_CENTER, MAP_ZOOM
 
-def render_incident_heatmap(incidents: List[Dict[str, Any]], resources: List[Dict[str, Any]]) -> folium.Map:
+def render_incident_heatmap(incidents: List[Dict[str, Any]], resources: List[Dict[str, Any]], show_cyclone: bool = False, show_seismic: bool = False, show_flood: bool = False) -> folium.Map:
     """Render folium heatmap layer."""
     center = [MAP_CENTER["lat"], MAP_CENTER["lon"]]
         
     m = folium.Map(location=center, zoom_start=MAP_ZOOM)
+    
+    # Load hazards if requested
+    import os, json
+    hazard_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "hazards")
+    def _add_hazard(name, color):
+        path = os.path.join(hazard_dir, f"{name}.geojson")
+        if os.path.exists(path):
+            with open(path, 'r') as f:
+                geo = json.load(f)
+                folium.GeoJson(
+                    geo,
+                    name=f'{name.title()} Zones',
+                    style_function=lambda x: {'fillColor': color, 'color': color, 'weight': 1, 'fillOpacity': 0.2}
+                ).add_to(m)
+                
+    if show_cyclone: _add_hazard("cyclone", "blue")
+    if show_seismic: _add_hazard("seismic", "red")
+    if show_flood: _add_hazard("flood", "purple")
     
     heat_data = []
     severity_weights = {'low': 1, 'medium': 2, 'high': 3, 'critical': 4}
@@ -81,12 +99,19 @@ def render_coverage_stats(incidents: List[Dict[str, Any]], resources: List[Dict[
 def get_mock_incidents() -> List[Dict[str, Any]]:
     # Load from the updated demo_incidents.json
     try:
+        from src.utils.hazard_checker import get_intersecting_hazards
         with open('data/demo_incidents.json', 'r', encoding='utf-8') as f:
             data = json.load(f)
             # transform schema slightly to match heatmap expectation if needed
             for row in data:
                 row['type'] = row.get('type', 'unknown')
                 row['severity'] = row.get('severity', 'high')
+                intersecting = get_intersecting_hazards(row.get('lat', 0.0), row.get('lon', 0.0))
+                if intersecting:
+                    h_str = "/".join([h.replace("_", " ").title() for h in intersecting])
+                    row['hazard_zone'] = f"⚠️ {h_str}"
+                else:
+                    row['hazard_zone'] = "Safe Zone"
             return data
     except Exception:
         return []

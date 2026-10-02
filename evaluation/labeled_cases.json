@@ -1,0 +1,162 @@
+[
+  {
+    "id": "case_1",
+    "raw_text": "Low severity flood reported in Mumbai.",
+    "expected_hazard": "flood",
+    "expected_severity": "low",
+    "lat": 19.076,
+    "lon": 72.8777
+  },
+  {
+    "id": "case_2",
+    "raw_text": "Medium severity flood reported in Surat.",
+    "expected_hazard": "flood",
+    "expected_severity": "medium",
+    "lat": 21.1702,
+    "lon": 72.8311
+  },
+  {
+    "id": "case_3",
+    "raw_text": "Low severity fire reported in Chennai.",
+    "expected_hazard": "fire",
+    "expected_severity": "low",
+    "lat": 13.0827,
+    "lon": 80.2707
+  },
+  {
+    "id": "case_4",
+    "raw_text": "Medium severity fire reported in Hyderabad.",
+    "expected_hazard": "fire",
+    "expected_severity": "medium",
+    "lat": 17.385,
+    "lon": 78.4867
+  },
+  {
+    "id": "case_5",
+    "raw_text": "Low severity flood reported in Surat.",
+    "expected_hazard": "flood",
+    "expected_severity": "low",
+    "lat": 21.1702,
+    "lon": 72.8311
+  },
+  {
+    "id": "case_6",
+    "raw_text": "Medium severity medical reported in Ahmedabad.",
+    "expected_hazard": "medical",
+    "expected_severity": "medium",
+    "lat": 23.0225,
+    "lon": 72.5714
+  },
+  {
+    "id": "case_7",
+    "raw_text": "Low severity earthquake reported in Kolkata.",
+    "expected_hazard": "earthquake",
+    "expected_severity": "low",
+    "lat": 22.5726,
+    "lon": 88.3639
+  },
+  {
+    "id": "case_8",
+    "raw_text": "Low severity flood reported in Chennai.",
+    "expected_hazard": "flood",
+    "expected_severity": "low",
+    "lat": 13.0827,
+    "lon": 80.2707
+  },
+  {
+    "id": "case_9",
+    "raw_text": "High severity fire reported in Delhi.",
+    "expected_hazard": "fire",
+    "expected_severity": "high",
+    "lat": 28.6139,
+    "lon": 77.209
+  },
+  {
+    "id": "case_10",
+    "raw_text": "Low severity medical reported in Mumbai.",
+    "expected_hazard": "medical",
+    "expected_severity": "low",
+    "lat": 19.076,
+    "lon": 72.8777
+  },
+  {
+    "id": "case_11",
+    "raw_text": "Low severity flood reported in Kolkata.",
+    "expected_hazard": "flood",
+    "expected_severity": "low",
+    "lat": 22.5726,
+    "lon": 88.3639
+  },
+  {
+    "id": "case_12",
+    "raw_text": "High severity medical reported in Chennai.",
+    "expected_hazard": "medical",
+    "expected_severity": "high",
+    "lat": 13.0827,
+    "lon": 80.2707
+  },
+  {
+    "id": "case_13",
+    "raw_text": "Critical severity fire reported in Delhi.",
+    "expected_hazard": "fire",
+    "expected_severity": "critical",
+    "lat": 28.6139,
+    "lon": 77.209
+  },
+  {
+    "id": "case_14",
+    "raw_text": "Critical severity earthquake reported in Jaipur.",
+    "expected_hazard": "earthquake",
+    "expected_severity": "critical",
+    "lat": 26.9124,
+    "lon": 75.7873
+  },
+  {
+    "id": "case_15",
+    "raw_text": "Low severity flood reported in Bangalore.",
+    "expected_hazard": "flood",
+    "expected_severity": "low",
+    "lat": 12.9716,
+    "lon": 77.5946
+  },
+  {
+    "id": "case_16",
+    "raw_text": "Medium severity fire reported in Bangalore.",
+    "expected_hazard": "fire",
+    "expected_severity": "medium",
+    "lat": 12.9716,
+    "lon": 77.5946
+  },
+  {
+    "id": "case_17",
+    "raw_text": "High severity flood reported in Bangalore.",
+    "expected_hazard": "flood",
+    "expected_severity": "high",
+    "lat": 12.9716,
+    "lon": 77.5946
+  },
+  {
+    "id": "case_18",
+    "raw_text": "Low severity earthquake reported in Kolkata.",
+    "expected_hazard": "earthquake",
+    "expected_severity": "low",
+    "lat": 22.5726,
+    "lon": 88.3639
+  },
+  {
+    "id": "case_19",
+    "raw_text": "High severity earthquake reported in Pune.",
+    "expected_hazard": "earthquake",
+    "expected_severity": "high",
+    "lat": 18.5204,
+    "lon": 73.8567
+  },
+  {
+    "id": "case_20",
+    "raw_text": "Low severity fire reported in Ahmedabad.",
+    "expected_hazard": "fire",
+    "expected_severity": "low",
+    "lat": 23.0225,
+    "lon": 72.5714
+  }
+]

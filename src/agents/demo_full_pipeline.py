@@ -111,6 +111,18 @@ def run_full_pipeline():
         # --- Stage 2: Metadata ---
         print("\n[2/5] MetadataAgent extracting structured metadata...")
         meta_res = meta.extract_metadata(normalized)
+        meta_res["lat"] = lat
+        meta_res["lon"] = lon
+        
+        from src.utils.hazard_checker import get_intersecting_hazards
+        intersecting_hazards = get_intersecting_hazards(lat, lon)
+        if intersecting_hazards:
+            h_str = "/".join([h.replace("_", " ").title() for h in intersecting_hazards])
+            meta_res["geo_hazard_alert"] = f"⚠️ Located in {h_str}-prone zone"
+            old_desc = meta_res.get("location_description", "")
+            meta_res["location_description"] = f"{old_desc} ({meta_res['geo_hazard_alert']})"
+            print(f"      -> {meta_res['geo_hazard_alert']}")
+            
         hazard   = meta_res.get("hazard_type", "unknown")
         urgency  = meta_res.get("urgency", "medium")
         location_desc = meta_res.get("location_description", "unknown")

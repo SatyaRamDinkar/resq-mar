@@ -44,11 +44,16 @@ class SOPKnowledgeBase:
         Args:
             sop_dir (str): The directory containing markdown SOP files.
         """
-        if not os.path.exists(sop_dir):
-            print(f"Directory {sop_dir} does not exist. Nothing to ingest.")
+        dirs = [sop_dir, "data/knowledge/"]
+        md_files = []
+        for d in dirs:
+            if os.path.exists(d):
+                md_files.extend(glob.glob(os.path.join(d, "*.md")))
+                md_files.extend(glob.glob(os.path.join(d, "*.txt")))
+        
+        if not md_files:
+            print(f"No files found in {dirs}. Nothing to ingest.")
             return
-
-        md_files = glob.glob(os.path.join(sop_dir, "*.md"))
         ingested_count = 0
         
         for file_path in md_files:

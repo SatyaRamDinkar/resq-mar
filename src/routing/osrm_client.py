@@ -77,6 +77,48 @@ class OSRMClient:
             "source": "haversine_error" if self.available else "haversine"
         }
 
+    def get_route_geometry(self, lat1: float, lon1: float, lat2: float, lon2: float, alternatives: bool = False) -> Dict[str, Any]:
+        """
+        Get full GeoJSON geometry for route animation.
+        If alternatives is True, requests alternative routes from OSRM (useful for detour simulation).
+        Returns a dict with 'geometry' (list of [lon, lat]) and 'duration', 'distance'.
+        """
+        alt_flag = "true" if alternatives else "false"
+        if self.available:
+            url = f"{self.base_url}/route/v1/driving/{lon1},{lat1};{lon2},{lat2}?overview=full&geometries=geojson&alternatives={alt_flag}"
+            try:
+                res = requests.get(url, timeout=self.timeout)
+                if res.status_code == 200:
+                    data = res.json()
+                    routes = data.get("routes", [])
+                    if routes:
+                        # Return primary route and alt route if available
+                        result = {
+                            "primary": {
+                                "geometry": routes[0]["geometry"]["coordinates"],
+                                "duration_s": float(routes[0].get("duration", 0)),
+                                "distance_m": float(routes[0].get("distance", 0))
+                            }
+                        }
+                        if alternatives and len(routes) > 1:
+                            result["alternative"] = {
+                                "geometry": routes[1]["geometry"]["coordinates"],
+                                "duration_s": float(routes[1].get("duration", 0)),
+                                "distance_m": float(routes[1].get("distance", 0))
+                            }
+                        return result
+            except requests.exceptions.RequestException:
+                pass
+                
+        # Fallback if unavailable
+        return {
+            "primary": {
+                "geometry": [[lon1, lat1], [lon2, lat2]],
+                "duration_s": self._estimate_duration(self._haversine(lat1, lon1, lat2, lon2)),
+                "distance_m": self._haversine(lat1, lon1, lat2, lon2)
+            }
+        }
+
     def get_distance_matrix(self, origins: List[Dict[str, Any]], destinations: List[Dict[str, Any]]) -> Dict[str, Any]:
         """
         Get an NxM distance and duration matrix.

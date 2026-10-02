@@ -82,9 +82,38 @@ class CommsAgent(ResQAgent):
                 if len(lines) > 2:
                     alert = "\n".join(lines[1:-1])
                     
-            self.log_action("broadcast_alert", {"hazard": hazard}, {"alert": alert})
-            return alert
         except Exception as e:
-            fallback = f"DISPATCH ALERT: {hazard} at {location} ({urgency}). Vehicles: {v_str} en route (ETA {eta} min). Tasks: {task_str}. Plan approved by dispatcher."
-            self.log_action("broadcast_alert_error", {"error": str(e)}, {"alert": fallback})
-            return fallback
+            alert = f"DISPATCH ALERT: {hazard} at {location} ({urgency}). Vehicles: {v_str} en route (ETA {eta} min). Tasks: {task_str}. Plan approved by dispatcher."
+            self.log_action("broadcast_alert_error", {"error": str(e)}, {"alert": alert})
+
+        # Auto-detect language by state
+        from src.utils.geo_lookup import get_state_language
+        lat = metadata.get("lat", 28.6139)
+        lon = metadata.get("lon", 77.2090)
+        state_name, lang_code, lang_name = get_state_language(lat, lon)
+        
+        from src.utils.language_service import LanguageService
+        lang_service = LanguageService()
+        alert_hi = lang_service.translate(alert, "hi")
+        
+        manifest_parts = [f"--- ENGLISH ---\n{alert}", f"--- HINDI ---\n{alert_hi}"]
+        
+        # Add state language if it's not Hindi
+        langs_str = "English, Hindi"
+        if lang_code != "hi":
+            alert_local = lang_service.translate(alert, lang_code)
+            manifest_parts.append(f"--- {lang_name.upper()} ({state_name}) ---\n{alert_local}")
+            langs_str += f", {lang_name}"
+            
+        manifest = "\n\n".join(manifest_parts)
+        self.log_action("broadcast_alert", {"hazard": hazard, "languages": langs_str}, {"alert": manifest})
+        
+        # Trigger Dispatch Notifications per assigned responder
+        from src.services.notifier import send_sms, send_email
+        for vehicle_id in assigned_vehicles:
+            phone = f"+91-{vehicle_id.upper()}-9999"
+            email = f"driver_{vehicle_id.lower()}@resq-mar.in"
+            send_sms(phone, alert, logger=lambda a, s, m: self.log_action(f"sms_{s}", {"vehicle": vehicle_id}, {"msg": m}))
+            send_email(email, f"Dispatch: {hazard}", manifest, logger=lambda a, s, m: self.log_action(f"email_{s}", {"vehicle": vehicle_id}, {"msg": m}))
+
+        return manifest

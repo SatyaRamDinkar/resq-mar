@@ -399,6 +399,13 @@ with st.sidebar:
     )
 
     st.markdown("---")
+    
+    st.markdown('<div class="section-header" style="font-size:1rem;">Hazard Overlays</div>', unsafe_allow_html=True)
+    show_cyclone = st.checkbox("Cyclone-Prone Coastline", value=False)
+    show_seismic = st.checkbox("Seismic Zones IV-V", value=False)
+    show_flood = st.checkbox("Flood-Prone Basins", value=False)
+    
+    st.markdown("---")
 
     # System Status Panel
     st.markdown('<div class="section-header" style="font-size:1rem;">System Status</div>', unsafe_allow_html=True)
@@ -499,8 +506,9 @@ if page == 'Command Center':
     st.markdown("")
 
     # --- Active Incidents Table ---
-    tab_incidents, tab_voice, tab_vision = st.tabs([
+    tab_incidents, tab_track, tab_voice, tab_vision = st.tabs([
         "Active Incidents",
+        "Live Tracking",
         "Voice Intake (Whisper)",
         "Vision Assessment"
     ])
@@ -516,6 +524,10 @@ if page == 'Command Center':
         if st.button('Simulate New Incident'):
             agent.log_agent_activity('IntakeAgent', 'completed', 'Simulated incident')
             st.success('[OK] Simulated incident processed successfully.')
+
+    with tab_track:
+        from frontend.components.live_tracker import render_live_tracking_panel
+        render_live_tracking_panel(agent)
 
     with tab_voice:
         st.markdown('<div class="section-header">Emergency Voice Intake</div>', unsafe_allow_html=True)
@@ -585,7 +597,7 @@ elif page == 'Incident Heatmap':
     render_coverage_stats(incidents, resources)
     
     st.markdown("")
-    m = render_incident_heatmap(incidents, resources)
+    m = render_incident_heatmap(incidents, resources, show_cyclone, show_seismic, show_flood)
 
     if HAS_ST_FOLIUM:
         from streamlit_folium import st_folium
@@ -713,7 +725,7 @@ elif page == 'XAI Dashboard':
     decisions = xai.get_decision_chain(incident_id)
 
     if not decisions:
-        xai.log_decision("IntakeAgent", "Classified as Critical Flood", "Keywords 'flood' and 'trapped' detected in Vizag report.", 0.95, {"text": "flood vizag"}, incident_id)
+        xai.log_decision("IntakeAgent", "Classified as Critical Flood", "Keywords 'flood' and 'trapped' detected in Chennai report.", 0.95, {"text": "flood chennai"}, incident_id)
         xai.log_decision("RetrievalAgent", "Retrieved Flood SOP v3", "Matches hazard 'flood' with 0.91 relevance score.", 0.91, {"query": "flood"}, incident_id)
         xai.log_decision("AssessorAgent", "Approved SOP Coverage", "Coverage score 0.88. All safety constraints met.", 0.88, {"sops": 3}, incident_id)
         xai.log_decision("PlannerAgent", "Generated 4-step tactical plan", "Deployed rescue boats and evacuation teams.", 0.85, {"tasks": 4}, incident_id)

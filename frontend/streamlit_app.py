@@ -158,8 +158,23 @@ def run_pipeline(raw_text: str, lat: float, lon: float):
 
     # --- Stage 2: Metadata ---
     meta_res = meta.extract_metadata(normalized)
+    meta_res["lat"] = lat
+    meta_res["lon"] = lon
     hazard = meta_res.get("hazard_type", "unknown")
     urgency = meta_res.get("urgency", "medium")
+    
+    # Check for geographical hazards
+    from src.utils.hazard_checker import get_intersecting_hazards
+    intersecting_hazards = get_intersecting_hazards(lat, lon)
+    if intersecting_hazards:
+        h_str = "/".join([h.replace("_", " ").title() for h in intersecting_hazards])
+        meta_res["geo_hazard_alert"] = f"⚠️ Located in {h_str}-prone zone"
+        # Append to location_description so LLM reads it
+        old_desc = meta_res.get("location_description", "")
+        meta_res["location_description"] = f"{old_desc} ({meta_res['geo_hazard_alert']})"
+    else:
+        meta_res["geo_hazard_alert"] = "Safe Zone"
+        
     logs.append({
         "agent": "MetadataAgent",
         "action": "extract_metadata",

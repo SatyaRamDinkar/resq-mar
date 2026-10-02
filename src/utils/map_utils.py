@@ -117,4 +117,4 @@ def get_map_center(incidents: Optional[List[dict]] = None) -> Tuple[float, float
         avg_lat = sum(inc.get("lat", 28.6139) for inc in incidents) / len(incidents)
         avg_lon = sum(inc.get("lon", 77.2090) for inc in incidents) / len(incidents)
         return (avg_lat, avg_lon)
-    return (28.6139, 77.2090)  # Visakhapatnam default
+    return (28.6139, 77.2090)  # Delhi default
