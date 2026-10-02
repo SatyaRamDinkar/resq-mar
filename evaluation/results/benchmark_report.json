@@ -3,12 +3,12 @@
     "total_cases": 20,
     "precision": 1.0,
     "recall": 1.0,
-    "avg_latency_s": 4.101381468772888
+    "avg_latency_s": 4.0877184748649595
   },
   "results": [
     {
       "id": "case_1",
-      "latency_s": 4.063489198684692,
+      "latency_s": 4.073319673538208,
       "expected_severity": "low",
       "extracted_severity": "low",
       "naive_dist_m": 7649.284750745254,
@@ -17,7 +17,7 @@
     },
     {
       "id": "case_2",
-      "latency_s": 4.096027851104736,
+      "latency_s": 4.059866189956665,
       "expected_severity": "medium",
       "extracted_severity": "medium",
       "naive_dist_m": 7601.383245040138,
@@ -26,7 +26,7 @@
     },
     {
       "id": "case_3",
-      "latency_s": 4.0847296714782715,
+      "latency_s": 4.083978176116943,
       "expected_severity": "low",
       "extracted_severity": "low",
       "naive_dist_m": 7760.915526175977,
@@ -35,7 +35,7 @@
     },
     {
       "id": "case_4",
-      "latency_s": 4.1103692054748535,
+      "latency_s": 4.075658559799194,
       "expected_severity": "medium",
       "extracted_severity": "medium",
       "naive_dist_m": 7684.677461087198,
@@ -44,7 +44,7 @@
     },
     {
       "id": "case_5",
-      "latency_s": 4.342973470687866,
+      "latency_s": 4.095717430114746,
       "expected_severity": "low",
       "extracted_severity": "low",
       "naive_dist_m": 7601.383245040138,
@@ -53,7 +53,7 @@
     },
     {
       "id": "case_6",
-      "latency_s": 4.087227821350098,
+      "latency_s": 4.115349531173706,
       "expected_severity": "medium",
       "extracted_severity": "medium",
       "naive_dist_m": 7555.391010824183,
@@ -62,7 +62,7 @@
     },
     {
       "id": "case_7",
-      "latency_s": 4.083364725112915,
+      "latency_s": 4.077604293823242,
       "expected_severity": "low",
       "extracted_severity": "low",
       "naive_dist_m": 7566.867324309637,
@@ -71,7 +71,7 @@
     },
     {
       "id": "case_8",
-      "latency_s": 4.1119890213012695,
+      "latency_s": 4.061235189437866,
       "expected_severity": "low",
       "extracted_severity": "low",
       "naive_dist_m": 7760.915526175977,
@@ -80,7 +80,7 @@
     },
     {
       "id": "case_9",
-      "latency_s": 4.11699652671814,
+      "latency_s": 4.085384368896484,
       "expected_severity": "high",
       "extracted_severity": "high",
       "naive_dist_m": 7397.352839388225,
@@ -89,7 +89,7 @@
     },
     {
       "id": "case_10",
-      "latency_s": 4.0777428150177,
+      "latency_s": 4.088070392608643,
       "expected_severity": "low",
       "extracted_severity": "low",
       "naive_dist_m": 7649.284750745254,
@@ -98,7 +98,7 @@
     },
     {
       "id": "case_11",
-      "latency_s": 4.105375528335571,
+      "latency_s": 4.070203542709351,
       "expected_severity": "low",
       "extracted_severity": "low",
       "naive_dist_m": 7566.867324309637,
@@ -107,7 +107,7 @@
     },
     {
       "id": "case_12",
-      "latency_s": 4.100017786026001,
+      "latency_s": 4.0669450759887695,
       "expected_severity": "high",
       "extracted_severity": "high",
       "naive_dist_m": 7760.915526175977,
@@ -116,7 +116,7 @@
     },
     {
       "id": "case_13",
-      "latency_s": 4.085901260375977,
+      "latency_s": 4.117602109909058,
       "expected_severity": "critical",
       "extracted_severity": "critical",
       "naive_dist_m": 7397.352839388225,
@@ -125,7 +125,7 @@
     },
     {
       "id": "case_14",
-      "latency_s": 4.071051836013794,
+      "latency_s": 4.123574733734131,
       "expected_severity": "critical",
       "extracted_severity": "critical",
       "naive_dist_m": 7448.349927868012,
@@ -134,7 +134,7 @@
     },
     {
       "id": "case_15",
-      "latency_s": 4.093368291854858,
+      "latency_s": 4.104595899581909,
       "expected_severity": "low",
       "extracted_severity": "low",
       "naive_dist_m": 7762.614434171343,
@@ -143,7 +143,7 @@
     },
     {
       "id": "case_16",
-      "latency_s": 4.07737922668457,
+      "latency_s": 4.113408327102661,
       "expected_severity": "medium",
       "extracted_severity": "medium",
       "naive_dist_m": 7762.614434171343,
@@ -152,7 +152,7 @@
     },
     {
       "id": "case_17",
-      "latency_s": 4.09283185005188,
+      "latency_s": 4.08632230758667,
       "expected_severity": "high",
       "extracted_severity": "high",
       "naive_dist_m": 7762.614434171343,
@@ -161,7 +161,7 @@
     },
     {
       "id": "case_18",
-      "latency_s": 4.060141563415527,
+      "latency_s": 4.098319053649902,
       "expected_severity": "low",
       "extracted_severity": "low",
       "naive_dist_m": 7566.867324309637,
@@ -170,7 +170,7 @@
     },
     {
       "id": "case_19",
-      "latency_s": 4.082605600357056,
+      "latency_s": 4.0753302574157715,
       "expected_severity": "high",
       "extracted_severity": "high",
       "naive_dist_m": 7661.242300004508,
@@ -179,7 +179,7 @@
     },
     {
       "id": "case_20",
-      "latency_s": 4.084046125411987,
+      "latency_s": 4.081884384155273,
       "expected_severity": "low",
       "extracted_severity": "low",
       "naive_dist_m": 7555.391010824183,
