@@ -15,3 +15,19 @@ def dummy_llm_config():
 def mock_env_keys(monkeypatch):
     monkeypatch.setenv("GEMINI_API_KEY", "test-gemini-key")
     monkeypatch.setenv("GROQ_API_KEY", "test-groq-key")
+
+import autogen
+from unittest.mock import patch, MagicMock
+
+@pytest.fixture(autouse=True)
+def mock_llm_calls():
+    with patch('autogen.ConversableAgent.generate_reply', return_value='{"mocked": "json"}'):
+        with patch('google.generativeai.GenerativeModel.generate_content') as mock_gemini:
+            mock_gemini.return_value = MagicMock(text='Mocked Gemini response')
+            try:
+                import groq
+                with patch('groq.resources.chat.completions.Completions.create') as mock_groq:
+                    mock_groq.return_value = MagicMock(choices=[MagicMock(message=MagicMock(content="Mocked Groq"))])
+                    yield
+            except ImportError:
+                yield

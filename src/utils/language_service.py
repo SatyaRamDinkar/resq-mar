@@ -5,7 +5,8 @@ from typing import Dict, Any
 try:
     import google.generativeai as genai
     HAS_GEMINI = True
-except ImportError:
+except Exception:
+    genai = None
     HAS_GEMINI = False
 
 class LanguageService:
@@ -169,7 +170,7 @@ class LanguageService:
             "national_emergency": "112"
         }
         
-        if lang == "si": # Sinhala (Sri Lanka context)
+        if lang == "si": # Sinhala
             return {
                 "police": "119",
                 "police_label": "Polisiya",
@@ -178,7 +179,7 @@ class LanguageService:
                 "ambulance": "1990",
                 "ambulance_label": "Gilan Ratha"
             }
-        elif lang == "ta": # Tamil (Sri Lanka / India context)
+        elif lang == "ta": # Tamil (India context)
             return {
                 "police": "100",
                 "police_label": "Kaval",

@@ -1,32 +1,38 @@
 [
   {
     "id": "demo_1",
-    "raw_text": "Fire in commercial building at Jagadamba Junction, 2nd floor, people trapped inside",
-    "lat": 17.7120,
-    "lon": 83.2979
+    "raw_text": "Severe flooding at Chennai Central Station, vehicles submerged, families stranded on rooftops",
+    "lat": 13.0827,
+    "lon": 80.2707
   },
   {
     "id": "demo_2",
-    "raw_text": "Severe flooding at RK Beach Road, vehicles submerged, families stranded on rooftops",
-    "lat": 17.7005,
-    "lon": 83.3180
+    "raw_text": "Fire in commercial building at Park Street, Kolkata, 2nd floor, people trapped inside",
+    "lat": 22.5726,
+    "lon": 88.3639
   },
   {
     "id": "demo_3",
-    "raw_text": "Earthquake tremors reported near Gajuwaka industrial area, building partially collapsed",
-    "lat": 17.6868,
-    "lon": 83.2185
+    "raw_text": "Earthquake tremors reported near Connaught Place, New Delhi, building partially collapsed",
+    "lat": 28.6139,
+    "lon": 77.209
   },
   {
     "id": "demo_4",
-    "raw_text": "Medical emergency, elderly person unconscious near Madhurawada IT corridor bus stop",
-    "lat": 17.7897,
-    "lon": 83.3732
+    "raw_text": "Medical emergency, elderly person unconscious near Gateway of India, Mumbai",
+    "lat": 19.076,
+    "lon": 72.8777
   },
   {
     "id": "demo_5",
-    "raw_text": "Wildfire spreading from Kailasagiri hill toward residential colony, evacuation needed",
-    "lat": 17.7522,
-    "lon": 83.3812
+    "raw_text": "Wildfire spreading near Nandi Hills, Bengaluru, evacuation needed",
+    "lat": 12.9716,
+    "lon": 77.5946
+  },
+  {
+    "id": "demo_6",
+    "raw_text": "Cyclone landfall near Visakhapatnam coast, severe storm surge and power outages",
+    "lat": 17.6868,
+    "lon": 83.2185
   }
 ]

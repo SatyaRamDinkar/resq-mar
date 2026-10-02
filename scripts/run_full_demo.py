@@ -3,6 +3,13 @@ End-to-End Integration Demo Script for ResQ-MAR.
 """
 import os
 import sys
+import os
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
+from src.config.geo import METRO_COORDINATES
 import time
 import json
 import urllib.request
@@ -13,7 +20,7 @@ from typing import Dict, Any, List
 SCENARIOS = [
     {
         "id": "DEMO_001",
-        "name": "Visakhapatnam Cyclone Response",
+        "name": "Mumbai Cyclone Response",
         "incident": "Multiple families trapped in flooded homes near RK Beach. Water level rising. Need rescue boats and medical support.",
         "location": {"lat": 17.7144, "lon": 83.3234},
         "severity": "critical",

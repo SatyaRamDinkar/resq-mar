@@ -21,7 +21,7 @@ def solver():
 
 # --- Fixed test data (hardcoded for reproducibility) ---
 
-DEPOT = Location(id="depot", lat=17.6868, lon=83.2185, demand=0, priority=1)
+DEPOT = Location(id="depot", lat=28.6139, lon=77.2090, demand=0, priority=1)
 
 LOC_A = Location(id="site_A", lat=12.9730, lon=77.5960, demand=3, priority=3)
 LOC_B = Location(id="site_B", lat=17.6850, lon=77.5920, demand=2, priority=2)

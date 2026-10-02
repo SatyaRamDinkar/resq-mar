@@ -41,17 +41,11 @@ class LiveAwarenessAgent:
 
     def fetch_live_context(self, hazard: str, location: str) -> str:
         if not HAS_DDGS: return "Live awareness unavailable: duckduckgo-search not installed."
+        from src.config.geo import COUNTRY
         """
         Fetch and summarize live news updates for a given hazard and location.
-        
-        Args:
-            hazard (str): The type of emergency (e.g., 'flood', 'fire').
-            location (str): The geographic location (e.g., 'Vizag', 'Andhra Pradesh').
-            
-        Returns:
-            str: A synthesized, tactical situational awareness report.
         """
-        query = f"{location} {hazard} today live news updates"
+        query = f"{location} {COUNTRY} {hazard} today live news updates"
         print(f"[*] Fetching live awareness for: '{query}'")
         
         try:

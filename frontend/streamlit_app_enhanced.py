@@ -358,7 +358,7 @@ if 'dash_agent' not in st.session_state:
     st.session_state.dash_agent.agent_logs = get_mock_agent_logs()
     st.session_state.dash_agent.pending_approvals.append({
         'plan_id': 'PLAN-AP-20260922-001',
-        'incident_details': 'Critical Flood - Visakhapatnam Beach Road',
+        'incident_details': 'Critical Flood - Mumbai Coastal Road',
         'proposed_routes': 'Rescue Unit 1 -> Beach Road (ETA 8m)',
         'timestamp': datetime.now().isoformat()
     })
@@ -458,7 +458,7 @@ if page == 'Command Center':
     st.markdown("""
     <div class="hero-header">
         <p class="hero-title">Live Command Center</p>
-        <p class="hero-subtitle">Multi-Agent Emergency Response Orchestration -- Andhra Pradesh, India</p>
+        <p class="hero-subtitle">Multi-Agent Emergency Response Orchestration -- Pan-India Operations</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -575,7 +575,7 @@ elif page == 'Incident Heatmap':
     st.markdown("""
     <div class="hero-header">
         <p class="hero-title">Incident Heatmap</p>
-        <p class="hero-subtitle">Real-time geospatial visualization of active incidents and resource deployment across Andhra Pradesh</p>
+        <p class="hero-subtitle">Real-time geospatial visualization of active incidents and resource deployment across India</p>
     </div>
     """, unsafe_allow_html=True)
 

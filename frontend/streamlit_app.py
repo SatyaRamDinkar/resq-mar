@@ -74,8 +74,10 @@ HAZARD_BADGE = {
     "unknown": ":gray[UNKNOWN]",
 }
 
-# Default depot coordinates (Visakhapatnam)
-DEFAULT_DEPOT = {"id": "central_depot", "lat": 17.6868, "lon": 83.2185}
+from src.config.geo import DEFAULT_DEPOT as GEO_DEPOT
+
+# Default depot coordinates
+DEFAULT_DEPOT = {"id": "central_depot", "lat": GEO_DEPOT[0], "lon": GEO_DEPOT[1]}
 
 
 def check_ollama_status() -> bool:
@@ -363,13 +365,17 @@ with col_feed:
 with col_map:
     st.subheader("Live Map")
 
+    from src.config.geo import MAP_ZOOM, MAP_CENTER
+
     # Determine map center
     if st.session_state.incidents:
         center = get_map_center(st.session_state.incidents)
+        zoom = MAP_ZOOM + 1
     else:
-        center = get_map_center()
+        center = [MAP_CENTER["lat"], MAP_CENTER["lon"]]
+        zoom = MAP_ZOOM
 
-    m = folium.Map(location=center, zoom_start=13, tiles="OpenStreetMap")
+    m = folium.Map(location=center, zoom_start=zoom, tiles="OpenStreetMap")
 
     # Add depot marker
     create_depot_marker(

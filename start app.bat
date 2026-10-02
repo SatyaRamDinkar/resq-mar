@@ -19,7 +19,7 @@ if %errorlevel% neq 0 (
     echo   -[OK] Docker is running. Starting OSRM container...
     docker start osrm-router >nul 2>&1
     if %errorlevel% neq 0 (
-        docker run -d -p 5000:5000 --name osrm-router -v "%~dp0data\osrm:/data" osrm/osrm-backend osrm-routed --algorithm mld /data/india-southern-zone-latest.osrm >nul 2>&1
+        docker run -d -p 5000:5000 --name osrm-router -v "%~dp0data\osrm:/data" osrm/osrm-backend osrm-routed --algorithm mld /data/india-latest.osrm >nul 2>&1
     )
 )
 

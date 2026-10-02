@@ -15,5 +15,5 @@ class TestLiveAwarenessAgent:
         from src.agents.live_awareness_agent import LiveAwarenessAgent
         agent = LiveAwarenessAgent.__new__(LiveAwarenessAgent)
         agent.enabled = False
-        result = agent.fetch_live_context("flood", "Vizag")
+        result = agent.fetch_live_context("flood", "Mumbai")
         assert isinstance(result, str)

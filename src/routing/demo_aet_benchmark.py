@@ -5,6 +5,7 @@ Compares Static, Continuous, and Adaptive Event-Triggered (AET) routing.
 import os
 import sys
 import time
+from src.config.geo import DEFAULT_DEPOT
 import random
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
@@ -17,7 +18,7 @@ def generate_incidents(num: int = 15, seed: int = 42) -> list:
     """Generates a deterministic sequence of simulated incidents."""
     random.seed(seed)
     incidents = []
-    base_lat, base_lon = 17.6868, 83.2185  # Visakhapatnam Depot
+    base_lat, base_lon = DEFAULT_DEPOT  # New Delhi Depot
     
     for i in range(num):
         lat = base_lat + random.uniform(-0.05, 0.05)
@@ -39,7 +40,7 @@ def run_benchmark():
     print("Initializing components...")
     
     solver = VRPSolver()
-    depot = {"id": "central_depot", "lat": 17.6868, "lon": 83.2185, "demand": 0, "priority": 1}
+    depot = {"id": "central_depot", "lat": 28.6139, "lon": 77.2090, "demand": 0, "priority": 1}
     vehicles = [
         {"id": "amb_1", "capacity": 15, "start_location_id": "central_depot"},
         {"id": "amb_2", "capacity": 15, "start_location_id": "central_depot"},

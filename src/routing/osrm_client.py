@@ -18,8 +18,8 @@ class OSRMClient:
         
         # Test connectivity
         try:
-            # Query a test route in Visakhapatnam, India
-            test_url = f"{self.base_url}/route/v1/driving/83.2185,17.6868;83.2200,17.6900?overview=false"
+            # Query a test route in New Delhi, India
+            test_url = f"{self.base_url}/route/v1/driving/77.2090,28.6139;77.2100,28.6150?overview=false"
             response = requests.get(test_url, timeout=self.timeout)
             if response.status_code == 200:
                 self.available = True

@@ -15,7 +15,7 @@ def run_demo():
     # Setup Depot and Locations
     depot_id = "D"
     locations = [
-        Location(id="D", lat=17.6868, lon=83.2185, demand=0, priority=1),
+        Location(id="D", lat=28.6139, lon=77.2090, demand=0, priority=1),
         
         # Reachable locations (normal roads)
         Location(id="R1", lat=12.9726, lon=77.5956, demand=2, priority=2),

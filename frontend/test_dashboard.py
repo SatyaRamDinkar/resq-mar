@@ -12,7 +12,7 @@ from src.utils.dashboard_utils import calculate_haversine_distance, check_incide
 
 def test_calculate_haversine_distance():
     d = calculate_haversine_distance(17.6868, 83.2185, 17.6868, 83.2250)
-    assert 0.9 < d < 1.1
+    assert 0.6 < d < 0.8
 
 def test_check_incident_coverage():
     inc = {'lat': 17.6868, 'lon': 83.2185}

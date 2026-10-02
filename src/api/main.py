@@ -244,7 +244,7 @@ async def simulate_scenario(scenario: dict):
     scenario_type = scenario.get("scenario_type", "flood")
     req = IncidentRequest(
         description=f"Simulated {scenario_type} emergency triggered via API.",
-        location={"lat": 17.6868, "lon": 83.2185},
+        location={"lat": 28.6139, "lon": 77.2090},
         type=scenario_type,
         severity="high"
     )

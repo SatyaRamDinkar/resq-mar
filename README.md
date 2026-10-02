@@ -6,7 +6,7 @@
 ![Local LLM](https://img.shields.io/badge/LLM-Ollama_Llama3-f59e0b?style=for-the-badge)
 ![Cost](https://img.shields.io/badge/Cost-100%25_Free_%26_Open_Source-success?style=for-the-badge)
 
-ResQ-MAR is a fully autonomous, cost-free, multi-modal emergency management platform tailored for **Visakhapatnam, Andhra Pradesh**. Built as a capstone research project, it leverages a Microsoft AutoGen swarm to process complex civilian emergencies, perform visual/audio triage, and optimize geospatial routing in real-time.
+ResQ-MAR is a fully autonomous, cost-free, multi-modal emergency management platform tailored for **India**. Built as a capstone research project, it leverages a Microsoft AutoGen swarm to process complex civilian emergencies, perform visual/audio triage, and optimize geospatial routing in real-time.
 
 ---
 
@@ -47,8 +47,8 @@ Developing ResQ-MAR required a phased engineering approach to build the 8-agent 
 *   Developed the **Intake Agent**, **Metadata Agent**, and **Planner Agent**.
 *   Built the Agentic RAG system with ChromaDB to fetch Standard Operating Procedures (SOPs).
 
-### Phase 2: Geographic Localization & Routing
-*   Shifted all mock data and coordinate systems to focus heavily on **Visakhapatnam, Andhra Pradesh** (RK Beach, Gajuwaka, etc.).
+### Phase 2: Pan-India Localization & Routing
+*   Shifted all mock data and coordinate systems to focus heavily on **pan-India localization** (spanning Delhi, Mumbai, Chennai, Kolkata, Bengaluru, and Visakhapatnam).
 *   Integrated the Open Source Routing Machine (**OSRM**) to solve complex Vehicle Routing Problems (VRP) without cloud APIs.
 
 ### Phase 3: Multi-Modal Capabilities (Audio & Vision)
@@ -93,9 +93,27 @@ Launch the local LLM:
 ollama serve
 ollama pull llama3.1
 ```
-Launch the OSRM Routing Engine:
+Launch the OSRM Routing Engine (Full India Extract):
+
+> **Note:** Full-India map processing requires ~16GB RAM and ~20GB of disk space.
+
+1. Download the latest India OpenStreetMap data:
 ```bash
-docker run -d -p 5000:5000 --name osrm-router -v "${PWD}/data/osrm:/data" osrm/osrm-backend osrm-routed --algorithm mld /data/india-southern-zone-latest.osrm
+# Ensure you are in the project root
+mkdir -p ./data/osrm/
+curl -L https://download.geofabrik.de/asia/india-latest.osm.pbf -o ./data/osrm/india-latest.osm.pbf
+```
+
+2. Preprocess the data for the MLD algorithm (run in order):
+```bash
+docker run -t -v "${PWD}/data/osrm:/data" osrm/osrm-backend osrm-extract -p /opt/car.lua /data/india-latest.osm.pbf
+docker run -t -v "${PWD}/data/osrm:/data" osrm/osrm-backend osrm-partition /data/india-latest.osrm
+docker run -t -v "${PWD}/data/osrm:/data" osrm/osrm-backend osrm-customize /data/india-latest.osrm
+```
+
+3. Start the routing server:
+```bash
+docker run -d -p 5000:5000 --name osrm-router -v "${PWD}/data/osrm:/data" osrm/osrm-backend osrm-routed --algorithm mld /data/india-latest.osrm
 ```
 
 ### 5. Launch the Dashboard

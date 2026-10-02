@@ -17,6 +17,7 @@ class PlannerAgent(ResQAgent):
         """
         system_message = (
             "You are the Tactical Planner Agent for an emergency response system. "
+            "Context: India — a pan-Indian emergency scenario; use the incident's city and state. "
             "Given incident metadata and relevant Standard Operating Procedures (SOPs), "
             "you must generate a structured step-by-step tactical plan. "
             "Adhere strictly to the SOPs provided. If no SOPs match, use general emergency best practices. "
