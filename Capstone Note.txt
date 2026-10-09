@@ -1,0 +1,48 @@
+Dear Professor,
+
+Greetings from the IPR Cell.
+
+  As the IPR SCOPE School Coordinator, I would like to familiarize the newly joined faculty members of the University with the patent filing process and the important guidelines prescribed under the University’s IPR Policy.
+
+Key Policy Note
+As per the university IPR policy, there is no limit on the number of patents that can be filed.
+Prototype Development (Mandatory): A functional prototype, proof-of-concept, simulation model, or experimental validation demonstrating the feasibility of the invention must be developed. Purely conceptual submissions without technical validation will not be considered.  
+  Kindly refer to the ‘Revised Patent Filing Guidelines’ shared on March 4, 2026 by the Director, Innovation, IIEC. A copy is attached herewith for your reference.   
+Patent Filing Process
+Drafting the Patent
+First, prepare your patent document using the attached template.
+Generate Patent Searchability Report (Questel Orbit)
+After drafting, use Orbit Questel Software to generate the patent searchability report.
+Tutorial video: https://tinyurl.com/2cxvzmwf
+The software is available at:
+IPR Cell at IIEC Office
+Central Library
+Submission of Invention Disclosure Form (IDF)
+Submit your invention using the Google Form:  
+IP filing Link  
+Please Note:
+Utility Patents
+Require Questel report, presentation, and committee approval.
+Design Patents
+Can be directly submitted through the Google Form.
+No Questel report is required.
+Mandatory Details (For Utility Patents – While Filling Google Form)
+Please ensure you provide the following:
+
+Plan to commercialize the invention, pursue product development, or start a business venture.
+Mention the industry domain aligned with the invention (e.g., Healthcare, AgriTech, etc.).
+Identify potential industries interested in collaboration and development of the invention.
+  Review and Approval Process
+The IPR Team will check the completeness of your submission.
+A committee meeting will be scheduled for evaluation.
+You are advised to give a presentation before the committee.
+Based on the committee’s decision, your application may be:
+Recommended
+Revision
+Not Recommended
+If approval, the application will be processed further for patent filing.
+All faculty members are encouraged to actively participate in patent filing and innovation activities. The IPR Cell will support you throughout the process. 
+
+For any queries or assistance, please feel free to contact the IPR Cell or mail to 
+
+IPR SCOPE
