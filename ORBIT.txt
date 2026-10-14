@@ -1,0 +1,116 @@
+ORBIT
+
+orbit.com - ID & Password
+
+Website : orbit.com/#PatentEasySearchPage 
+
+Sophia Query - AI Assistant - Give you effective list of Patent Documents - Only for Patent Documents 
+
+
+Menu -> Searches -> 
+1. Easy Search - Like Google Search - Single Line Statements
+Easy Search - Sophia Query - AI Assistant - Single line statement - o/p: anyother technical terms, Synonyms, Category, Search Strategy.
+
+2. Semantic Search - Paragraphs
+Add Extra Step click "Custom Search Wizard" - it will show the main key words - next - browse in orbit - list of Patent Documents 
+For list of Patent Records - use Sophia Query
+
+3. Advanced search - used by IP PRofessionals -> Dedicated Search for the company  - Best for Chemistry 
+
+## Over Part is starts from this section 
+4. Design Patents - Search Icon Button (left side - 1st symbol) - Click on Design (for Designing the Patents) - My Assisants -> 
+
+Quick Search -  by default, it will take all countries design patents 
+
+Advanced Search - We can select that particular country design patents - pick any 3 or 4 - click search - Atleast Enter the Title - if you want you can update any other details - click search 
+
+"<<" - Restore Display. It will show all the Degining Patents 
+
+Select the Files - select - Look like a Exit Symbol in movie theathers - click that - Export as TXT,PDF,RTF,XLS,XLSX,XML - Export in any format - they prefer Excel Format(XLS, XLSX). 
+
+These are the options where we can search different different Technologie 
+
+## From now on 
+How a Specific Results looks like &
+How it can really help you to Quickly make a Patentability Report or Submit your finding your IP Team for better file 
+
+----
+
+Search Bat Icon on right side - Menu - My session - search results - display - abstract - 
+
+Method - 1:
+pick one file - then - Click the Restore Display - to access the 3rd panel of that patent 
+
+Method - 2:
+Click on Filter - And you can filter the results 
+
+We don't have any time. So, that we no need to study entire all the documnents 
+ 
+At least know, what is meant by this patent.
+
+Here, We can access the "Sophia Lab". It is also one AI Feature. 
+"Sophia Lab" -> Patent Summary & Claims Rewrite & Claim Graph - To access click "RUN" button 
+
+If you wanna Compare the 2 Patent Documents, Please select the files and click compare option in it.
+
+If you are using Sophia Query, Ask more questions to get better results. 
+
+The Percentage is Reveleancy Percentage of that Patent always take more that 95% Reveleancy Percantage for better results. 
+
+I want to prepare the Similar Patents - total no.of patents 
+then, click on more like this option (AUB opiton) 
+More like this option has 2 types -> 
+1. Search Similar Patents - search in entire database 
+2. Restrict Similar Patents - search in total no.of patents  
+
+In Restrict Similar Patents, It will look for Similar keywords, concepts in other Patents - give the results as which is close to that what you have selected patents.
+
+Note: If First pattern covers your every detail in your project - research & reperform the pattern search - mature your invention with better "Technology transfer application"
+
+if you not get the reveleant to the project. Menu - my session - search history - click on what you want 
+
+About Kwic Tab : 
+Click one the project patent file (or click on Restore Display)  - click the "Kwic" tab - It will show, which keyword is present in this particular patent. 
+
+Image Link : 
+How to read the Descrption w.r.t that image labelled one ?
+--- In file, Open "Image" tab - click on "+" - give the access to the image (it should be in Tick mark) - turn on th "labelled data"  - it will shown the label no's w.r.t the data in the Description. 
+
+-------
+Select the Patent records (that you are interested and you can adjust the Range) - Click on Export - choose which format do you need to export it - In Data Part, Drag the fields you wanted in your Pantent & Drog it in Selected files (Drag & Drop) - click Advanced options - Always choose "As displayed in hitlist" (this field is mentioned in Publication number content) - click OK - click Download 
+
+Note: lessthan 1000 records - you can Download it. & more than 1000 records - we can't download it - it will access into Email. 
+
+After Exporting it in Excel Format - At last, we need to add a column as "Remarks" - in that we need to give our comments(+ve or -ve or neutral) - in front of Every pattern - submit it to our faculty (siva kumar sir) 
+ 
+
+## For Highlights / Additional Colors 
+ 
+In that same page(menu - search results) - click the pencil symbol - right after the sophia query symbol - by default "yellow" is as our Highlight colour - if you want to add some more colours - click "Add another highlight color" - 
+
+-- In "yellow" highlighted color - all Keywords are in that color - cut some keywords in that color - paste it in new highlight color - click Apply - click OK
+
+After adding some new Highlight colours - select the files that you wanna Export - click "Export" - click Advanced options - 
+In Advanced Options, 
+1. Always be in "As displayed in hitlist (publication number content)
+2. In Others - click only "Apply Highlighting"
+--- now click on OK - click "Download" 
+
+
+## Filter for Publication Country - Only India
+In Easy Search - Sophia Query - "Limitsearch to India" - click search 
+
+Normal Search or Global Search - then, you want to limit it to india - there is one filter option 
+
+click the Search Bat Icon on right side - Filter - Publication country - click "Add multiple countries" - write in that box - "IN" - then click Apply 
+
+
+
+
+
+
+
+
+
+
+

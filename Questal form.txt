@@ -1,0 +1,35 @@
+Name of the Primary Inventor (PI)
+*
+M Ram Dinkar
+
+PI - Email
+*
+meesalaram1507@gmail.com
+
+Student / Employee ID
+*
+23BCE9130
+
+
+Title of the Invention
+*
+ResQ-MAR: An AI-Powered Autonomous Multi-Agent System for Multimodal Emergency Response and Offline Geospatial Routing.
+
+
+Abstract / Description of the Proposed Invention
+*
+ResQ-MAR is an AI-powered multi-agent emergency response system that automates the path from a distress report to a localised rescue dispatch. Existing tools typically depend on a single model and cloud services, leaving report reading, damage assessment and routing to human dispatchers. The invention uses eight specialised agents built on Microsoft AutoGen. Whisper transcribes emergency calls, and a vision agent scores damage severity from photos. Intake and metadata agents filter spam and convert reports into structured JSON with coordinates, which are checked against flood, cyclone and seismic hazard zones. A live-awareness agent adds current weather and news. A planner agent retrieves NDMA standard operating procedures from ChromaDB so plans follow official guidance. A router agent calculates ambulance routes on a self-hosted OSRM server and recalculates when roads are blocked. A communication agent translates dispatch into Hindi and the local regional language. Running Llama 3.1 and routing locally lets core operation continue offline, while agent cross-checking reduces hallucination and flowcharts explain each decision.
+
+
+
+Please provide details on
+*
+
+1.We plan to proceed in three phases. First, file the patent and run pilots with a district or state disaster-control room using historical and simulated incidents, measuring dispatch time, routing accuracy and NDMA-procedure compliance. Second, package ResQ-MAR as a containerised product with APIs for existing helpline and ambulance-dispatch systems, adding security, multi-incident handling and more regional languages. Third, launch a startup, through the university’s incubation support if pilots succeed, offering licences or subscriptions to state authorities and emergency service providers, with revenue from deployment, customisation, training and annual support. Its local-first design avoids per-call cloud costs, keeping pricing affordable for public agencies.
+
+2.Government disaster management , Healthcare and ambulance services, Geospatial and mapping companies , Smart-city and infrastructure companies, closely linked to healthcare through emergency ambulance dispatch.
+
+3. Government disaster-management bodies (NDMA, state authorities, district control rooms, 112 helpline operators) for pilots and procedure alignment. Healthcare and ambulance service providers for dispatch integration and field testing. Telecom and edge or cloud providers for call-audio integration and resilient deployment. Geospatial and mapping companies for better map data, hazard layers and live traffic. Smart-city and infrastructure companies for integration with city command centres. Insurance firms and humanitarian NGOs for damage assessment and relief coordination.
+
+
+

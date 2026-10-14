@@ -1,0 +1,21 @@
+Prompt for Sophia AI (Under 150 words)
+
+Copy and paste this into the AI prompt box to describe your invention:
+
+An autonomous multi-agent system for emergency response and disaster management. The system utilizes a swarm of specialized AI agents to process multimodal emergency inputs including text, audio, and images. It executes offline physical routing of rescue vehicles using a local Open Source Routing Machine (OSRM) and Multi-Level Dijkstra algorithms. To prevent AI hallucinations, the system integrates Agentic Retrieval-Augmented Generation (RAG) to query a local vector database of official government disaster protocols before dispatching. Furthermore, the system automatically performs geo-coordinate lookups to translate dispatch instructions into regional languages. It is capable of operating fully offline without relying on cloud APIs.
+
+===================================================================================================
+
+2. Easy Search (Single Line Statement)
+
+Copy and paste this into the boolean/keyword search bar:
+
+("multi-agent system" OR "AI swarm") AND ("emergency response" OR "disaster management") AND ("offline routing" OR "OSRM" OR "geospatial") AND ("retrieval-augmented generation" OR "RAG" OR "vector database")
+
+===================================================================================================
+
+3. Semantic Search (Paragraph)
+
+Copy and paste this into the Semantic Concept search box. Orbit’s engine will automatically extract the technical keywords from this paragraph:
+
+A disaster management system utilizing a multi-agent artificial intelligence swarm architecture. The system processes multimodal emergency data, including voice transcription and computer vision, to assess incident severity and extract GPS coordinates. It features offline geospatial routing for rescue vehicles using local OpenStreetMap data to ensure resilience during internet blackouts. The autonomous decision-making process is legally constrained by Retrieval-Augmented Generation (RAG), which references a vector database of official emergency protocols. Additionally, the system executes automated geographic language localization, translating final dispatch alerts into regional languages based on the exact incident coordinates.
