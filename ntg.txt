@@ -1,0 +1,17 @@
+ResQ-MAR: An AI-Powered Autonomous Multi-Agent System for Multimodal Emergency Response and Offline Geospatial Routing.
+
+
+https://github.com/SatyaRamDinkar/resq-mar
+
+
+Project Title : 
+
+ResQ-MAR: AI-Powered Multi-Agent Emergency Response System
+
+Overview
+ResQ-MAR (Rescue Multi-Agent Response) represents a next-generation emergency management platform that leverages coordinated AI agents to transform how agencies handle crises—from natural disasters to urban emergencies. Unlike traditional centralized command systems, ResQ-MAR distributes intelligence across specialized agents that collaborate in real-time.
+
+Prompt : please gimme everything ( implementation,roadmaps, etc like that) and its like basically a complete/detailed guide on the project and the workflow is : antigravity - agentic tool (to make my work easy a bit rather than manually doin everything) and you for the planning & prompts for antigravity and everything for this project and my capstone faculty/guide said to find the base paper to work on this project and also we'll work accordingly to that, help me find the latest similar standard paper related to this project. this is the latest similar paper i found which looks is similar : ResQConnect: An AI-Powered Multi-Agentic Platform for Human-Centered and Resilient Disaster Response — A. Aththanayake et al., 2026.
+https://www.mdpi.com/2071-1050/18/2/1014 
+so we'll choose either of the papers and start working on....
+make sure our project should be maximum free of cost...and letsss gooooo
