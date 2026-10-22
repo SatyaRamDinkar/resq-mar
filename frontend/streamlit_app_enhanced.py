@@ -34,6 +34,8 @@ from frontend.components.approval_panel import render_approval_panel, render_dec
 from frontend.components.agent_monitor import render_agent_monitor, render_agent_flow_diagram, get_mock_agent_logs
 from frontend.components.heatmap_view import render_incident_heatmap, render_coverage_stats, get_mock_incidents, get_mock_resources, HAS_ST_FOLIUM
 from frontend.components.metrics_panel import render_performance_metrics, render_benchmark_chart, render_routing_efficiency_chart, get_mock_metrics, get_mock_benchmark_data
+from frontend.components.analytics_view import render_analytics_dashboard
+from frontend.components.driver_view import render_driver_mobile_view
 
 st.set_page_config(
     page_title='ResQ-MAR | AI Command Center',
@@ -389,10 +391,12 @@ with st.sidebar:
         'Navigation',
         [
             'Command Center',
+            'Driver Mobile View',
             'Incident Heatmap',
             'Human Approval',
             'Agent Pipeline',
             'Performance',
+            'Analytics & Benchmarks',
             'XAI Dashboard'
         ],
         label_visibility='collapsed'
@@ -581,6 +585,13 @@ if page == 'Command Center':
 
 
 # =============================================================================
+# PAGE: DRIVER MOBILE VIEW
+# =============================================================================
+elif page == 'Driver Mobile View':
+    render_driver_mobile_view()
+
+
+# =============================================================================
 # PAGE: INCIDENT HEATMAP
 # =============================================================================
 elif page == 'Incident Heatmap':
@@ -697,6 +708,13 @@ elif page == 'Performance':
     st.markdown("")
     if st.button('Export Full System Report'):
         st.text_area('System Report', agent.export_report(), height=300)
+
+
+# =============================================================================
+# PAGE: ANALYTICS & BENCHMARKS
+# =============================================================================
+elif page == 'Analytics & Benchmarks':
+    render_analytics_dashboard()
 
 
 # =============================================================================
