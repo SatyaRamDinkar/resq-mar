@@ -406,9 +406,9 @@ with st.sidebar:
     st.markdown("---")
     
     st.markdown('<div class="section-header" style="font-size:1rem;">Hazard Overlays</div>', unsafe_allow_html=True)
-    show_cyclone = st.checkbox("Cyclone-Prone Coastline", value=False)
-    show_seismic = st.checkbox("Seismic Zones IV-V", value=False)
-    show_flood = st.checkbox("Flood-Prone Basins", value=False)
+    show_cyclone = st.checkbox("Cyclone-Prone Coastline", value=True)
+    show_seismic = st.checkbox("Seismic Zones IV-V", value=True)
+    show_flood = st.checkbox("Flood-Prone Basins", value=True)
     
     st.markdown("---")
 
@@ -423,19 +423,26 @@ with st.sidebar:
     # --- Cached Fast System Health Checks ---
     import requests as _req
 
-    @st.cache_data(ttl=30, show_spinner=False)
+    @st.cache_data(ttl=20, show_spinner=False)
     def _cached_check_ollama():
         try:
-            r = _req.get("http://127.0.0.1:11434/api/tags", timeout=0.4)
+            r = _req.get("http://127.0.0.1:11434/api/tags", timeout=0.5)
             return r.status_code == 200
         except Exception:
             return False
 
-    @st.cache_data(ttl=30, show_spinner=False)
+    @st.cache_data(ttl=20, show_spinner=False)
     def _cached_check_osrm():
+        # First check nearest route query, then fallback to root port response
+        try:
+            r = _req.get("http://127.0.0.1:5000/nearest/v1/driving/77.2090,28.6139", timeout=0.6)
+            if r.status_code == 200:
+                return True
+        except Exception:
+            pass
         try:
             r = _req.get("http://127.0.0.1:5000/", timeout=0.4)
-            return r.status_code == 200
+            return r.status_code in (200, 400)
         except Exception:
             return False
 

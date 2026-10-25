@@ -7,120 +7,160 @@ try:
     HAS_ST_FOLIUM = True
 except ImportError:
     HAS_ST_FOLIUM = False
-import streamlit.components.v1 as components
 import json
 import os
 from src.config.geo import MAP_CENTER, MAP_ZOOM
 
-def render_incident_heatmap(incidents: List[Dict[str, Any]], resources: List[Dict[str, Any]], show_cyclone: bool = False, show_seismic: bool = False, show_flood: bool = False) -> folium.Map:
-    """Render folium heatmap layer."""
+
+def render_incident_heatmap(
+    incidents: List[Dict[str, Any]],
+    resources: List[Dict[str, Any]],
+    show_cyclone: bool = True,
+    show_seismic: bool = True,
+    show_flood: bool = True
+) -> folium.Map:
+    """Render folium heatmap layer with high-contrast CartoDB dark-matter styling."""
     center = [MAP_CENTER["lat"], MAP_CENTER["lon"]]
-        
-    m = folium.Map(location=center, zoom_start=MAP_ZOOM)
-    
-    # Load hazards if requested
-    import os, json
+
+    # Dark matter map with light street map alternative layer
+    m = folium.Map(
+        location=center,
+        zoom_start=MAP_ZOOM,
+        tiles="CartoDB dark_matter",
+        name="CartoDB Dark Matter",
+        control_scale=True,
+    )
+    folium.TileLayer("OpenStreetMap", name="OpenStreetMap Light").add_to(m)
+
+    # Load hazards
     hazard_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "hazards")
-    def _add_hazard(name, color):
+
+    def _add_hazard(name: str, color: str, display_name: str):
         path = os.path.join(hazard_dir, f"{name}.geojson")
         if os.path.exists(path):
-            with open(path, 'r') as f:
+            with open(path, "r", encoding="utf-8") as f:
                 geo = json.load(f)
                 folium.GeoJson(
                     geo,
-                    name=f'{name.title()} Zones',
-                    style_function=lambda x: {'fillColor': color, 'color': color, 'weight': 1, 'fillOpacity': 0.2}
+                    name=display_name,
+                    style_function=lambda x, col=color: {
+                        "fillColor": col,
+                        "color": col,
+                        "weight": 2,
+                        "fillOpacity": 0.25,
+                    },
+                    tooltip=f"Active Alert: {display_name}"
                 ).add_to(m)
-                
-    if show_cyclone: _add_hazard("cyclone", "blue")
-    if show_seismic: _add_hazard("seismic", "red")
-    if show_flood: _add_hazard("flood", "purple")
-    
-    heat_data = []
-    severity_weights = {'low': 1, 'medium': 2, 'high': 3, 'critical': 4}
-    for i in incidents:
-        w = severity_weights.get(i.get('severity', 'low').lower(), 1)
-        heat_data.append([i.get('lat', center[0]), i.get('lon', center[1]), w])
-        
+
+    if show_cyclone:
+        _add_hazard("cyclone", "#38bdf8", "Cyclone Risk Coastline (Bay of Bengal)")
+    if show_seismic:
+        _add_hazard("seismic", "#f87171", "Seismic Fault Zones IV-V")
+    if show_flood:
+        _add_hazard("flood", "#c084fc", "Flood Inundation Basins")
+
     # HeatMap for broader hotspots at India scale
-    HeatMap(heat_data, radius=25, blur=15, max_zoom=1).add_to(folium.FeatureGroup(name='Incident Heatmap').add_to(m))
-    
-    colors = {'flood': 'blue', 'fire': 'red', 'earthquake': 'orange', 'medical': 'green', 'unknown': 'gray'}
-    inc_group = folium.FeatureGroup(name='Incident Markers')
+    heat_data = []
+    severity_weights = {"low": 1, "medium": 2, "high": 3, "critical": 5}
     for i in incidents:
-        c = colors.get(i.get('type', 'flood').lower(), 'gray')
-        # Using slightly larger circles for India scale readability
+        w = severity_weights.get(i.get("severity", "low").lower(), 2)
+        heat_data.append([i.get("lat", center[0]), i.get("lon", center[1]), w])
+
+    HeatMap(heat_data, radius=28, blur=18, max_zoom=6).add_to(
+        folium.FeatureGroup(name="Incident Hotspot Density").add_to(m)
+    )
+
+    # Incident Markers with custom vibrant colors
+    colors = {
+        "flood": "#38bdf8",
+        "fire": "#f97316",
+        "earthquake": "#ef4444",
+        "medical": "#22c55e",
+        "cyclone": "#06b6d4",
+        "unknown": "#94a3b8"
+    }
+    inc_group = folium.FeatureGroup(name="Active Incidents")
+    for i in incidents:
+        c = colors.get(i.get("type", "flood").lower(), "#38bdf8")
         folium.CircleMarker(
-            location=[i.get('lat', center[0]), i.get('lon', center[1])],
-            radius=6,
-            color=c,
+            location=[i.get("lat", center[0]), i.get("lon", center[1])],
+            radius=8,
+            color="#ffffff",
+            fill_color=c,
             fill=True,
-            fill_opacity=0.8,
-            weight=1,
-            tooltip=f"{i.get('type', 'Unknown').upper()} - {i.get('severity', 'Unknown')}"
+            fill_opacity=0.9,
+            weight=2,
+            tooltip=f"{i.get('type', 'Emergency').upper()} | Severity: {i.get('severity', 'High').upper()}"
         ).add_to(inc_group)
     inc_group.add_to(m)
-    
-    res_group = folium.FeatureGroup(name='Resources')
+
+    # Resource fleet markers
+    res_group = folium.FeatureGroup(name="Emergency Fleet Depots")
     for r in resources:
-        if 'lat' not in r or 'lon' not in r: continue
-        c = 'green' if r.get('available', False) else 'red'
-        # Regular markers may cluster too heavily at zoom 4.5, but for demo sizes it's ok. 
-        # Making icons slightly more distinct.
+        if "lat" not in r or "lon" not in r:
+            continue
+        is_avail = r.get("available", True)
+        icon_color = "green" if is_avail else "red"
+        status_txt = "Available for Dispatch" if is_avail else "Busy on Mission"
         folium.Marker(
-            location=[r['lat'], r['lon']],
-            icon=folium.Icon(color=c, icon='info-sign'),
-            tooltip=f"{r.get('type', 'Resource')} - {'Available' if r.get('available') else 'Busy'}"
+            location=[r["lat"], r["lon"]],
+            icon=folium.Icon(color=icon_color, icon="ambulance", prefix="fa"),
+            tooltip=f"{r.get('base_location', r.get('id', 'Depot'))} | {status_txt}"
         ).add_to(res_group)
     res_group.add_to(m)
-    
-    folium.LayerControl().add_to(m)
+
+    folium.LayerControl(position="topright", collapsed=False).add_to(m)
     return m
+
 
 def render_coverage_stats(incidents: List[Dict[str, Any]], resources: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Calculate and display coverage stats."""
     from src.utils.dashboard_utils import check_incident_coverage
-    
+
     total = len(incidents)
-    # Increased coverage check radius for India scale demo (5km -> 50km for macro view)
+    # Regional emergency radius check (50 km)
     covered = sum(1 for i in incidents if check_incident_coverage(i, resources, radius_km=50.0))
     coverage_pct = (covered / total * 100) if total > 0 else 100.0
-    
-    hotspots = total // 5
-    
+
+    hotspots = max(1, total // 4)
+
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric('Total Incidents', total)
-    col2.metric('Covered Incidents', covered)
-    col3.metric('Coverage %', f'{coverage_pct:.1f}%')
-    col4.metric('Macro Hotspots', hotspots)
-    
-    return {'total': total, 'covered': covered, 'coverage_pct': coverage_pct, 'hotspots': hotspots}
+    col1.metric("Total Incidents", total)
+    col2.metric("Covered Incidents", covered)
+    col3.metric("Coverage %", f"{coverage_pct:.1f}%")
+    col4.metric("Active Hotspots", hotspots)
+
+    return {"total": total, "covered": covered, "coverage_pct": coverage_pct, "hotspots": hotspots}
+
 
 def get_mock_incidents() -> List[Dict[str, Any]]:
-    # Load from the updated demo_incidents.json
+    """Load from demo_incidents.json with hazard intersection tags."""
     try:
         from src.utils.hazard_checker import get_intersecting_hazards
-        with open('data/demo_incidents.json', 'r', encoding='utf-8') as f:
+        with open("data/demo_incidents.json", "r", encoding="utf-8") as f:
             data = json.load(f)
-            # transform schema slightly to match heatmap expectation if needed
             for row in data:
-                row['type'] = row.get('type', 'unknown')
-                row['severity'] = row.get('severity', 'high')
-                intersecting = get_intersecting_hazards(row.get('lat', 0.0), row.get('lon', 0.0))
+                row["type"] = row.get("type", "unknown")
+                row["severity"] = row.get("severity", "high")
+                intersecting = get_intersecting_hazards(row.get("lat", 0.0), row.get("lon", 0.0))
                 if intersecting:
                     h_str = "/".join([h.replace("_", " ").title() for h in intersecting])
-                    row['hazard_zone'] = f"⚠️ {h_str}"
+                    row["hazard_zone"] = f"⚠️ {h_str}"
                 else:
-                    row['hazard_zone'] = "Safe Zone"
+                    row["hazard_zone"] = "Safe Zone"
             return data
     except Exception:
         return []
 
+
 def get_mock_resources() -> List[Dict[str, Any]]:
+    """Load resources with verified availability."""
     try:
-        with open('data/benchmark_resources.json', 'r', encoding='utf-8') as f:
+        with open("data/benchmark_resources.json", "r", encoding="utf-8") as f:
             data = json.load(f)
-            # Pick a subset of 10 to not overcrowd the India map
-            return data[:10]
+            for r in data:
+                if "available" not in r or r["available"] is None:
+                    r["available"] = True
+            return data
     except Exception:
         return []

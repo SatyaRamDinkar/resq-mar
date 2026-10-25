@@ -6,7 +6,8 @@
     "lon": 80.95288778456937,
     "base_location": "Station 5",
     "speed_kmh": 80.0,
-    "capacity": 2
+    "capacity": 2,
+    "available": true
   },
   {
     "id": "RES_002",
@@ -15,7 +16,8 @@
     "lon": 80.27657280053018,
     "base_location": "Station 3",
     "speed_kmh": 80.0,
-    "capacity": 2
+    "capacity": 2,
+    "available": true
   },
   {
     "id": "RES_003",
@@ -24,7 +26,8 @@
     "lon": 85.13867977737578,
     "base_location": "Station 4",
     "speed_kmh": 80.0,
-    "capacity": 2
+    "capacity": 2,
+    "available": true
   },
   {
     "id": "RES_004",
@@ -33,7 +36,8 @@
     "lon": 77.59810828504547,
     "base_location": "Station 3",
     "speed_kmh": 80.0,
-    "capacity": 2
+    "capacity": 2,
+    "available": true
   },
   {
     "id": "RES_005",
@@ -42,7 +46,8 @@
     "lon": 75.79049507062183,
     "base_location": "Station 5",
     "speed_kmh": 80.0,
-    "capacity": 2
+    "capacity": 2,
+    "available": true
   },
   {
     "id": "RES_006",
@@ -51,7 +56,8 @@
     "lon": 77.59800582060153,
     "base_location": "Station 3",
     "speed_kmh": 70.0,
-    "capacity": 4
+    "capacity": 4,
+    "available": true
   },
   {
     "id": "RES_007",
@@ -60,7 +66,8 @@
     "lon": 78.49576906957543,
     "base_location": "Station 2",
     "speed_kmh": 70.0,
-    "capacity": 4
+    "capacity": 4,
+    "available": true
   },
   {
     "id": "RES_008",
@@ -69,7 +76,8 @@
     "lon": 80.26962324277885,
     "base_location": "Station 5",
     "speed_kmh": 70.0,
-    "capacity": 4
+    "capacity": 4,
+    "available": true
   },
   {
     "id": "RES_009",
@@ -78,7 +86,8 @@
     "lon": 72.57142434021779,
     "base_location": "Station 1",
     "speed_kmh": 70.0,
-    "capacity": 4
+    "capacity": 4,
+    "available": true
   },
   {
     "id": "RES_010",
@@ -87,7 +96,8 @@
     "lon": 80.95369134914368,
     "base_location": "Station 1",
     "speed_kmh": 30.0,
-    "capacity": 6
+    "capacity": 6,
+    "available": true
   },
   {
     "id": "RES_011",
@@ -96,7 +106,8 @@
     "lon": 88.36721846982468,
     "base_location": "Station 3",
     "speed_kmh": 30.0,
-    "capacity": 6
+    "capacity": 6,
+    "available": true
   },
   {
     "id": "RES_012",
@@ -105,7 +116,8 @@
     "lon": 72.57754639012337,
     "base_location": "Station 5",
     "speed_kmh": 30.0,
-    "capacity": 6
+    "capacity": 6,
+    "available": true
   },
   {
     "id": "RES_013",
@@ -114,7 +126,8 @@
     "lon": 85.13447267706388,
     "base_location": "Station 4",
     "speed_kmh": 120.0,
-    "capacity": 1
+    "capacity": 1,
+    "available": true
   },
   {
     "id": "RES_014",
@@ -123,7 +136,8 @@
     "lon": 88.3729331709989,
     "base_location": "Station 5",
     "speed_kmh": 120.0,
-    "capacity": 1
+    "capacity": 1,
+    "available": true
   },
   {
     "id": "RES_015",
@@ -132,6 +146,37 @@
     "lon": 77.60346095210689,
     "base_location": "Station 4",
     "speed_kmh": 120.0,
-    "capacity": 1
+    "capacity": 1,
+    "available": true
+  },
+  {
+    "id": "RES_016",
+    "type": "ambulance",
+    "lat": 28.6139,
+    "lon": 77.209,
+    "base_location": "Delhi Central Base",
+    "speed_kmh": 75.0,
+    "capacity": 2,
+    "available": true
+  },
+  {
+    "id": "RES_017",
+    "type": "ambulance",
+    "lat": 19.076,
+    "lon": 72.8777,
+    "base_location": "Mumbai Trauma Base",
+    "speed_kmh": 80.0,
+    "capacity": 2,
+    "available": true
+  },
+  {
+    "id": "RES_018",
+    "type": "ambulance",
+    "lat": 17.6868,
+    "lon": 83.2185,
+    "base_location": "Vizag Coastal Station",
+    "speed_kmh": 70.0,
+    "capacity": 2,
+    "available": true
   }
 ]
