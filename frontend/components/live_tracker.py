@@ -3,15 +3,57 @@ Live Vehicle Tracking with High-Precision Telemetry Simulator
 ============================================================
 Enhances live tracking with smooth bearing-oriented markers,
 telemetry stats (speed, distance, ETA), and dynamic re-routing.
+Compatible with Plotly 7.x (Scattermap / map) and fallback to Scattermapbox.
 """
 
 import streamlit as st
 import time
 import pandas as pd
 import plotly.graph_objects as go
-import random
-from src.routing.osrm_client import OSRMClient
 from src.utils.telemetry_simulator import TelemetrySimulator
+
+
+def _build_map_figure(traces: list, center_lat: float, center_lon: float, zoom: float = 12.0) -> go.Figure:
+    """
+    Builds a map figure compatible across Plotly 6.x and 7.x.
+    """
+    fig = go.Figure()
+    for trace in traces:
+        fig.add_trace(trace)
+
+    # Plotly 7 uses layout.map, earlier versions use layout.mapbox
+    if hasattr(go, "Scattermap"):
+        fig.update_layout(
+            map=dict(
+                style="carto-darkmatter",
+                center=dict(lat=center_lat, lon=center_lon),
+                zoom=zoom,
+            ),
+            margin=dict(l=0, r=0, t=0, b=0),
+            height=440,
+            showlegend=True,
+            legend=dict(x=0.01, y=0.99, bgcolor="rgba(15,23,42,0.8)", font=dict(color="white")),
+        )
+    else:
+        fig.update_layout(
+            mapbox=dict(
+                style="carto-darkmatter",
+                center=dict(lat=center_lat, lon=center_lon),
+                zoom=zoom,
+            ),
+            margin=dict(l=0, r=0, t=0, b=0),
+            height=440,
+            showlegend=True,
+            legend=dict(x=0.01, y=0.99, bgcolor="rgba(15,23,42,0.8)", font=dict(color="white")),
+        )
+    return fig
+
+
+def _create_map_trace(**kwargs):
+    """Factory creating Scattermap (Plotly 7+) or Scattermapbox (Plotly 5/6)."""
+    if hasattr(go, "Scattermap"):
+        return go.Scattermap(**kwargs)
+    return go.Scattermapbox(**kwargs)
 
 
 def render_live_tracking_panel(agent_instance):
@@ -69,7 +111,7 @@ def render_live_tracking_panel(agent_instance):
     with c4:
         if st.button("Dispatch Ping (SMS)", use_container_width=True):
             from src.services.notifier import send_sms
-            msg = f"ResQ-MAR: Emergency Unit AMB-01 dispatched to Vizag Coast. Active ETA 8.5m."
+            msg = "ResQ-MAR: Emergency Unit AMB-01 dispatched to Vizag Coast. Active ETA 8.5m."
             send_sms("+91-RESPONDER", msg, logger=agent_instance.log_agent_activity)
             st.success("Telemetry ping broadcasted to response unit.")
 
@@ -112,8 +154,13 @@ def render_live_tracking_panel(agent_instance):
         average_speed_kmh=52.0 if not st.session_state.sim_road_blocked else 42.0,
     )
 
+    lats = [c[0] for c in active_route]
+    lons = [c[1] for c in active_route]
+    mid_lat = (active_route[0][0] + active_route[-1][0]) / 2.0
+    mid_lon = (active_route[0][1] + active_route[-1][1]) / 2.0
+
     if st.session_state.sim_active:
-        steps = 40
+        steps = 35
         start_step = int(st.session_state.sim_progress * steps)
 
         for step in range(start_step, steps + 1):
@@ -126,96 +173,69 @@ def render_live_tracking_panel(agent_instance):
             eta_metric.metric("Dynamic ETA", f"{frame['eta_minutes']} min")
             status_metric.metric("Bearing", f"{frame['bearing']} deg")
 
-            # Build map
-            fig = go.Figure()
-
-            # Polyline route
-            lats = [c[0] for c in active_route]
-            lons = [c[1] for c in active_route]
-            fig.add_trace(go.Scattermapbox(
-                mode="lines",
-                lat=lats,
-                lon=lons,
-                line=dict(width=5, color=route_color),
-                name="Detour Bypass" if st.session_state.sim_road_blocked else "Active Route",
-            ))
-
-            # Start point (Emergency Origin)
-            fig.add_trace(go.Scattermapbox(
-                mode="markers",
-                lat=[active_route[0][0]],
-                lon=[active_route[0][1]],
-                marker=dict(size=10, color="orange"),
-                name="Incident Origin",
-            ))
-
-            # Destination (Hospital)
-            fig.add_trace(go.Scattermapbox(
-                mode="markers",
-                lat=[active_route[-1][0]],
-                lon=[active_route[-1][1]],
-                marker=dict(size=12, color="green"),
-                name="Target Hospital",
-            ))
-
-            # Real-time Moving Ambulance Marker
             curr_lat, curr_lon = frame["current_coords"]
-            fig.add_trace(go.Scattermapbox(
-                mode="markers+text",
-                lat=[curr_lat],
-                lon=[curr_lon],
-                marker=dict(size=16, color="#ef4444"),
-                text=["AMB-01"],
-                textposition="top right",
-                name="AMB-01 (Active)",
-            ))
 
-            fig.update_layout(
-                mapbox=dict(
-                    style="carto-darkmatter",
-                    center=dict(lat=curr_lat, lon=curr_lon),
-                    zoom=12.2,
+            traces = [
+                # Polyline route
+                _create_map_trace(
+                    mode="lines",
+                    lat=lats,
+                    lon=lons,
+                    line=dict(width=5, color=route_color),
+                    name="Detour Bypass" if st.session_state.sim_road_blocked else "Active Route",
                 ),
-                margin=dict(l=0, r=0, t=0, b=0),
-                height=450,
-                showlegend=True,
-                legend=dict(x=0.01, y=0.99, bgcolor="rgba(15,23,42,0.8)", font=dict(color="white")),
-            )
+                # Start point
+                _create_map_trace(
+                    mode="markers",
+                    lat=[active_route[0][0]],
+                    lon=[active_route[0][1]],
+                    marker=dict(size=10, color="orange"),
+                    name="Incident Origin",
+                ),
+                # Destination
+                _create_map_trace(
+                    mode="markers",
+                    lat=[active_route[-1][0]],
+                    lon=[active_route[-1][1]],
+                    marker=dict(size=12, color="green"),
+                    name="Target Hospital",
+                ),
+                # Ambulance Marker
+                _create_map_trace(
+                    mode="markers+text",
+                    lat=[curr_lat],
+                    lon=[curr_lon],
+                    marker=dict(size=16, color="#ef4444"),
+                    text=["AMB-01"],
+                    textposition="top right",
+                    name="AMB-01 (Active)",
+                ),
+            ]
 
+            fig = _build_map_figure(traces, curr_lat, curr_lon, zoom=12.2)
             map_container.plotly_chart(fig, use_container_width=True)
             status_container.info(
                 f"STATUS: **{frame['status']}** | Destination: **{frame['destination']}** | Completed: **{frame['progress_percent']}%**"
             )
 
             st.session_state.sim_progress = prog
-            time.sleep(0.12)
+            time.sleep(0.08)
 
         st.session_state.sim_active = False
         st.session_state.sim_progress = 0.0
         status_container.success("UNIT ARRIVED SAFELY AT HOSPITAL EMERGENCY TRAUMA WARD.")
     else:
-        # Static preview map before launch
-        fig = go.Figure()
-        lats = [c[0] for c in active_route]
-        lons = [c[1] for c in active_route]
-        fig.add_trace(go.Scattermapbox(
-            mode="lines+markers",
-            lat=lats,
-            lon=lons,
-            line=dict(width=4, color=route_color),
-            marker=dict(size=8, color="#38bdf8"),
-            name="Route Waypoints",
-        ))
-        fig.update_layout(
-            mapbox=dict(
-                style="carto-darkmatter",
-                center=dict(lat=(active_route[0][0] + active_route[-1][0]) / 2,
-                            lon=(active_route[0][1] + active_route[-1][1]) / 2),
-                zoom=11.5,
-            ),
-            margin=dict(l=0, r=0, t=0, b=0),
-            height=420,
-            showlegend=False,
-        )
+        # Static preview map
+        traces = [
+            _create_map_trace(
+                mode="lines+markers",
+                lat=lats,
+                lon=lons,
+                line=dict(width=4, color=route_color),
+                marker=dict(size=8, color="#38bdf8"),
+                name="Route Waypoints",
+            )
+        ]
+        fig = _build_map_figure(traces, mid_lat, mid_lon, zoom=11.5)
         map_container.plotly_chart(fig, use_container_width=True)
         status_container.info("Click **'Start Live Telemetry'** to stream GPS coordinate progression in real-time.")

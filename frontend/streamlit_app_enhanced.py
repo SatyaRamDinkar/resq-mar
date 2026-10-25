@@ -420,26 +420,27 @@ with st.sidebar:
 </div>
 """, unsafe_allow_html=True)
 
-    # --- Live System Health Checks ---
+    # --- Cached Fast System Health Checks ---
     import requests as _req
 
-    def _check_service(url, timeout=2):
+    @st.cache_data(ttl=30, show_spinner=False)
+    def _cached_check_ollama():
         try:
-            _req.get(url, timeout=timeout)
-            return True
+            r = _req.get("http://127.0.0.1:11434/api/tags", timeout=0.4)
+            return r.status_code == 200
         except Exception:
             return False
 
-    def _check_osrm_docker():
-        import subprocess
+    @st.cache_data(ttl=30, show_spinner=False)
+    def _cached_check_osrm():
         try:
-            res = subprocess.run(['docker', 'ps', '-q', '-f', 'name=osrm-router'], capture_output=True, text=True)
-            return res.stdout.strip() != ""
-        except:
-            return _check_service("http://127.0.0.1:5000/")
+            r = _req.get("http://127.0.0.1:5000/", timeout=0.4)
+            return r.status_code == 200
+        except Exception:
+            return False
 
-    _ollama_ok = _check_service("http://127.0.0.1:11434/api/tags")
-    _osrm_ok   = _check_osrm_docker()
+    _ollama_ok = _cached_check_ollama()
+    _osrm_ok   = _cached_check_osrm()
     _chroma_ok = True
 
     def _badge(ok):
