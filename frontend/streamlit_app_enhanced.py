@@ -36,6 +36,7 @@ from frontend.components.heatmap_view import render_incident_heatmap, render_cov
 from frontend.components.metrics_panel import render_performance_metrics, render_benchmark_chart, render_routing_efficiency_chart, get_mock_metrics, get_mock_benchmark_data
 from frontend.components.analytics_view import render_analytics_dashboard
 from frontend.components.driver_view import render_driver_mobile_view
+from src.utils.iap_generator import NDMAIncidentReportGenerator
 
 st.set_page_config(
     page_title='ResQ-MAR | AI Command Center',
@@ -528,6 +529,37 @@ if page == 'Command Center':
         if st.button('Simulate New Incident'):
             agent.log_agent_activity('IntakeAgent', 'completed', 'Simulated incident')
             st.success('[OK] Simulated incident processed successfully.')
+
+        st.markdown('<div class="section-header" style="margin-top:20px;">Official NDMA Incident Action Plan (IAP)</div>', unsafe_allow_html=True)
+        st.caption('Generate and export a formal, verifiable NDMA-201 Incident Action Plan PDF with agent consensus audit trail.')
+        ciap1, ciap2 = st.columns([3, 1])
+        with ciap1:
+            st.info('Form NDMA-201 contains operational overview, GPS coordinates, assigned fleet, NDMA SOP citations, and routing.')
+        with ciap2:
+            try:
+                gen = NDMAIncidentReportGenerator()
+                mock_inc = incidents[0] if incidents else {'type': 'Mass Casualty / Cyclone', 'severity': 'critical'}
+                iap_pdf = gen.generate_iap_pdf(
+                    incident_data=mock_inc,
+                    fleet_assignments=[
+                        {'vehicle_id': 'AMB-01', 'hospital': 'King George Hospital', 'eta_minutes': 8.5, 'driver_unit': 'NDRF Unit Alpha'},
+                        {'vehicle_id': 'AMB-02', 'hospital': 'Apollo Hospital Vizag', 'eta_minutes': 14.2, 'driver_unit': 'SDRF Coastal Unit'}
+                    ],
+                    route_summary={
+                        'total_km': 12.4,
+                        'hazard_bypass_notes': 'Bypassed coastal flood risk sector via NH-16 bypass',
+                        'waypoints': ['Station Base', 'Sector 3 Flyover', 'Hospital Trauma Care']
+                    }
+                )
+                st.download_button(
+                    label='Download NDMA Plan (PDF)',
+                    data=iap_pdf,
+                    file_name=f'NDMA_IAP_Report_{datetime.now().strftime("%Y%m%d_%H%M")}.pdf',
+                    mime='application/pdf',
+                    use_container_width=True
+                )
+            except Exception as e:
+                st.warning(f'IAP Generator: {e}')
 
     with tab_track:
         from frontend.components.live_tracker import render_live_tracking_panel
