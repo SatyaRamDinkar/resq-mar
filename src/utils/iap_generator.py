@@ -303,15 +303,19 @@ class NDMAIncidentReportGenerator:
         pdf.ln(3)
 
 
-class _IAPDocument(FPDF):
-    def header(self):
-        pass
+if FPDF is not None:
+    class _IAPDocument(FPDF):
+        def header(self):
+            pass
 
-    def footer(self):
-        self.set_y(-12)
-        self.set_font("Helvetica", "I", 6)
-        self.set_text_color(*GREY)
-        self.cell(0, 4,
-                  f"Page {self.page_no()} | NDMA-IAP-201 | "
-                  "ResQ-MAR AI Emergency Response",
-                  align="C")
+        def footer(self):
+            self.set_y(-12)
+            self.set_font("Helvetica", "I", 6)
+            self.set_text_color(*GREY)
+            self.cell(0, 4,
+                      f"Page {self.page_no()} | NDMA-IAP-201 | "
+                      "ResQ-MAR AI Emergency Response",
+                      align="C")
+else:
+    class _IAPDocument(object):
+        pass

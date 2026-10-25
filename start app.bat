@@ -33,6 +33,10 @@ echo   -[INFO] The browser will open automatically. Press Ctrl+C in this window 
 echo ===================================================
 echo.
 
-python -m streamlit run frontend/streamlit_app_enhanced.py
+if exist "%~dp0venv\Scripts\python.exe" (
+    "%~dp0venv\Scripts\python.exe" -m streamlit run frontend/streamlit_app_enhanced.py
+) else (
+    python -m streamlit run frontend/streamlit_app_enhanced.py
+)
 
 pause
