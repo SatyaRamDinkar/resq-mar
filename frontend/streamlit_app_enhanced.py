@@ -642,10 +642,10 @@ elif page == 'Incident Heatmap':
     </div>
     """, unsafe_allow_html=True)
 
-    # Multi-Zone Navigation: View 1 (Pan-India Operational) & View 2 (Andhra Pradesh Major Coastal Zone)
+    # Multi-Zone Navigation: View 1 (National Overview) & View 2 (Andhra Pradesh Major Operational Zone)
     tab_pan_india, tab_ap_zone = st.tabs([
-        "🇮🇳 Pan-India National Overview",
-        "🌊 Andhra Pradesh Major Operational Zone"
+        "National Overview (Pan-India)",
+        "State Operations (Andhra Pradesh)"
     ])
 
     with tab_pan_india:
