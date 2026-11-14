@@ -32,7 +32,7 @@ load_dotenv()
 from src.agents.dashboard_agent import DashboardAgent
 from frontend.components.approval_panel import render_approval_panel, render_decision_history
 from frontend.components.agent_monitor import render_agent_monitor, render_agent_flow_diagram, get_mock_agent_logs
-from frontend.components.heatmap_view import render_incident_heatmap, render_coverage_stats, get_mock_incidents, get_mock_resources, HAS_ST_FOLIUM
+from frontend.components.heatmap_view import render_incident_heatmap, render_coverage_stats, get_mock_incidents, get_mock_resources, get_andhra_pradesh_incidents, get_andhra_pradesh_resources, HAS_ST_FOLIUM
 from frontend.components.metrics_panel import render_performance_metrics, render_benchmark_chart, render_routing_efficiency_chart, get_mock_metrics, get_mock_benchmark_data
 from frontend.components.analytics_view import render_analytics_dashboard
 from frontend.components.driver_view import render_driver_mobile_view
@@ -637,25 +637,56 @@ elif page == 'Driver Mobile View':
 elif page == 'Incident Heatmap':
     st.markdown("""
     <div class="hero-header">
-        <p class="hero-title">Incident Heatmap</p>
-        <p class="hero-subtitle">Real-time geospatial visualization of active incidents and resource deployment across India</p>
+        <p class="hero-title">Incident Heatmap & Operational Zones</p>
+        <p class="hero-subtitle">Real-time geospatial visualization of active disaster hotspots and rapid resource deployment</p>
     </div>
     """, unsafe_allow_html=True)
 
-    incidents = get_mock_incidents()
-    resources = get_mock_resources()
+    # Multi-Zone Navigation: View 1 (Pan-India Operational) & View 2 (Andhra Pradesh Major Coastal Zone)
+    tab_pan_india, tab_ap_zone = st.tabs([
+        "🇮🇳 Pan-India National Overview",
+        "🌊 Andhra Pradesh Major Operational Zone"
+    ])
 
-    render_coverage_stats(incidents, resources)
-    
-    st.markdown("")
-    m = render_incident_heatmap(incidents, resources, show_cyclone, show_seismic, show_flood)
+    with tab_pan_india:
+        incidents = get_mock_incidents()
+        resources = get_mock_resources()
 
-    if HAS_ST_FOLIUM:
-        from streamlit_folium import st_folium
-        st_folium(m, width=None, height=550, use_container_width=True, returned_objects=[])
-    else:
-        import streamlit.components.v1 as components
-        components.html(m._repr_html_(), height=550)
+        render_coverage_stats(incidents, resources, is_ap_mode=False)
+        st.markdown("")
+        m = render_incident_heatmap(incidents, resources, show_cyclone, show_seismic, show_flood, focus_ap=False)
+
+        if HAS_ST_FOLIUM:
+            from streamlit_folium import st_folium
+            st_folium(m, width=None, height=550, use_container_width=True, returned_objects=[])
+        else:
+            import streamlit.components.v1 as components
+            components.html(m._repr_html_(), height=550)
+
+    with tab_ap_zone:
+        st.info("🎯 **Active AP Command Focus:** High-density surveillance of coastal cyclone corridors, Krishna/Godavari river deltas, and Rayalaseema trauma depots.")
+        ap_incidents = get_andhra_pradesh_incidents()
+        ap_resources = get_andhra_pradesh_resources()
+
+        render_coverage_stats(ap_incidents, ap_resources, is_ap_mode=True)
+        st.markdown("")
+        m_ap = render_incident_heatmap(ap_incidents, ap_resources, show_cyclone, show_seismic, show_flood, focus_ap=True)
+
+        if HAS_ST_FOLIUM:
+            from streamlit_folium import st_folium
+            st_folium(m_ap, width=None, height=550, use_container_width=True, returned_objects=[], key="folium_ap_map")
+        else:
+            import streamlit.components.v1 as components
+            components.html(m_ap._repr_html_(), height=550)
+
+        # Detailed Andhra Pradesh Zone Status Table
+        st.markdown('<div class="section-header" style="margin-top:20px;">Andhra Pradesh Priority Incident Hubs</div>', unsafe_allow_html=True)
+        import pandas as pd
+        ap_df = pd.DataFrame(ap_incidents)[[
+            "city", "region", "type", "severity", "raw_text", "hazard_zone", "depot"
+        ]]
+        ap_df.columns = ["City / Hub", "Geographic Sector", "Disaster Type", "Severity", "Incident Summary", "Hazard Zone", "Assigned Depot"]
+        st.dataframe(ap_df, use_container_width=True, hide_index=True)
 
 
 # =============================================================================
