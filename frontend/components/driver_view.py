@@ -31,10 +31,10 @@ LOCALIZED_STRINGS = {
         "victims": "Reported Victims",
         "severity": "Severity Level",
         "critical": "CRITICAL EMERGENCY",
-        "action_accept": "1. ACCEPT MISSION",
-        "action_en_route": "2. EN ROUTE (START GPS)",
-        "action_patient_onboard": "3. PATIENT ONBOARD",
-        "action_arrived": "4. ARRIVED AT HOSPITAL",
+        "action_accept": "Step 1: Accept Dispatch",
+        "action_en_route": "Step 2: Start Transit (GPS On)",
+        "action_patient_onboard": "Step 3: Patient Picked Up",
+        "action_arrived": "Step 4: Arrived at Hospital",
         "status_label": "Current Mission Status",
         "status_assigned": "ASSIGNED (Awaiting Driver)",
         "status_accepted": "ACCEPTED (Preparing Vehicle)",
@@ -164,10 +164,12 @@ def render_driver_mobile_map(status: str) -> None:
         st.info("Map preview available (Folium loaded).")
         return
 
+    dark_tiles = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
     m = folium.Map(
         location=[17.7120, 83.3030],
         zoom_start=15,
-        tiles="CartoDB dark_matter"
+        tiles=dark_tiles,
+        attr="Esri World Dark Gray"
     )
 
     # Route polyline
@@ -347,7 +349,7 @@ def render_driver_mobile_view():
                     st.session_state.driver_mission_status = "ASSIGNED"
                     st.rerun()
             else:
-                st.button(f"⏳ {T['action_patient_onboard']}", disabled=True, use_container_width=True)
+                st.button("⏳ Step 3: Awaiting Acceptance", disabled=True, use_container_width=True)
 
         st.markdown("</div>", unsafe_allow_html=True)
 

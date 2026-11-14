@@ -121,15 +121,17 @@ def render_incident_heatmap(
         center = [MAP_CENTER["lat"], MAP_CENTER["lon"]]
         zoom = MAP_ZOOM
 
-    # Dark matter map with light street map alternative layer
+    # Dark theme base tiles with light OpenStreetMap fallback
+    dark_tiles_url = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
     m = folium.Map(
         location=center,
         zoom_start=zoom,
-        tiles="CartoDB dark_matter",
-        name="CartoDB Dark Matter",
+        tiles=dark_tiles_url,
+        attr="Esri World Dark Gray",
+        name="Dark Mode Surface",
         control_scale=True,
     )
-    folium.TileLayer("OpenStreetMap", name="OpenStreetMap Light").add_to(m)
+    folium.TileLayer("OpenStreetMap", name="Standard Street Light").add_to(m)
 
     # Load hazards
     hazard_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "hazards")

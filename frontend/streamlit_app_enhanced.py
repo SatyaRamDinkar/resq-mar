@@ -672,12 +672,9 @@ elif page == 'Incident Heatmap':
         st.markdown("")
         m_ap = render_incident_heatmap(ap_incidents, ap_resources, show_cyclone, show_seismic, show_flood, focus_ap=True)
 
-        if HAS_ST_FOLIUM:
-            from streamlit_folium import st_folium
-            st_folium(m_ap, width=None, height=550, use_container_width=True, returned_objects=[], key="folium_ap_map")
-        else:
-            import streamlit.components.v1 as components
-            components.html(m_ap._repr_html_(), height=550)
+        # Direct, reliable iframe rendering to guarantee instant display on tab switch
+        import streamlit.components.v1 as components
+        components.html(m_ap._repr_html_(), height=550)
 
         # Detailed Andhra Pradesh Zone Status Table
         st.markdown('<div class="section-header" style="margin-top:20px;">Andhra Pradesh Priority Incident Hubs</div>', unsafe_allow_html=True)
