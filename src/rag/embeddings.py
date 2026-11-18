@@ -44,7 +44,8 @@ class SOPKnowledgeBase:
         Args:
             sop_dir (str): The directory containing markdown SOP files.
         """
-        dirs = [sop_dir, "data/knowledge/"]
+        dirs = [sop_dir] if sop_dir else ["data/sops/", "data/knowledge/"]
+
         md_files = []
         for d in dirs:
             if os.path.exists(d):

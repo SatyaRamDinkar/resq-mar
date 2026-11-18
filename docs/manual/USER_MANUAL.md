@@ -1,4 +1,4 @@
-﻿# ResQ-MAR User Manual
+# ResQ-MAR User Manual
 
 Version: 1.0.0
 Date: November 2026
@@ -40,9 +40,9 @@ This manual is comprehensive and designed for three distinct audiences. You do n
 ### 1.3 System Architecture at a Glance
 The ResQ-MAR system operates on a pipeline model where an incident flows through multiple intelligent agents before arriving at a final dispatch plan.
 
-[ Incident Data ] -> [ Intake Agent ] -> [ Metadata Agent ] -> [ Planner Agent ] <-> [ Agentic RAG ] -> [ Router Agent ] -> [ Approval Panel ] -> [ Comms Agent ] -> [ Dashboard ]
+[ Incident Data ] -> [ Intake Agent ] -> [ Metadata Agent ] -> [ Planner Agent ] <- [ Agentic RAG ] -> [ Router Agent ] -> [ Approval Panel ] -> [ Comms Agent ] -> [ Dashboard ]
 
-1. Intake Agent: Parses raw emergency text and categorizes the incident.
+1. Intake Agent: Parses raw incident text and categorizes the incident.
 2. Metadata Agent: Extracts exact geolocation coordinates and timestamps.
 3. Planner Agent: Determines required resources (e.g., Firetrucks, Ambulances) and queries the SOP database via RAG.
 4. Router Agent: Calculates the optimal path using OSRM or Haversine distance.
@@ -129,7 +129,7 @@ For Linux/macOS:
 ```bash
 bash scripts/setup_osrm.sh
 ```
-[NOTE] This process will download the Andhra Pradesh map (approx. 557MB) and compile it. It may take up to 10 minutes. 
+[NOTE] This process will download the Andhra Pradesh map (approx. 557MB) and compile it. It may take up to 10 minutes.
 Verify it is running:
 ```bash
 curl http://localhost:5000/route/v1/driving/83.2185,17.6868;83.2200,17.6900?overview=false
@@ -169,7 +169,6 @@ Terminal 1 (AI Engine):
 ```bash
 ollama serve
 ```
-(If you are using the desktop application, this may already be running in the background).
 
 Terminal 2 (API Backend):
 ```bash
@@ -247,7 +246,7 @@ What happens next: The text is sent to the Intake Agent, which extracts the loca
 ### 4.4 The Approval Panel
 [WARNING] The Approval Panel is the most critical component for a human dispatcher. It ensures AI accountability.
 
-When it appears: 
+When it appears:
 If the AI determines an incident is "High" or "Critical" severity (such as a hazardous material spill), it will pause the pipeline and generate an Approval Panel at the top of your dashboard.
 
 How to review:
@@ -527,3 +526,4 @@ v1.0.0 (November 2026): Initial release
 - Built the interactive Streamlit dashboard with Folium heatmap integration.
 - Integrated OSRM via Docker for real-world road network physics.
 - Completed full 50-incident benchmark suite, demonstration videos, and complete documentation.
+

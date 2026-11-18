@@ -44,6 +44,14 @@ class MetadataAgent(ResQAgent):
         parsed = self._send_json_prompt(prompt, required_keys)
         
         if "error" not in parsed:
+            # Validate hazard_type against allowed list; fallback to "unknown" if invalid
+            allowed_hazards = {"fire", "flood", "earthquake", "medical", "unknown"}
+            if parsed.get("hazard_type") not in allowed_hazards:
+                parsed["hazard_type"] = "unknown"
+            # Validate urgency; fallback to "medium" if invalid
+            allowed_urgencies = {"low", "medium", "high", "critical"}
+            if parsed.get("urgency") not in allowed_urgencies:
+                parsed["urgency"] = "medium"
             self.log_action("extract_metadata", {"normalized_text": normalized_text}, parsed)
             return parsed
             

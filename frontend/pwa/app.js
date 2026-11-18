@@ -1,4 +1,4 @@
-﻿// PWA Application Logic
+// PWA Application Logic
 let cachedDataset = [];
 let deferredPrompt;
 
@@ -250,3 +250,4 @@ function handleInstallPrompt(e) {
     deferredPrompt = null;
   });
 }
+
