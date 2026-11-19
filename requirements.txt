@@ -1,6 +1,3 @@
-pyautogen==0.2.35
-chromadb>=0.4
-sentence-transformers>=2.5
 streamlit>=1.30
 folium>=0.15
 streamlit-folium>=0.18
@@ -9,16 +6,15 @@ fastapi>=0.109
 uvicorn>=0.27
 pydantic>=2.5
 python-dotenv>=1.0
-pytest>=8.0
 psutil>=5.9
 requests>=2.31
 scipy<1.13
 duckduckgo-search>=6.0
 google-generativeai>=0.7
-openai-whisper>=20231117
-sounddevice>=0.4
-soundfile>=0.12
 Pillow>=10.0
 groq>=1.0
 pandas>=2.0
 numpy>=1.24
+pyautogen==0.2.35
+chromadb>=0.4
+sentence-transformers>=2.5
