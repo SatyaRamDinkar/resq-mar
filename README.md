@@ -80,18 +80,59 @@ flowchart TD
 
 ---
 
-## 🤖 Autonomous Agent Pipeline
+## 🤖 Autonomous 8-Agent Swarm & Core Working Principles
 
-Each agent in the swarm has a strictly bounded responsibility to eliminate hallucinations:
+ResQ-MAR coordinates **8 specialized AutoGen agents**. Rather than using a single monolithic LLM prompt that is prone to hallucination, each agent operates on a **dedicated working principle** with strict input-output validation:
 
-1. **Intake Agent:** Normalizes free-form emergency audio or text into a sanitized incident report.
-2. **Metadata Agent:** Extracts structured fields (`hazard_type`, `urgency`, `location`, `extracted_entities`) with safe fallback guarantees.
-3. **Vision Agent:** Analyzes uploaded disaster imagery to compute structural damage severity (1–5) and casualty risks.
-4. **Live Awareness Agent:** Queries real-time weather and civic alerts to detect active flood zones and roadblock hazards.
-5. **RAG & SOP Agent:** Queries ChromaDB for official National Disaster Management Authority (NDMA) Standard Operating Procedures.
-6. **Planner Agent:** Synthesizes SOP constraints and hazard severity into an Incident Action Plan (IAP).
-7. **Router Agent & Fleet Optimizer:** Solves Vehicle Routing Problems (VRP) to dispatch ambulances, fire tenders, and rescue boats.
-8. **Comms Agent:** Translates tactical commands into regional languages (Telugu, Hindi) for field units.
+```
+[Citizen Call / Audio / Text] 
+         │
+         ▼
+ 1. IntakeAgent ──────────► 2. MetadataAgent ──────────► 3. VisionAgent / LiveAwarenessAgent
+                                                                     │
+                                                                     ▼
+ 6. RouterAgent / Fleet ◄── 5. PlannerAgent ◄─────────── 4. RetrievalAgent (RAG + SOPs)
+         │
+         ├─────────────────────────────────────────────┐
+         ▼                                             ▼
+ 7. CommsAgent (Hindi / Telugu Dispatch)       8. ExplainabilityAgent (XAI Audit Trail)
+```
+
+### 1. `IntakeAgent` (Signal Ingestion & Acoustic Normalization)
+* **File:** `src/agents/intake_agent.py` & `src/agents/voice_intake.py`
+* **Working Principle:** Listens to raw emergency incoming distress calls (via local Whisper STT or free-text forms). It removes panic-induced filler words, background noise, and conversational artifacts, outputting a cleaned, normalized 911-style incident summary.
+
+### 2. `MetadataAgent` (Structured Entity Extraction & Fallback Guardrails)
+* **File:** `src/agents/metadata_agent.py`
+* **Working Principle:** Uses schema-constrained JSON extraction to parse the normalized text into four deterministic vectors: `hazard_type` (fire, flood, earthquake, medical), `urgency` (low, medium, high, critical), `location_description`, and `extracted_entities`. Built-in defensive fallback logic automatically defaults invalid or unknown classifications to safe ground values without pipeline crashes.
+
+### 3. `VisionAgent` (Multimodal Structural Damage Assessment)
+* **File:** `src/agents/vision_agent.py`
+* **Working Principle:** Inspects civilian-uploaded photographs from disaster sites using vision transformers (Gemini Vision). It calculates a quantitative structural damage score (1 to 5), estimates casualty probabilities, detects fire/water levels, and passes this visual severity vector directly to the routing engine.
+
+### 4. `LiveAwarenessAgent` (Real-Time Ground Truth Web Scraping)
+* **File:** `src/agents/live_awareness_agent.py`
+* **Working Principle:** Scrapes live web feeds, meteorological radar, and municipal traffic alerts (via DuckDuckGo API) for the incident's vicinity. It detects active roadblocks, submerged underpasses, or expanding fire fronts, preventing the system from using stale or hallucinated map data.
+
+### 5. `RetrievalAgent` (Agentic RAG & Disaster SOP Retrieval)
+* **File:** `src/agents/retrieval_agent.py` & `src/rag/embeddings.py`
+* **Working Principle:** Embeds official National Disaster Management Authority (NDMA) Standard Operating Procedures into a local ChromaDB vector store. Upon receiving the hazard metadata, it performs semantic vector similarity search (`all-MiniLM-L6-v2`) to pull exact, regulatory protocols required for that specific disaster type.
+
+### 6. `PlannerAgent` (Tactical Incident Action Plan [IAP] Synthesis)
+* **File:** `src/agents/planner_agent.py`
+* **Working Principle:** Fuses the outputs from the `MetadataAgent`, `VisionAgent`, `LiveAwarenessAgent`, and retrieved NDMA SOPs. It acts as an AI Incident Commander to synthesize a comprehensive Incident Action Plan (IAP)—stating required rescue resources, triage priority, perimeter cordons, and safety equipment.
+
+### 7. `RouterAgent & FleetOptimizer` (Hazard-Penalized Geospatial Pathfinding)
+* **File:** `src/agents/router_agent.py` & `src/agents/fleet_optimizer.py`
+* **Working Principle:** Solves Vehicle Routing Problems (VRP) across multi-vehicle fleets (ambulances, fire engines, rescue boats). It computes road routes using Open Source Routing Machine (OSRM) with Multi-Level Dijkstra (MLD) while dynamically applying heavy distance penalties or closures around verified hazard zones.
+
+### 8. `CommsAgent` (Vernacular Localization & Regional Telemetry Dispatch)
+* **File:** `src/agents/comms_agent.py`
+* **Working Principle:** First responders in rural and peri-urban India often operate in regional languages. The `CommsAgent` takes the final approved English dispatch instructions and autonomously translates them into **Telugu (తెలుగు)** and **Hindi (हिंदी)**, dispatching localized SMS and telemetry notifications directly to field driver devices.
+
+### 🛡️ Supporting Core Agent: `ExplainabilityAgent` (XAI & Audit Trail)
+* **File:** `src/agents/explainability_agent.py` & `src/utils/decision_logger.py`
+* **Working Principle:** Emergency systems must never be black boxes. This agent tracks every agent's confidence score, rationale, and timestamps into an immutable JSONL audit trail, dynamically generating **MermaidJS visual decision trees** for human commanders to review before approving dispatches.
 
 ---
 
